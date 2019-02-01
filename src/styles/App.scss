@@ -1,13 +1,19 @@
-.App {
-  text-align: center;
+
+//HEADER
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+
 }
 
+.header__logo{
+  
+   background: red;
+  // background-image: url(../images/logo-interacso.png);
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
