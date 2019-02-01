@@ -13,8 +13,12 @@ class App extends Component {
           <div className="header__appLogo">
             <img src={callsLogo} className="yourCalls" alt="Your Calls" /></div>
         </header>
-        
-        <h1>hola</h1>
+        <main className="main">
+          <nav className="menu">
+            <div className="menu__newCall"><span className="newCall__icon"></span><p className="newCall__title">Nueva LLamada</p></div>
+            <div className="menu__historic"><p className="historic__title">Histórico</p></div>
+          </nav>
+        </main>
       </div>
     );
   }
