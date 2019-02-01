@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
 import logo from './images/logo-interacso-white.svg';
-import callsLogo from './images/your_calls.svg';
+import callsLogo from './images/logo_your_calls.svg';
 
 class App extends Component {
   render() {
