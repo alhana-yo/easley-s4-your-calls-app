@@ -5,18 +5,23 @@
   display: flex;
   justify-content: space-between;
   background-color: black;
+}
+.App{
+  background-color: black;
+  height: 100vh;
+  font-family: Favorit;
+}
+
+
+//main//
+
+.main{
+  color: #717171;
 
 }
 
-.header__logo{
-  
-   background: red;
-  // background-image: url(../images/logo-interacso.png);
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
 
-}
+
 // MAIN -- Menu navegación
 .menu{
   display: flex;
@@ -37,4 +42,19 @@
 .newCall__icon--img {
   height: 33px;
   width: 33px;
+}
+.main__whocalls--title{
+
+}
+.main__employees{
+
+}
+.main__requested--employee{
+
+}
+.main__requested--employee-title{
+
+}
+.main__employees{
+
 }
