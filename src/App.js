@@ -111,17 +111,15 @@ class App extends Component {
           <nav className="menu">
             <div className="menu__newCall">
               <div className="newCall__circle">
-                <span className="newCall__icon--container">
                   <img src={plus} className="newCall__icon--img" alt="plus" />
-                </span>
               </div>
-              <p className="newCall__title">Nueva LLamada</p></div>
+              <p className="newCall__title">Nueva Llamada</p></div>
             <div className="menu__historic"><p className="historic__title">Histórico</p></div>
           </nav>
 
           <form action="/signup" method="post" className="registration__form" >
 
-            <fieldset className="whoCalls">
+            <fieldset className="form-section whoCalls">
 
               <div className="main__whoCalls">
                 <h2 className="main__whocalls--title">¿Quién atendió la llamada</h2>
@@ -143,7 +141,7 @@ class App extends Component {
 
             </fieldset>
 
-            <fieldset className="incoming-data">
+            <fieldset className="form-section incoming-data">
               <h2 className="incoming-data__title">¿Quién llamó?</h2>
               <div className="incoming-data__name">
                 <label htmlFor="name" className="incoming-data__name--label">Nombre</label>
@@ -177,7 +175,7 @@ class App extends Component {
             
             </fieldset>
 
-            <fieldset className="message">
+            <fieldset className="form-section message">
               <h2 className="message__title">¿Qué mensaje dejó?</h2>
 
               <div className="call__container">
