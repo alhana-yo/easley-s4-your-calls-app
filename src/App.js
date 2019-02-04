@@ -102,10 +102,12 @@ class App extends Component {
 
   isEmptyOrNot(){
     const incomingInfo = this.state.info;
-    if ((incomingInfo.name === "") ){
+    if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
       console.log ('HAY QUE RELLENAR ESTE CAMPO');
+    } else if (incomingInfo.message === "" && incomingInfo.customMessage === ""){
+      console.log("HAY QUE RELLENAR EL MENSAJE");
     } else {
-      console.log("que esta pasando");
+      console.log("enviar info al servidor");
     }
   }
 
