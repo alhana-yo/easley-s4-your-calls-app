@@ -12,16 +12,17 @@ class App extends Component {
 
     this.state= {
       info: {
-        whoCalls: "",
-        requestedEmployee:"",
+        addedBy: "",
+        personRequested:"",
         name: "",
         company:"",
         position:"",
         otherInfo:"",
         email:"",
         phone: 0,
+        callAction:"",
         message:"",
-        customMessage:""
+       
       }
     }
 
@@ -33,20 +34,22 @@ class App extends Component {
     this.getOtherInfo = this.getOtherInfo.bind(this);
     this.getEmail = this.getEmail.bind(this);
     this.getPhone = this.getPhone.bind(this);
+    this.getCallAction = this.getCallAction.bind(this);
     this.getMessage = this.getMessage.bind(this);
-    this.getCustomMessage = this.getCustomMessage.bind(this);
+    this.sendInfo = this.sendInfo.bind(this);
+ 
 
   }
 
   getWhoCalls(event) {
     const { info } = this.state;
-    const newInfo = { ...info, whoCalls: event.currentTarget.value };
+    const newInfo = { ...info, addedBy: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
   getRequestedEmployee(event) {
     const { info } = this.state;
-    const newInfo = { ...info, requestedEmployee: event.currentTarget.value };
+    const newInfo = { ...info, personRequested: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
@@ -86,17 +89,47 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 
+  getCallAction(event) {
+    const { info } = this.state;
+    const newInfo = { ...info, callAction: event.currentTarget.value };
+    this.setState({ info: newInfo });
+  }
+
   getMessage(event) {
     const { info } = this.state;
     const newInfo = { ...info, message: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
-  getCustomMessage(event) {
-    const { info } = this.state;
-    const newInfo = { ...info, customMessage: event.currentTarget.value };
-    this.setState({ info: newInfo });
+  preventSubmission(event) {
+
+    event.preventDefault();
   }
+
+
+
+  sendInfo() {
+
+    console.log(this.state.info)
+
+    const ENDPOINT = 'https://adalab.interacso.com/call';
+
+      fetch(ENDPOINT,  {
+
+              method: "POST",
+              body: JSON.stringify(this.state.info),
+              cache: "no-cache",
+              headers: {
+                  "content-type": "application/json"
+              }
+             
+            })
+
+              .then(response=> response.json())
+              .then(response => console.log('Success:', JSON.stringify(response)))
+              .catch(error => console.error('Error:', error));
+  }
+
 
   render() {
     return (
@@ -117,12 +150,12 @@ class App extends Component {
             <div className="menu__historic"><p className="historic__title">Histórico</p></div>
           </nav>
 
-          <form action="/signup" method="post" className="registration__form" >
+          <form method="post" onSubmit={this.preventSubmission}className="registration__form" >
 
-            <fieldset className="form-section whoCalls">
+            <fieldset className="form-section addedBy">
 
-              <div className="main__whoCalls">
-                <h2 className="main__whocalls--title">¿Quién atendió la llamada</h2>
+              <div className="main__addedBy">
+                <h2 className="main__addedBy--title">¿Quién atendió la llamada</h2>
                 <select className="main__employees" onChange={this.getWhoCalls}>
                   <option value="Elige un empleado">Elige un empleado</option>
                   <option value="Carlos">Carlos</option>
@@ -130,8 +163,8 @@ class App extends Component {
                 </select>
               </div>
 
-              <div className="main__requested--employee">
-                <h2 className="main__requested--employee-title">¿Por quién preguntaban?</h2>
+              <div className="main__personRequested">
+                <h2 className="main__personRequested-title">¿Por quién preguntaban?</h2>
                 <select className="main__employees" onChange={this.getRequestedEmployee}>
                   <option value="Elige un empleado">Elige un empleado</option>
                   <option value="Carlos">Carlos</option>
@@ -179,21 +212,21 @@ class App extends Component {
               <h2 className="message__title">¿Qué mensaje dejó?</h2>
 
               <div className="call__container">
-                <label htmlFor="redial" className="message__selection">Devolver llamada</label>
-                <input id="redial" type="radio" value="Devolver llamada" className="message__selection--redial" placeholder="Devolver llamada" name="call" onChange={this.getMessage}/>
+                <label htmlFor="redial" className="callAction__selection">Devolver llamada</label>
+                <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onChange={this.getCallAction}/>
               </div>
               <div className="call__container">
-                <label htmlFor="call-back" className="message__selection">Llamará de nuevo</label>
+                <label htmlFor="call-back" className="callAction__selection">Llamará de nuevo</label>
 
-                <input id="call-back" type="radio"  value="Llamará de nuevo" className="message__selection--call-back" placeholder="Llamará de nuevo" name="call" onChange={this.getMessage}/>
+                <input id="call-back" type="radio"  value="Llamará de nuevo" className="callAction__selection--call-back" placeholder="Llamará de nuevo" name="call" onChange={this.getCallAction}/>
               </div>
 
-              <label htmlFor="custom-message" className="custom-message__label">Mensaje personalizado</label>
-              <textarea name="custom-message" id="custom-message" className="custom-message__input" cols="30" rows="10" onKeyUp={this.getCustomMessage}></textarea>
+              <label htmlFor="message" className="message__label">Mensaje personalizado</label>
+              <textarea name="message" id="message" className="message__input" cols="30" rows="10" onKeyUp={this.getMessage}></textarea>
             
             </fieldset>
 
-            <input type="submit" value="Registrar" />
+            <input type="submit" value="Registrar"  onClick={this.sendInfo}/>
 
 
 
