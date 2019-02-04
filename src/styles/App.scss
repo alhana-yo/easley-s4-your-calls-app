@@ -3,6 +3,13 @@
 body {
   background-color: black;
 }
+.App{
+  height: 100vh;
+  font-family: Favorit,'Times New Roman', Times, serif;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
 .header{
   display: flex;
   justify-content: space-between;
@@ -18,7 +25,7 @@ body {
 .menu__newCall {
   margin: 10px 0px 18px 23px;
   font-weight: bold;
-  font-family: Favorit;
+  font-family: Favorit,'Times New Roman', Times, serif;
   font-size: 64px;
 }
 .newCall__circle {
@@ -37,10 +44,6 @@ body {
   color: #409FFF;
 }
 
-.App{
-  height: 100vh;
-  font-family: Favorit;
-}
 
 
 //main//
@@ -54,10 +57,19 @@ body {
   border:0 none;
 }
 
+.formUp{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  
+}
+
 // MAIN -- Menu navegación
+
 .menu{
   display: flex;
   justify-content: space-between;
+  
 }
 .menu__newCall {
   display: flex;
@@ -70,6 +82,10 @@ body {
   width: 68px;
   background-color: #409FFF;
   border-radius: 50px;
+}
+
+.historic__title{
+  
 }
 .newCall__icon--img {
   height: 33px;
@@ -85,8 +101,16 @@ body {
 
 }
 .main__personRequested-title{
-
 }
-.main__employees{
+
+
+.error-msg{
+  color: red;
+  border-top: 2px solid red;
+ 
+}
+
+.hidden {
+  display: none;
 
 }

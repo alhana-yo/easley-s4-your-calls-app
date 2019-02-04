@@ -5,6 +5,7 @@ import logo from './images/logo-interacso-white.svg';
 import callsLogo from './images/logo_your_calls.svg';
 
 
+
 class App extends Component {
 
   constructor(props){
@@ -21,11 +22,12 @@ class App extends Component {
         email:"",
         phone: 0,
         callAction:"",
-        message:"",
-       
-      }
-    }
-
+        message:"",    
+      },
+      errorIncomingData:"hidden",
+      errorMessage: "hidden"
+  }
+   
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
     this.getName = this.getName.bind(this);
@@ -37,7 +39,8 @@ class App extends Component {
     this.getCallAction = this.getCallAction.bind(this);
     this.getMessage = this.getMessage.bind(this);
     this.sendInfo = this.sendInfo.bind(this);
- 
+    this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
+    this.sendForm = this.sendForm.bind(this);
 
   }
 
@@ -131,6 +134,36 @@ class App extends Component {
   }
 
 
+  sendForm(event){
+    event.preventDefault();
+    this.isEmptyOrNot();
+  }
+
+  isEmptyOrNot(){
+    const incomingInfo = this.state.info;
+    if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
+      console.log('entro en el if.');
+      this.setState({
+        errorIncomingData: ""
+      });
+    } else if (incomingInfo.callAction === "" && incomingInfo.message === ""){
+      
+      this.setState({
+        errorIncomingData: "hidden",
+        errorMessage:""
+      });
+    } else {
+      this.setState({
+        errorIncomingData: "hidden",
+        errorMessage:"hidden"
+      });
+
+      this.sendInfo();
+      console.log("enviar info al servidor");
+    }
+  }
+  
+  
   render() {
     return (
       <div className="App">
@@ -172,10 +205,12 @@ class App extends Component {
                 </select>
               </div>
 
+            
             </fieldset>
 
             <fieldset className="form-section incoming-data">
               <h2 className="incoming-data__title">¿Quién llamó?</h2>
+              <p className={`error-msg ${this.state.errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
               <div className="incoming-data__name">
                 <label htmlFor="name" className="incoming-data__name--label">Nombre</label>
                 <input id="name" type="text" className="incoming-data__name--input" placeholder="Nombre" onKeyUp={this.getName}/>
@@ -210,6 +245,7 @@ class App extends Component {
 
             <fieldset className="form-section message">
               <h2 className="message__title">¿Qué mensaje dejó?</h2>
+              <p className={`error-msg ${this.state.errorMessage}`}>Debes rellenar al menos uno de los campos</p>
 
               <div className="call__container">
                 <label htmlFor="redial" className="callAction__selection">Devolver llamada</label>
@@ -226,9 +262,7 @@ class App extends Component {
             
             </fieldset>
 
-            <input type="submit" value="Registrar"  onClick={this.sendInfo}/>
-
-
+            <input type="submit" value="Registrar" onClick={this.sendForm}/>
 
           </form>
         </main>
