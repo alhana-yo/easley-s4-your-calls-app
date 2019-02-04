@@ -3,7 +3,8 @@ import './styles/App.scss';
 import plus from './images/plus.svg';
 import logo from './images/logo-interacso-white.svg';
 import callsLogo from './images/logo_your_calls.svg';
-let error = "";
+
+
 
 class App extends Component {
 
@@ -23,9 +24,11 @@ class App extends Component {
         message:"",
         customMessage:""
       },
-      showError: false
+
+      errorIncomingData:"hidden",
+      errorMessage: "hidden"
+      
     }
-    
    
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -110,18 +113,18 @@ class App extends Component {
   isEmptyOrNot(){
     const incomingInfo = this.state.info;
     if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
-     
-      if(this.state.showError === false){
+      console.log('entro en el if.');
       this.setState({
-        showError: true
-      })
-      error = (this.state.showError) ? 'error' : 'hola'; console.log(error);
-    }
+        errorIncomingData: ""
+      });
     } else if (incomingInfo.message === "" && incomingInfo.customMessage === ""){
-      console.log("HAY QUE RELLENAR EL MENSAJE");
+      
+      this.setState({
+        errorIncomingData: "hidden",
+        errorMessage:""
+      });
     } else {
       console.log("enviar info al servidor");
-      
     }
   }
   
@@ -173,7 +176,7 @@ class App extends Component {
 
             <fieldset className="form-section incoming-data">
               <h2 className="incoming-data__title">¿Quién llamó?</h2>
-              <p className={`${error}`}>Debes rellenar al menos uno de los campos</p>
+              <p className={`error-msg ${this.state.errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
               <div className="incoming-data__name">
                 <label htmlFor="name" className="incoming-data__name--label">Nombre</label>
                 <input id="name" type="text" className="incoming-data__name--input" placeholder="Nombre" onKeyUp={this.getName}/>
@@ -208,6 +211,7 @@ class App extends Component {
 
             <fieldset className="form-section message">
               <h2 className="message__title">¿Qué mensaje dejó?</h2>
+              <p className={`error-msg ${this.state.errorMessage}`}>Debes rellenar al menos uno de los campos</p>
 
               <div className="call__container">
                 <label htmlFor="redial" className="message__selection">Devolver llamada</label>
