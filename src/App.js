@@ -26,7 +26,8 @@ class App extends Component {
       },
       errorIncomingData:"hidden",
       errorMessage: "hidden",
-      errorPerson: "hidden"
+      errorPerson: "hidden",
+      succesMessage: "hidden"
   }
    
     this.getWhoCalls = this.getWhoCalls.bind(this);
@@ -165,7 +166,8 @@ class App extends Component {
       this.setState({
         errorIncomingData: "hidden",
         errorMessage:"hidden",
-        errorPerson: "hidden"
+        errorPerson: "hidden",
+        succesMessage: ""
       }); 
 
       this.sendInfo();
@@ -274,8 +276,8 @@ class App extends Component {
             </fieldset>
 
             <input type="submit" value="Registrar" onClick={this.sendForm}/>
-
           </form>
+        <div className={`modal ${this.state.succesMessage}`}>La llamada a {this.state.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
         </main>
       </div>
     );
