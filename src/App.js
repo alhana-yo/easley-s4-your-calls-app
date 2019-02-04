@@ -12,8 +12,8 @@ class App extends Component {
 
     this.state= {
       info: {
-        whoCalls: "",
-        requestedEmployee:"",
+        addedBy: "",
+        personRequested:"",
         name: "",
         company:"",
         position:"",
@@ -37,18 +37,19 @@ class App extends Component {
     this.getMessage = this.getMessage.bind(this);
     this.getCustomMessage = this.getCustomMessage.bind(this);
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
+    this.sendForm = this.sendForm.bind(this);
 
   }
 
   getWhoCalls(event) {
     const { info } = this.state;
-    const newInfo = { ...info, whoCalls: event.currentTarget.value };
+    const newInfo = { ...info, addedBy: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
   getRequestedEmployee(event) {
     const { info } = this.state;
-    const newInfo = { ...info, requestedEmployee: event.currentTarget.value };
+    const newInfo = { ...info, personRequested: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
@@ -100,6 +101,11 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 
+  sendForm(event){
+    event.preventDefault();
+    this.isEmptyOrNot();
+  }
+
   isEmptyOrNot(){
     const incomingInfo = this.state.info;
     if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
@@ -108,8 +114,10 @@ class App extends Component {
       console.log("HAY QUE RELLENAR EL MENSAJE");
     } else {
       console.log("enviar info al servidor");
+
     }
   }
+
 
   render() {
     return (
@@ -208,12 +216,9 @@ class App extends Component {
             
             </fieldset>
 
-            <input type="submit" value="Registrar" />
-
-
+            <input type="submit" value="Registrar" onClick={this.sendForm}/>
 
           </form>
-            <button onClick={this.isEmptyOrNot}>PRUEBA</button>
         </main>
       </div>
     );
