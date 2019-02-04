@@ -25,6 +25,7 @@ class App extends Component {
       }
     }
 
+   
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
     this.getName = this.getName.bind(this);
@@ -35,6 +36,7 @@ class App extends Component {
     this.getPhone = this.getPhone.bind(this);
     this.getMessage = this.getMessage.bind(this);
     this.getCustomMessage = this.getCustomMessage.bind(this);
+    this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
 
   }
 
@@ -98,6 +100,15 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 
+  isEmptyOrNot(){
+    const incomingInfo = this.state.info;
+    if ((incomingInfo.name === "") ){
+      console.log ('HAY QUE RELLENAR ESTE CAMPO');
+    } else {
+      console.log("que esta pasando");
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -118,6 +129,7 @@ class App extends Component {
           </nav>
 
           <form action="/signup" method="post" className="registration__form" >
+          
 
             <fieldset className="form-section whoCalls">
 
@@ -198,6 +210,7 @@ class App extends Component {
 
 
           </form>
+            <button onClick={this.isEmptyOrNot}>PRUEBA</button>
         </main>
       </div>
     );
