@@ -1,13 +1,43 @@
 
 //HEADER
-
+body {
+  background-color: black;
+}
 .header{
   display: flex;
   justify-content: space-between;
-  background-color: black;
 }
+
+.header__logo {
+  margin: 35px 0 35px 40px; 
+}
+
+.header__appLogo {
+  margin: 32px 40px 32px 0px; 
+}
+.menu__newCall {
+  margin: 10px 0px 18px 23px;
+  font-weight: bold;
+  font-family: Favorit;
+  font-size: 64px;
+}
+.newCall__circle {
+  margin-right: 23px; 
+}
+.newCall__title {
+  margin: 0;
+}
+.menu__historic {
+  font-size: 64px;
+  font-weight: bold;
+  margin: 10px 0px 18px 0;
+}
+.historic__title {
+  margin: 0;
+  color: #409FFF;
+}
+
 .App{
-  background-color: black;
   height: 100vh;
   font-family: Favorit;
 }
@@ -20,7 +50,9 @@
 
 }
 
-
+.form-section {
+  border:0 none;
+}
 
 // MAIN -- Menu navegación
 .menu{
@@ -43,16 +75,16 @@
   height: 33px;
   width: 33px;
 }
-.main__whocalls--title{
+.main__addedBy--title{
 
 }
 .main__employees{
 
 }
-.main__requested--employee{
+.main__personRequested{
 
 }
-.main__requested--employee-title{
+.main__personRequested-title{
 
 }
 .main__employees{
