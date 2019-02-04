@@ -6,6 +6,8 @@ body {
 .App{
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .header{
@@ -55,10 +57,18 @@ body {
   border:0 none;
 }
 
+.formUp{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  
+}
+
 // MAIN -- Menu navegación
 .menu{
   display: flex;
   justify-content: space-between;
+  
 }
 .menu__newCall {
   display: flex;
@@ -72,21 +82,28 @@ body {
   background-color: #409FFF;
   border-radius: 50px;
 }
+
+.historic__title{
+  
+}
 .newCall__icon--img {
   height: 33px;
   width: 33px;
 }
+.main__whoCalls{
+ 
+}
 .main__whocalls--title{
-
+  
 }
 .main__employees{
 
 }
 .main__requested--employee{
-
+  
 }
 .main__requested--employee-title{
-
+  
 }
 .main__employees{
 

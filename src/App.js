@@ -134,7 +134,7 @@ class App extends Component {
           
 
             <fieldset className="form-section whoCalls">
-
+            <div className="formUp">
               <div className="main__whoCalls">
                 <h2 className="main__whocalls--title">¿Quién atendió la llamada</h2>
                 <select className="main__employees" onChange={this.getWhoCalls}>
@@ -153,6 +153,7 @@ class App extends Component {
                 </select>
               </div>
 
+            </div>
             </fieldset>
 
             <fieldset className="form-section incoming-data">
