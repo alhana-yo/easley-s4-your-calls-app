@@ -25,7 +25,8 @@ class App extends Component {
         message:"",    
       },
       errorIncomingData:"hidden",
-      errorMessage: "hidden"
+      errorMessage: "hidden",
+      errorPerson: "hidden"
   }
    
     this.getWhoCalls = this.getWhoCalls.bind(this);
@@ -141,22 +142,31 @@ class App extends Component {
 
   isEmptyOrNot(){
     const incomingInfo = this.state.info;
-    if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
+
+      if (incomingInfo.personRequested === ""){
+        this.setState({
+          errorPerson: ""
+        });
+      }else if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
       console.log('entro en el if.');
       this.setState({
-        errorIncomingData: ""
+        errorIncomingData: "",
+        errorPerson: "hidden"
       });
     } else if (incomingInfo.callAction === "" && incomingInfo.message === ""){
       
       this.setState({
         errorIncomingData: "hidden",
-        errorMessage:""
+        errorMessage:"",
+        errorPerson: "hidden"
+        
       });
     } else {
       this.setState({
         errorIncomingData: "hidden",
-        errorMessage:"hidden"
-      });
+        errorMessage:"hidden",
+        errorPerson: "hidden"
+      }); 
 
       this.sendInfo();
       console.log("enviar info al servidor");
@@ -198,8 +208,9 @@ class App extends Component {
 
               <div className="main__personRequested">
                 <h2 className="main__personRequested-title">¿Por quién preguntaban?</h2>
-                <select className="main__employees" onChange={this.getRequestedEmployee}>
-                  <option value="Elige un empleado">Elige un empleado</option>
+                <p className={`error-msg ${this.state.errorPerson}`}>Debes seleccionar un empleado</p>
+                <select className="main__employees" onChange={this.getRequestedEmployee} required>
+                  <option value="Elige un empleado" >Elige un empleado</option>
                   <option value="Carlos">Carlos</option>
                   <option value="Pepa">Pepa</option>
                 </select>
