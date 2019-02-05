@@ -28,7 +28,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  
 }
 
 .header__appLogo {
@@ -96,12 +95,20 @@ body {
   border-radius: 50px;
 }
 
-.historic__title{
-  
-}
 .newCall__icon--img {
   height: 33px;
   width: 33px;
+}
+.label {
+background-color: red;
+height: 0;
+width: 0;
+display: block;
+overflow: hidden;
+}
+
+.historic__title{
+  
 }
 .main__addedBy--title{
 
