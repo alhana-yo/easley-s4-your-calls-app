@@ -1,3 +1,5 @@
+@import 'core/typography';
+@import 'core/settings';
 
 //HEADER
 body {
@@ -60,10 +62,12 @@ body {
 //main//
 
 .main{
-  color: #717171;
+  color: $color-white;
 
 }
-
+.registration__form {
+  color: $color-grey;
+}
 .form-section {
   border:0 none;
 }
