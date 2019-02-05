@@ -4,6 +4,26 @@ import React, { Component } from 'react';
 
 class Form extends Component {
 
+
+    constructor(props) {
+        super(props);
+
+        this.redialButton = React.createRef();
+
+        this.fakeClick = this.fakeClick.bind(this);
+        console.log(this.redialButton)
+    }
+
+    
+   
+
+    
+
+    fakeClick() {
+        this.redialButton.current.click();
+        console.log('clickea')
+    }
+
     render() {
 
         const {preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, errorCallAction, getCallAction, getMessage, errorMessage} = this.props;
@@ -80,7 +100,8 @@ class Form extends Component {
 
                         <div className="call__container">
                             <label htmlFor="redial" className="callAction__selection ">Devolver llamada</label>
-                            <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onChange={getCallAction} />
+                            <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onChange={getCallAction} ref={this.redialButton}/>
+                            <button type="button" className="fake-redial-button" onClick={this.fakeClick}>Devolver llamada</button>
                         </div>
 
                         <div className="call__container">
