@@ -8,8 +8,6 @@ body {
 .App{
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
-  margin-left: 150px;
-  margin-right: 150px;
 }
 
 .header{
@@ -36,60 +34,15 @@ body {
   margin: 32px 40px 32px 0px; 
 }
 .menu__newCall {
+  display: flex;
   margin: 10px 0px 18px 23px;
   font-weight: bold;
   font-family: Favorit,'Times New Roman', Times, serif;
   font-size: 64px;
 }
 .newCall__circle {
-  margin-right: 23px; 
-}
-.newCall__title {
-  margin: 0;
-}
-.menu__historic {
-  font-size: 64px;
-  font-weight: bold;
-  margin: 10px 0px 18px 0;
-}
-.historic__title {
-  margin: 0;
-  color: #409FFF;
-}
-
-
-
-//main//
-
-.main{
-  color: $color-white;
-
-}
-.registration__form {
-  color: $color-grey;
-}
-.form-section {
-  border:0 none;
-}
-
-.formUp{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  
-}
-
-// MAIN -- Menu navegación
-
-.menu{
-  display: flex;
-  justify-content: space-between;
-  
-}
-.menu__newCall {
-  display: flex;
-}
-.newCall__circle {
+  left: -63px; 
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,6 +56,56 @@ body {
   height: 33px;
   width: 33px;
 }
+
+.newCall__title {
+  margin: 0;
+}
+
+.menu__historic {
+  font-size: 64px;
+  font-weight: bold;
+  margin: 10px 0px 18px 0;
+}
+
+.historic__title {
+  margin: 0;
+  color: #409FFF;
+}
+
+//main//
+
+.form__wrapper {
+  position: relative;
+  margin-left: 240px;
+  margin-top: 64px;
+  margin-right: 240px;
+}
+
+.main{
+  color: $color-white;
+}
+
+.registration__form {
+  color: $color-grey;
+}
+
+.form-section {
+  border:0 none;
+}
+
+.formUp {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+// MAIN -- Menu navegación
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+}
+
 .label {
 background-color: red;
 height: 0;
@@ -125,6 +128,21 @@ overflow: hidden;
 }
 .main__personRequested-title{
 }
+
+// .callAction__selection--redial, .callAction__selection--call-back {
+
+//     padding:3px;
+//     margin: 0;
+//     background: black;
+//     color:#888;
+//     border:none;
+//     outline:none;
+//     display: inline-block;
+//     -webkit-appearance:none;
+//     -moz-appearance:none;
+//     appearance:none;
+//     cursor:pointer;
+// }
 
 
 .error-msg{
