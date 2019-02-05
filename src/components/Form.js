@@ -10,19 +10,21 @@ class Form extends Component {
 
         this.redialButton = React.createRef();
 
+        this.callBack = React.createRef();
+
         this.fakeClick = this.fakeClick.bind(this);
-        console.log(this.redialButton)
+        this.fakeClickCallBack = this.fakeClickCallBack.bind(this);
     }
-
-    
-   
-
-    
 
     fakeClick() {
         this.redialButton.current.click();
-        console.log('clickea')
     }
+
+    fakeClickCallBack() {
+        this.callBack.current.click();
+    }
+
+
 
     render() {
 
@@ -107,7 +109,11 @@ class Form extends Component {
                         <div className="call__container">
                             <label htmlFor="call-back" className="callAction__selection">Llamará de nuevo</label>
 
-                            <input id="call-back" type="radio" value="Llamará de nuevo" className="callAction__selection--call-back" placeholder="Llamará de nuevo" name="call" onChange={getCallAction} />
+                            <input id="call-back" type="radio" value="Llamará de nuevo" className="callAction__selection--call-back" placeholder="Llamará de nuevo" name="call" onChange={getCallAction} ref={this.callBack}/>
+                            <button type="button" className="fake-CallBack-button" onClick={this.fakeClickCallBack}>Llamará de nuevo</button>
+
+
+                           
                         </div>
 
                         <label htmlFor="message" className="message__label">Mensaje personalizado</label>
