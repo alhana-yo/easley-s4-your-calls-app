@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
+import Menu from './components/Menu';
+import NewCall from './components/NewCall';
 import './styles/App.scss';
-import plus from './images/plus.svg';
-import logo from './images/logo-interacso-white.svg';
-import callsLogo from './images/logo_your_calls.svg';
+
 
 
 
@@ -195,29 +196,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="header">
-          <div className="header__logo">
-            <h1 className="logo">Interacso</h1>
-          </div>
-          <div className="header__appLogo">
-            <img src={callsLogo} className="yourCalls" alt="Your Calls" /></div>
-        </header>
+        <Header />
 
         <main className="main">
           <div className="form__wrapper">
       
-            <nav className="menu">
-              <div className="menu__newCall">
-                <div className="newCall__circle">
-                    <img src={plus} className="newCall__icon--img" alt="plus" />
-                </div>
-                <p className="newCall__title">Nueva Llamada</p></div>
-              <div className="menu__historic"><p className="historic__title">Histórico</p></div>
-            </nav>
+            <Menu />
+
+            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm}/>
         
 
 
-            <form method="post" onSubmit={this.preventSubmission}className="registration__form" >
+            {/* <form method="post" onSubmit={this.preventSubmission}className="registration__form" >
 
             <fieldset className="form-section addedBy">
               <div className="formUp">
@@ -308,7 +298,7 @@ class App extends Component {
 
             <input type="submit" value="Registrar" onClick={this.sendForm}/>
 
-            </form>
+            </form> */}
           </div>
           
           <div className={`modal ${this.state.succesMessage}`}>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
