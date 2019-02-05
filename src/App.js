@@ -196,7 +196,8 @@ class App extends Component {
       <div className="App">
         <header className="header">
           <div className="header__logo">
-            <img src={logo} className="logo" alt="Interacso" /></div>
+            <h1 className="logo">Interacso</h1>
+          </div>
           <div className="header__appLogo">
             <img src={callsLogo} className="yourCalls" alt="Your Calls" /></div>
         </header>
@@ -240,32 +241,32 @@ class App extends Component {
               <h2 className="incoming-data__title">¿Quién llamó?</h2>
               <p className={`error-msg ${this.state.errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
               <div className="incoming-data__name">
-                <label htmlFor="name" className="incoming-data__name--label">Nombre</label>
+                <label htmlFor="name" className="incoming-data__name--label label" aria-label="nombre">Nombre</label>
                 <input id="name" type="text" className="incoming-data__name--input" placeholder="Nombre" onKeyUp={this.getName}/>
               </div>
             
               <div className="incoming-data__company">
-                <label htmlFor="company" className="incoming-data__company--label">Empresa</label>
+                <label htmlFor="company" className="incoming-data__company--label label" aria-label="empresa">Empresa</label>
                 <input id="company" type="text" className="incoming-data__company--input" placeholder="Empresa" onKeyUp={this.getCompany}/>
               </div>
 
               <div className="incoming-data__position">
-                <label htmlFor="position" className="incoming-data__position--label">Cargo</label>
+                <label htmlFor="position" className="incoming-data__position--label label" aria-label="cargo">Cargo</label>
                 <input id="position" type="text" className="incoming-data__position--input" placeholder="Cargo" onKeyUp={this.getPosition}/>
               </div>
 
               <div className="incoming-data__other-info">
-                <label htmlFor="other-info" className="incoming-data__other-info--label">Otro detalle</label>
+                <label htmlFor="other-info" className="incoming-data__other-info--label label" aria-label="otro detalle">Otro detalle</label>
                 <input id="other-info" type="text" className="incoming-data__other-info--input" placeholder="Otro detalle" onKeyUp={this.getOtherInfo}/>
               </div>
 
               <div className="incoming-data__email">
-                <label htmlFor="email" className="incoming-data__email--label">Email</label>
+                <label htmlFor="email" className="incoming-data__email--label label" aria-label="email">Email</label>
                 <input id="email" type="email" className="incoming-data__email--input" placeholder="Email" onKeyUp={this.getEmail}/>
               </div>
 
               <div className="incoming-data__mobile">
-                <label htmlFor="mobile" className="incoming-data__mobile--label">Teléfono</label>
+                <label htmlFor="mobile" className="incoming-data__mobile--label label" aria-label="teléfono">Teléfono</label>
                 <input id="mobile" type="tel" className="incoming-data__mobile--input" placeholder="Teléfono" onKeyUp={this.getPhone}/>
               </div>
             
@@ -276,7 +277,7 @@ class App extends Component {
               <p className={`error-msg ${this.state.errorCallAction}`}>Debes seleccionar una de las opciones.</p>
 
               <div className="call__container">
-                <label htmlFor="redial" className="callAction__selection">Devolver llamada</label>
+                <label htmlFor="redial" className="callAction__selection ">Devolver llamada</label>
                 <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onChange={this.getCallAction}/>
               </div>
               <div className="call__container">

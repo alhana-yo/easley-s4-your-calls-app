@@ -1,3 +1,5 @@
+@import 'core/typography';
+@import 'core/settings';
 
 //HEADER
 body {
@@ -17,6 +19,17 @@ body {
 
 .header__logo {
   margin: 35px 0 35px 40px; 
+}
+
+.logo {
+  height: 0;
+  width: 127px;
+  overflow: hidden;
+  padding-top: 22px;
+  background-image: url('../images/logo-interacso-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .header__appLogo {
@@ -49,10 +62,12 @@ body {
 //main//
 
 .main{
-  color: #717171;
+  color: $color-white;
 
 }
-
+.registration__form {
+  color: $color-grey;
+}
 .form-section {
   border:0 none;
 }
@@ -84,12 +99,20 @@ body {
   border-radius: 50px;
 }
 
-.historic__title{
-  
-}
 .newCall__icon--img {
   height: 33px;
   width: 33px;
+}
+.label {
+background-color: red;
+height: 0;
+width: 0;
+display: block;
+overflow: hidden;
+}
+
+.historic__title{
+  
 }
 .main__addedBy--title{
 
