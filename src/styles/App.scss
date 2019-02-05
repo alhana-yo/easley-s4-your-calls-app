@@ -19,6 +19,18 @@ body {
   margin: 35px 0 35px 40px; 
 }
 
+.logo {
+  height: 0;
+  width: 127px;
+  overflow: hidden;
+  padding-top: 22px;
+  background-image: url('../images/logo-interacso-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  
+}
+
 .header__appLogo {
   margin: 32px 40px 32px 0px; 
 }

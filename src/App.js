@@ -179,7 +179,8 @@ class App extends Component {
       <div className="App">
         <header className="header">
           <div className="header__logo">
-            <img src={logo} className="logo" alt="Interacso" /></div>
+            <h1 className="logo">Interacso</h1>
+          </div>
           <div className="header__appLogo">
             <img src={callsLogo} className="yourCalls" alt="Your Calls" /></div>
         </header>
