@@ -123,7 +123,7 @@ overflow: hidden;
   grid-template-columns: 1fr 1fr;
 }
 
-//Style for QUien LLamó
+//Styles for Quien LLamó
 .incoming-data__title{
   margin: 0;
   margin-bottom: 30px;
@@ -140,14 +140,24 @@ overflow: hidden;
   margin-bottom: 30px;
 }
 
+//Styles for Qué mensaje dejó
+
+.message__title {
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 40px;
+}
+
 .main__personRequested-title{
   font-size: 32px;
 }
 
+
 .callAction__selection--redial, .callAction__selection--call-back {
-  -webkit-appearance: button;
+ 
   height: 45px;
-  width: 45px; 
+  width: 65px; 
 }
 
 
