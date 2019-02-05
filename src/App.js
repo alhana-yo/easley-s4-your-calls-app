@@ -25,9 +25,10 @@ class App extends Component {
         message:"",    
       },
       errorIncomingData:"hidden",
-      errorMessage: "hidden",
+      errorCallAction: "hidden",
       errorPerson: "hidden",
-      succesMessage: "hidden"
+      succesMessage: "hidden",
+      errorMessage: "hidden"
   }
    
     this.getWhoCalls = this.getWhoCalls.bind(this);
@@ -119,7 +120,7 @@ class App extends Component {
 
     const ENDPOINT = 'https://adalab.interacso.com/call';
 
-      fetch(ENDPOINT,  {
+      fetch(ENDPOINT, {
 
               method: "POST",
               body: JSON.stringify(this.state.info),
@@ -127,11 +128,12 @@ class App extends Component {
               headers: {
                   "content-type": "application/json"
               }
-             
             })
 
               .then(response=> response.json())
               .then(response => console.log('Success:', JSON.stringify(response)))
+              .then(this.setState({
+                  succesMessage:""}))
               .catch(error => console.error('Error:', error));
   }
 
@@ -148,26 +150,39 @@ class App extends Component {
         this.setState({
           errorPerson: ""
         });
-      }else if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
+
+      } else if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
       console.log('entro en el if.');
       this.setState({
         errorIncomingData: "",
         errorPerson: "hidden"
       });
-    } else if (incomingInfo.callAction === "" && incomingInfo.message === ""){
+
+      } else if (incomingInfo.callAction === "" && incomingInfo.message === ""){
       
       this.setState({
         errorIncomingData: "hidden",
-        errorMessage:"",
-        errorPerson: "hidden"
+        errorCallAction:"",
+        errorPerson: "hidden",
+        errorMessage:""
         
       });
+
+    } else if (incomingInfo.callAction !== "" && incomingInfo.message === "") {
+      this.setState({
+        errorIncomingData: "hidden",
+        errorCallAction:"hidden",
+        errorPerson: "hidden",
+        errorMessage:""
+        
+      });
+
     } else {
       this.setState({
         errorIncomingData: "hidden",
-        errorMessage:"hidden",
+        errorCallAction:"hidden",
         errorPerson: "hidden",
-        succesMessage: ""
+        errorMessage:"hidden"
       }); 
 
       this.sendInfo();
@@ -258,7 +273,7 @@ class App extends Component {
 
             <fieldset className="form-section message">
               <h2 className="message__title">¿Qué mensaje dejó?</h2>
-              <p className={`error-msg ${this.state.errorMessage}`}>Debes rellenar al menos uno de los campos</p>
+              <p className={`error-msg ${this.state.errorCallAction}`}>Debes seleccionar una de las opciones.</p>
 
               <div className="call__container">
                 <label htmlFor="redial" className="callAction__selection">Devolver llamada</label>
@@ -272,12 +287,14 @@ class App extends Component {
 
               <label htmlFor="message" className="message__label">Mensaje personalizado</label>
               <textarea name="message" id="message" className="message__input" cols="30" rows="10" onKeyUp={this.getMessage}></textarea>
+
+              <p className={`error-msg ${this.state.errorMessage}`}>Debes rellenar el campo del mensaje.</p>
             
             </fieldset>
 
             <input type="submit" value="Registrar" onClick={this.sendForm}/>
           </form>
-        <div className={`modal ${this.state.succesMessage}`}>La llamada a {this.state.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
+        <div className={`modal ${this.state.succesMessage}`}>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
         </main>
       </div>
     );
