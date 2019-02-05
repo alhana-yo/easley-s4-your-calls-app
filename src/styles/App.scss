@@ -118,24 +118,33 @@ overflow: hidden;
   font-size: 32px;
 }
 
-.incoming-data__container{
+.incoming-data__fieldsContainer{
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 32px;
+  grid-column-gap: 32px;
 }
 
 //Style for QUien LLamó
+
+.incoming-data__container{
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ 
+}
+
+.incoming-data{
+  padding: 0;
+}
+
 .incoming-data__title{
   margin: 0;
   margin-bottom: 30px;
   font-size: 32px;
   line-height: 40px;
 }
-.incoming-data__fieldsContainer{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  
-}
+
 .incoming-data__input{
   background-color: black;
   margin-bottom: 30px;
@@ -145,8 +154,8 @@ overflow: hidden;
   font-size: 16px;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: $color-white;
+::-webkit-input-placeholder { 
+  color: #FFFFFF;
   
 }
 
