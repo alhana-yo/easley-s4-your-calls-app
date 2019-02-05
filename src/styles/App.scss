@@ -114,24 +114,32 @@ display: block;
 overflow: hidden;
 }
 
-.historic__title{
-  
-}
 .main__addedBy--title{
   font-size: 32px;
-}
-.main__employees{
-
 }
 
 .incoming-data__container{
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.main__personRequested{
-  
 
+//Style for QUien LLamó
+.incoming-data__title{
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 40px;
 }
+.incoming-data__fieldsContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+}
+.incoming-data__input{
+  background-color: black;
+  margin-bottom: 30px;
+}
+
 .main__personRequested-title{
   font-size: 32px;
 }
@@ -139,9 +147,7 @@ overflow: hidden;
 .callAction__selection--redial, .callAction__selection--call-back {
   -webkit-appearance: button;
   height: 45px;
-  width: 45px;
-
-    
+  width: 45px; 
 }
 
 
