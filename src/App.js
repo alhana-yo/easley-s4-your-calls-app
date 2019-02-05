@@ -20,8 +20,8 @@ class App extends Component {
         position:"",
         otherInfo:"",
         email:"",
-        phone: 0,
-        callAction:"",
+        telephone: 0,
+        action:"",
         message:"",    
       },
       errorIncomingData:"hidden",
@@ -91,13 +91,13 @@ class App extends Component {
 
   getPhone(event) {
     const { info } = this.state;
-    const newInfo = { ...info, phone: event.currentTarget.value };
+    const newInfo = { ...info, telephone: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
   getCallAction(event) {
     const { info } = this.state;
-    const newInfo = { ...info, callAction: event.currentTarget.value };
+    const newInfo = { ...info, action: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
 
@@ -151,14 +151,14 @@ class App extends Component {
           errorPerson: ""
         });
 
-      } else if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.phone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
+      } else if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.telephone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
       console.log('entro en el if.');
       this.setState({
         errorIncomingData: "",
         errorPerson: "hidden"
       });
 
-      } else if (incomingInfo.callAction === "" && incomingInfo.message === ""){
+      } else if (incomingInfo.action === "" && incomingInfo.message === ""){
       
       this.setState({
         errorIncomingData: "hidden",
@@ -168,7 +168,7 @@ class App extends Component {
         
       });
 
-    } else if (incomingInfo.callAction !== "" && incomingInfo.message === "") {
+    } else if (incomingInfo.action !== "" && incomingInfo.message === "") {
       this.setState({
         errorIncomingData: "hidden",
         errorCallAction:"hidden",
@@ -246,6 +246,8 @@ class App extends Component {
               <fieldset className="form-section incoming-data">
                 <h2 className="incoming-data__title">¿Quién llamó?</h2>
                 <p className={`error-msg ${this.state.errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
+                <div className="incoming-data__container">
+
                 <div className="incoming-data__name">
                   <label htmlFor="name" className="incoming-data__name--label label" aria-label="nombre">Nombre</label>
                   <input id="name" type="text" className="incoming-data__name--input" placeholder="Nombre" onKeyUp={this.getName}/>
@@ -274,6 +276,7 @@ class App extends Component {
                 <div className="incoming-data__mobile">
                   <label htmlFor="mobile" className="incoming-data__mobile--label label" aria-label="teléfono">Teléfono</label>
                   <input id="mobile" type="tel" className="incoming-data__mobile--input" placeholder="Teléfono" onKeyUp={this.getPhone}/>
+                </div>
                 </div>
               
               </fieldset>

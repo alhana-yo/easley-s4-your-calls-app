@@ -113,20 +113,13 @@ width: 0;
 display: block;
 overflow: hidden;
 }
-
-.historic__title{
-  
+//Style for QUien LLamó
+.incoming-data__title{
+  margin: 0;
 }
-.main__addedBy--title{
-
-}
-.main__employees{
-
-}
-.main__personRequested{
-
-}
-.main__personRequested-title{
+.incoming-data__container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 // .callAction__selection--redial, .callAction__selection--call-back {
