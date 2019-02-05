@@ -29,6 +29,7 @@ class App extends Component {
       errorPerson: "hidden",
       succesMessage: "hidden",
       errorMessage: "hidden"
+      
   }
    
     this.getWhoCalls = this.getWhoCalls.bind(this);
