@@ -48,7 +48,7 @@ body {
   align-items: center;
   height: 68px;
   width: 68px;
-  background-color: #409FFF;
+  background-color: $color-blue;
   border-radius: 50px;
 }
 
@@ -67,7 +67,7 @@ body {
 }
 .historic__title {
   margin: 0;
-  color: #409FFF;
+  color:$color-blue;
 }
 
 //main//
@@ -115,12 +115,20 @@ overflow: hidden;
 .incoming-data__title{
   margin: 0;
   margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 40px;
 
 }
-.incoming-data__fielsContainer{
+.incoming-data__fieldsContainer{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  
 }
+.incoming-data__input{
+  background-color: black;
+  margin-bottom: 30px;
+}
+
 
 
 
@@ -138,6 +146,6 @@ overflow: hidden;
 .modal {
   height: 100px;
   width: 100vh;
-  background-color: #409FFF;
+  background-color: $color-blue;
   color: white;
 }
