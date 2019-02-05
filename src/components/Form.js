@@ -6,7 +6,7 @@ class Form extends Component {
 
     render() {
 
-        const {preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, errorCallAction, getCallAction, getMessage, errorMessage} = this.props;
+        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, errorCallAction, getCallAction, getMessage, errorMessage } = this.props;
         return (
             <form method="post" onSubmit={preventSubmission} className="registration__form" >
 

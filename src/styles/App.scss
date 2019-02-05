@@ -121,6 +121,7 @@ overflow: hidden;
 .incoming-data__container{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
 }
 
 //Style for QUien LLamó
@@ -138,7 +139,17 @@ overflow: hidden;
 .incoming-data__input{
   background-color: black;
   margin-bottom: 30px;
+  border: 0;
+  border-bottom: 1px solid $color-white;
+  padding: 0 0 8px 8px;
+  font-size: 16px;
 }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $color-white;
+  
+}
+
 
 .main__personRequested-title{
   font-size: 32px;
