@@ -3,7 +3,7 @@
 
 //HEADER
 body {
-  background-color: black;
+  background-color: $color-blacK;
 }
 .App{
   height: 100vh;
@@ -153,13 +153,71 @@ overflow: hidden;
   font-size: 32px;
 }
 
+.call-container__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 
 .callAction__selection--redial, .callAction__selection--call-back {
+  position: absolute;
+  left: -1000px;
  
   height: 45px;
   width: 65px; 
 }
 
+.call__container {
+  position: relative;
+}
+
+.fake-redial-button {
+  color: #9E9E9E;
+  background-color: #0D0D0D;
+  width: 200px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: Favorit;
+  border: none;
+  border-bottom: solid thin;
+  outline: none;
+  padding: 10px;
+  display: flex;
+  justify-self: flex-start;
+  margin-right: 33px;
+}
+
+.fake-CallBack-button {
+  color: #9E9E9E;
+  background-color: #0D0D0D;
+  width: 200px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: Favorit;
+  border: none;
+  border-bottom: solid thin;
+  outline: none;
+  padding: 10px; 
+  display: flex;
+  justify-self: flex-start;
+
+}
+
+.message__label{
+
+
+}
+
+.message__input {
+  margin-top: 33px;
+  background-color: $color-blacK;
+  border: none;
+  border-bottom: solid;
+  
+
+}
 
 .error-msg{
   color: red;
