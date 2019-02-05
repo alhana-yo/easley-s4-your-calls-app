@@ -60,13 +60,11 @@ body {
 .newCall__title {
   margin: 0;
 }
-
 .menu__historic {
   font-size: 64px;
   font-weight: bold;
   margin: 10px 0px 18px 0;
 }
-
 .historic__title {
   margin: 0;
   color: #409FFF;
@@ -116,26 +114,14 @@ overflow: hidden;
 //Style for QUien LLamó
 .incoming-data__title{
   margin: 0;
+  margin-bottom: 30px;
+
 }
-.incoming-data__container{
+.incoming-data__fielsContainer{
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-// .callAction__selection--redial, .callAction__selection--call-back {
-
-//     padding:3px;
-//     margin: 0;
-//     background: black;
-//     color:#888;
-//     border:none;
-//     outline:none;
-//     display: inline-block;
-//     -webkit-appearance:none;
-//     -moz-appearance:none;
-//     appearance:none;
-//     cursor:pointer;
-// }
 
 
 .error-msg{

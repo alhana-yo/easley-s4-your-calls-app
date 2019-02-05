@@ -29,7 +29,7 @@ class App extends Component {
       errorPerson: "hidden",
       succesMessage: "hidden",
       errorMessage: "hidden"
-      
+
   }
    
     this.getWhoCalls = this.getWhoCalls.bind(this);
@@ -247,7 +247,7 @@ class App extends Component {
               <fieldset className="form-section incoming-data">
                 <h2 className="incoming-data__title">¿Quién llamó?</h2>
                 <p className={`error-msg ${this.state.errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
-                <div className="incoming-data__container">
+                <div className="incoming-data__fielsContainer">
 
                 <div className="incoming-data__name">
                   <label htmlFor="name" className="incoming-data__name--label label" aria-label="nombre">Nombre</label>
