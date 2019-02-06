@@ -5,8 +5,6 @@ import NewCall from './components/NewCall';
 import './styles/App.scss';
 
 
-
-
 class App extends Component {
 
   constructor(props){
@@ -29,12 +27,12 @@ class App extends Component {
       errorCallAction: "hidden",
       errorPerson: "hidden",
       succesMessage: "hidden",
-      errorMessage: "hidden"
+      errorMessage: "hidden",
+      callAgainClass: "",
+      callBackClass: ""
       
   }
 
-   
-   
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
     this.getName = this.getName.bind(this);
@@ -48,6 +46,7 @@ class App extends Component {
     this.sendInfo = this.sendInfo.bind(this);
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
+    // this.getSelectedButton = this.getSelectedButton.bind(this);
 
   }
 
@@ -102,8 +101,21 @@ class App extends Component {
   getCallAction(event) {
     const { info } = this.state;
     const newInfo = { ...info, action: event.currentTarget.value };
-    this.setState({ info: newInfo });
+    this.setState({ 
+      info: newInfo 
+    }); 
+    this.getSelectedButton();
   }
+
+  getSelectedButton(){
+    const { action } = this.state.info;
+    if (action === 'Devolver llamada'){
+      this.setState ({
+        callBackClass: 'selectedClass',
+        callAgainClass: ''
+      })
+    }
+}
 
   getMessage(event) {
     const { info } = this.state;
