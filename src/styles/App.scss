@@ -35,13 +35,13 @@ body {
 }
 .menu__newCall {
   display: flex;
-  margin: 10px 0px 18px 23px;
+  margin: 10px 0px 18px 0;
   font-weight: bold;
   font-family: Favorit,'Times New Roman', Times, serif;
   font-size: 64px;
 }
 .newCall__circle {
-  left: -63px; 
+  left: -85px; 
   position: absolute;
   display: flex;
   justify-content: center;
@@ -90,7 +90,9 @@ body {
 }
 
 .form-section {
-  border:0 none;
+  border: 0 none;
+  margin: 0;
+  padding: 0;
 }
 
 .formUp {
@@ -107,7 +109,6 @@ body {
 }
 
 .label {
-background-color: red;
 height: 0;
 width: 0;
 display: block;
@@ -128,6 +129,7 @@ overflow: hidden;
 //Style for QUien LLamó
 
 .incoming-data__container{
+  margin-top: 68px;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -140,17 +142,18 @@ overflow: hidden;
 
 .incoming-data__title{
   margin: 0;
-  margin-bottom: 30px;
   font-size: 32px;
   line-height: 40px;
 }
 
 .incoming-data__input{
-  background-color: black;
-  margin-bottom: 30px;
+  background-color: $color-blacK;
+  height: 32px;
+  width: 208px;
+  margin-top: 32px;
   border: 0;
   border-bottom: 1px solid $color-white;
-  padding: 0 0 8px 8px;
+  padding: 0 0 0px 8px;
   font-size: 16px;
   color: $color-white;
 }
@@ -193,7 +196,7 @@ overflow: hidden;
 
 .fake-redial-button {
   color: #9E9E9E;
-  background-color: #0D0D0D;
+  background-color: $color-blacK;
   width: 200px;
   height: 32px;
   font-size: 16px;
@@ -210,7 +213,7 @@ overflow: hidden;
 
 .fake-CallBack-button {
   color: #9E9E9E;
-  background-color: #0D0D0D;
+  background-color: $color-blacK;
   width: 200px;
   height: 32px;
   font-size: 16px;
@@ -224,11 +227,6 @@ overflow: hidden;
   justify-self: flex-start;
 }
 
-
-.message__label{
-
-
-}
 
 .message__input {
   margin-top: 33px;

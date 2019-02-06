@@ -46,7 +46,6 @@ class App extends Component {
     this.sendInfo = this.sendInfo.bind(this);
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
-    // this.getSelectedButton = this.getSelectedButton.bind(this);
 
   }
 
@@ -102,7 +101,7 @@ class App extends Component {
     const { info } = this.state;
     const newInfo = { ...info, action: event.currentTarget.value };
     this.setState({ 
-      info: newInfo 
+      info: newInfo, 
     }); 
     this.getSelectedButton();
   }

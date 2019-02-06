@@ -103,14 +103,14 @@ class Form extends Component {
                         <div className="call-container__wrapper">
                             <div className="call__container">
                                 <label htmlFor="redial" className="callAction__selection label">Devolver llamada</label>
-                                <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onChange={getCallAction} ref={this.redialButton}/>
+                                <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onClick={getCallAction} ref={this.redialButton}/>
                                 <button type="button" className={`fake-redial-button ${this.props.callAgainClass}`}  onClick={this.fakeClick}>Devolver llamada</button>
                             </div>
 
                             <div className="call__container">
                                 <label htmlFor="call-back" className="callAction__selection label">Llamará de nuevo</label>
 
-                                <input id="call-back" type="radio" value="Llamará de nuevo" className="callAction__selection--call-back" placeholder="Llamará de nuevo" name="call" onChange={getCallAction} ref={this.callBack}/>
+                                <input id="call-back" type="radio" value="Llamará de nuevo" className="callAction__selection--call-back" placeholder="Llamará de nuevo" name="call" onClick={getCallAction} ref={this.callBack}/>
                                 <button type="button" 
                                 className={`fake-CallBack-button ${this.props.callBackClass}`} onClick={this.fakeClickCallBack}>Llamará de nuevo</button>
                             </div>
