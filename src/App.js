@@ -214,11 +214,12 @@ class App extends Component {
 
         if(optionsArray[i].label.includes(addedBy)){
           console.log('estouy dentro del if', optionsArray[i].label );
-          
-          //optionsArray[i].disabled = false;
-          //optionsArray[i].style.display="none";
-              return true;
-            }
+
+          optionsArray[i].disabled = true;
+          console.log(optionsArray[i].disabled);
+        }else{
+          optionsArray[i].disabled = false;
+        }
 
       }
 
