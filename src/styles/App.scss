@@ -222,8 +222,8 @@ overflow: hidden;
   padding: 10px; 
   display: flex;
   justify-self: flex-start;
-
 }
+
 
 .message__label{
 
@@ -262,4 +262,9 @@ overflow: hidden;
   width: 100vh;
   background-color: #409FFF;
   color: white;
+}
+
+
+.selectedClass {
+  background-color: white;
 }
