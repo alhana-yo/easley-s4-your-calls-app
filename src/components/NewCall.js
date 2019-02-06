@@ -9,7 +9,7 @@ class NewCall extends Component {
         return (
 
             <Fragment>
-                <Form preventSubmission={this.props.preventSubmission} getWhoCalls={this.props.getWhoCalls} errorPerson={this.props.errorPerson} getRequestedEmployee={this.props.getRequestedEmployee} errorIncomingData={this.props.errorIncomingData} getName={this.props.getName} getCompany={this.props.getCompany} getPosition={this.props.getPosition} getOtherInfo={this.props.getOtherInfo} getEmail={this.props.getEmail} getPhone={this.props.getPhone} errorCallAction={this.props.errorCallAction} getCallAction={this.props.getCallAction} getMessage={this.props.getMessage} errorMessage={this.props.errorMessage} callBackClass={this.props.callBackClass} callAgainClass={this.props.callAgainClass}/>
+                <Form preventSubmission={this.props.preventSubmission} getWhoCalls={this.props.getWhoCalls} errorPerson={this.props.errorPerson} getRequestedEmployee={this.props.getRequestedEmployee} errorIncomingData={this.props.errorIncomingData} getName={this.props.getName} getCompany={this.props.getCompany} getPosition={this.props.getPosition} getOtherInfo={this.props.getOtherInfo} getEmail={this.props.getEmail} getPhone={this.props.getPhone} errorCallAction={this.props.errorCallAction} getCallAction={this.props.getCallAction} getMessage={this.props.getMessage} errorMessage={this.props.errorMessage} deselectOption={this.props.deselectOption} selectPersonRequested ={this.props.selectPersonRequested} callBackClass={this.props.callBackClass} callAgainClass={this.props.callAgainClass}/>
 
                 <Button sendForm={this.props.sendForm} />
 
