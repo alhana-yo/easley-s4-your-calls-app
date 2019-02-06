@@ -152,11 +152,11 @@ overflow: hidden;
   border-bottom: 1px solid $color-white;
   padding: 0 0 8px 8px;
   font-size: 16px;
+  color: $color-white;
 }
 
 ::-webkit-input-placeholder { 
-  color: #FFFFFF;
-  
+  color: $color-grey-fonts;
 }
 
 
