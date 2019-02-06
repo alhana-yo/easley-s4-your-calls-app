@@ -59,6 +59,7 @@ body {
 
 .newCall__title {
   margin: 0;
+  min-width: 480px;
 }
 
 .menu__historic {
@@ -265,4 +266,12 @@ overflow: hidden;
 
 .selectedClass {
   background-color: white;
+}
+.register {
+  background: $color-blacK;
+  color: $color-grey-fonts;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 209px;
+  height: 41px;
 }

@@ -110,13 +110,13 @@ class App extends Component {
     const { action } = this.state.info;
     if (action === 'Devolver llamada'){
       this.setState ({
-        callBackClass: 'selectedClass',
-        callAgainClass: ''
+        callAgainClass: '',
+        callBackClass: 'selectedClass'
       });
     }else if (action === 'Llamará de nuevo'){
       this.setState ({
-        callBackClass: '',
-        callAgainClass: 'selectedClass'
+        callAgainClass: 'selectedClass',
+        callBackClass: ''
       });
     }
 }

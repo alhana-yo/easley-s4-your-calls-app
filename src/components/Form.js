@@ -104,7 +104,7 @@ class Form extends Component {
                             <div className="call__container">
                                 <label htmlFor="redial" className="callAction__selection label">Devolver llamada</label>
                                 <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onClick={getCallAction} ref={this.redialButton}/>
-                                <button type="button" className={`fake-redial-button ${this.props.callAgainClass}`}  onClick={this.fakeClick}>Devolver llamada</button>
+                                <button type="button" className={`fake-redial-button ${this.props.callAgainClass}`} onClick={this.fakeClick}>Devolver llamada</button>
                             </div>
 
                             <div className="call__container">
@@ -117,7 +117,7 @@ class Form extends Component {
                         </div>
 
                         <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
-                        <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="10" onKeyUp={getMessage}></textarea>
+                        <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="4" onKeyUp={getMessage}></textarea>
 
                         <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
 
