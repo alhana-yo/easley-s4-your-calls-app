@@ -226,8 +226,10 @@ class App extends Component {
 
         if(optionsArray[i].label.includes(addedBy)){
           optionsArray[i].disabled = true;
+          optionsArray[i].style.display="none";
         }else{
           optionsArray[i].disabled = false;
+          optionsArray[i].style.display="block";
         }
 
       }
