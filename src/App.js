@@ -12,6 +12,8 @@ class App extends Component {
   constructor(props){
     super(props);
 
+    this.selectPersonRequested = React.createRef();
+
     this.state= {
       info: {
         addedBy: "",
@@ -48,6 +50,7 @@ class App extends Component {
     this.sendInfo = this.sendInfo.bind(this);
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
+    this.deselectOption = this.deselectOption.bind(this);
 
   }
 
@@ -194,6 +197,38 @@ class App extends Component {
     }
   }
   
+
+
+  deselectOption(event){
+
+    const addedBy= this.state.info.addedBy;
+
+    if(addedBy!==""){
+      const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
+
+      for(let i=0; i<optionsArray.length; i++){
+
+        if(optionsArray[i].label.includes(addedBy)){
+          optionsArray[i].disabled = true;
+        }else{
+          optionsArray[i].disabled = false;
+        }
+
+      }
+
+      // optionsArray.map(item => {
+      //   if(item.label.includes(addedBy)){
+      //     item.disabled = true;
+      //     return true;
+      //   }
+
+      // });
+
+      
+
+    }
+
+  }
   
   render() {
     return (
@@ -205,9 +240,8 @@ class App extends Component {
       
             <Menu />
 
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} />
+            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} />
         
-
 
         
           </div>

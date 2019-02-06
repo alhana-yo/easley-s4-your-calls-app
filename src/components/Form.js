@@ -28,7 +28,7 @@ class Form extends Component {
 
     render() {
 
-        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, errorCallAction, getCallAction, getMessage, errorMessage } = this.props;
+        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, errorCallAction, getCallAction, getMessage, errorMessage, deselectOption, selectPersonRequested} = this.props;
         return (
             <form method="post" onSubmit={preventSubmission} className="registration__form" >
 
@@ -46,9 +46,9 @@ class Form extends Component {
                         <div className="main__personRequested">
                             <h2 className="main__personRequested-title">¿Por quién preguntaban?</h2>
                             <p className={`error-msg ${errorPerson}`}>Debes seleccionar un empleado</p>
-                            <select className="main__employees" onChange={getRequestedEmployee} required>
+                            <select className="main__employees" onChange={getRequestedEmployee} onClick={deselectOption} ref={selectPersonRequested}required>
                                 <option value="Elige un empleado" >Elige un empleado</option>
-                                <option value="Carlos">Carlos</option>
+                                <option value="Carlos" >Carlos</option>
                                 <option value="Pepa">Pepa</option>
                             </select>
                         </div>
