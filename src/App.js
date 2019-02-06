@@ -5,8 +5,6 @@ import NewCall from './components/NewCall';
 import './styles/App.scss';
 
 
-
-
 class App extends Component {
 
   constructor(props){
@@ -31,12 +29,12 @@ class App extends Component {
       errorCallAction: "hidden",
       errorPerson: "hidden",
       succesMessage: "hidden",
-      errorMessage: "hidden"
+      errorMessage: "hidden",
+      callAgainClass: "",
+      callBackClass: ""
       
   }
 
-   
-   
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
     this.getName = this.getName.bind(this);
@@ -105,8 +103,26 @@ class App extends Component {
   getCallAction(event) {
     const { info } = this.state;
     const newInfo = { ...info, action: event.currentTarget.value };
-    this.setState({ info: newInfo });
+    this.setState({ 
+      info: newInfo, 
+    }); 
+    this.getSelectedButton();
   }
+
+  getSelectedButton(){
+    const { action } = this.state.info;
+    if (action === 'Devolver llamada'){
+      this.setState ({
+        callAgainClass: '',
+        callBackClass: 'selectedClass'
+      });
+    }else if (action === 'Llamará de nuevo'){
+      this.setState ({
+        callAgainClass: 'selectedClass',
+        callBackClass: ''
+      });
+    }
+}
 
   getMessage(event) {
     const { info } = this.state;
@@ -215,17 +231,7 @@ class App extends Component {
         }
 
       }
-
-      // optionsArray.map(item => {
-      //   if(item.label.includes(addedBy)){
-      //     item.disabled = true;
-      //     return true;
-      //   }
-
-      // });
-
       
-
     }
 
   }
@@ -240,9 +246,7 @@ class App extends Component {
       
             <Menu />
 
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} />
-        
-
+            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} />
         
           </div>
           

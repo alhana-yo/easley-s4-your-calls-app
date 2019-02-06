@@ -5,7 +5,7 @@ class Button extends Component {
 
     render(){
         return (
-            <input type="submit" value="Registrar" onClick={this.props.sendForm} />
+            <input type="submit" className="register" value="Registrar" onClick={this.props.sendForm} />
 
         );
     }
