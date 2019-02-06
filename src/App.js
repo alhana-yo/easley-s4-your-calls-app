@@ -48,6 +48,7 @@ class App extends Component {
     this.sendInfo = this.sendInfo.bind(this);
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
+    this.deselectOption = this.deselectOption.bind(this);
 
   }
 
@@ -194,6 +195,16 @@ class App extends Component {
     }
   }
   
+
+
+  deselectOption(event){
+
+    const addedBy= this.state.info.addedBy;
+
+    console.log(addedBy);
+    console.log('hola');
+
+  }
   
   render() {
     return (
@@ -205,9 +216,8 @@ class App extends Component {
       
             <Menu />
 
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} />
+            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption}/>
         
-
 
         
           </div>
