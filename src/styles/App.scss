@@ -3,13 +3,11 @@
 
 //HEADER
 body {
-  background-color: black;
+  background-color: $color-blacK;
 }
 .App{
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
-  margin-left: 150px;
-  margin-right: 150px;
 }
 
 .header{
@@ -36,66 +34,21 @@ body {
   margin: 32px 40px 32px 0px; 
 }
 .menu__newCall {
+  display: flex;
   margin: 10px 0px 18px 23px;
   font-weight: bold;
   font-family: Favorit,'Times New Roman', Times, serif;
   font-size: 64px;
 }
 .newCall__circle {
-  margin-right: 23px; 
-}
-.newCall__title {
-  margin: 0;
-}
-.menu__historic {
-  font-size: 64px;
-  font-weight: bold;
-  margin: 10px 0px 18px 0;
-}
-.historic__title {
-  margin: 0;
-  color: #409FFF;
-}
-
-
-
-//main//
-
-.main{
-  color: $color-white;
-
-}
-.registration__form {
-  color: $color-grey;
-}
-.form-section {
-  border:0 none;
-}
-
-.formUp{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  
-}
-
-// MAIN -- Menu navegación
-
-.menu{
-  display: flex;
-  justify-content: space-between;
-  
-}
-.menu__newCall {
-  display: flex;
-}
-.newCall__circle {
+  left: -63px; 
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 68px;
   width: 68px;
-  background-color: #409FFF;
+  background-color: #1D1D1D;
   border-radius: 50px;
 }
 
@@ -103,6 +56,56 @@ body {
   height: 33px;
   width: 33px;
 }
+
+.newCall__title {
+  margin: 0;
+}
+
+.menu__historic {
+  font-size: 64px;
+  font-weight: bold;
+  margin: 10px 0px 18px 0;
+}
+
+.historic__title {
+  margin: 0;
+  color: #409FFF;
+}
+
+//main//
+
+.form__wrapper {
+  position: relative;
+  margin-left: 240px;
+  margin-top: 64px;
+  margin-right: 240px;
+}
+
+.main{
+  color: $color-white;
+}
+
+.registration__form {
+  color: $color-grey;
+}
+
+.form-section {
+  border:0 none;
+}
+
+.formUp {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+// MAIN -- Menu navegación
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+}
+
 .label {
 background-color: red;
 height: 0;
@@ -111,21 +114,137 @@ display: block;
 overflow: hidden;
 }
 
-.historic__title{
-  
-}
 .main__addedBy--title{
-
+  font-size: 32px;
 }
-.main__employees{
 
+.incoming-data__fieldsContainer{
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 32px;
 }
-.main__personRequested{
 
+//Style for QUien LLamó
+
+.incoming-data__container{
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ 
 }
+
+.incoming-data{
+  padding: 0;
+}
+
+.incoming-data__title{
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.incoming-data__input{
+  background-color: black;
+  margin-bottom: 30px;
+  border: 0;
+  border-bottom: 1px solid $color-white;
+  padding: 0 0 8px 8px;
+  font-size: 16px;
+  color: $color-white;
+}
+
+::-webkit-input-placeholder { 
+  color: $color-grey-fonts;
+}
+
+
+//Styles for Qué mensaje dejó
+
+.message__title {
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 40px;
+}
+
 .main__personRequested-title{
+  font-size: 32px;
 }
 
+.call-container__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.callAction__selection--redial, .callAction__selection--call-back {
+  position: absolute;
+  left: -1000px;
+ 
+  height: 45px;
+  width: 65px; 
+}
+
+.call__container {
+  position: relative;
+}
+
+.fake-redial-button {
+  color: #9E9E9E;
+  background-color: #0D0D0D;
+  width: 200px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: Favorit;
+  border: none;
+  border-bottom: solid thin;
+  outline: none;
+  padding: 10px;
+  display: flex;
+  justify-self: flex-start;
+  margin-right: 33px;
+}
+
+.fake-CallBack-button {
+  color: #9E9E9E;
+  background-color: #0D0D0D;
+  width: 200px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: Favorit;
+  border: none;
+  border-bottom: solid thin;
+  outline: none;
+  padding: 10px; 
+  display: flex;
+  justify-self: flex-start;
+
+}
+
+.message__label{
+
+
+}
+
+.message__input {
+  margin-top: 33px;
+  line-height: 24px;
+  background-color: $color-blacK;
+  border: none;
+  border-bottom: solid thin;
+  font-family: Favorit;
+  font-size: 16px;
+  color: #9E9E9E;
+  padding: 10px;
+  width: 440px;
+  outline: none;
+  
+
+}
 
 .error-msg{
   color: red;
