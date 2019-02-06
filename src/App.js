@@ -12,6 +12,8 @@ class App extends Component {
   constructor(props){
     super(props);
 
+    this.selectPersonRequested = React.createRef();
+
     this.state= {
       info: {
         addedBy: "",
@@ -201,8 +203,13 @@ class App extends Component {
 
     const addedBy= this.state.info.addedBy;
 
-    console.log(addedBy);
-    console.log('hola');
+    if(addedBy!==""){
+      const options= this.selectPersonRequested.current.getElementsByTagName("option");
+
+      console.log(options)
+
+
+    }
 
   }
   
@@ -216,7 +223,7 @@ class App extends Component {
       
             <Menu />
 
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption}/>
+            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} />
         
 
         
