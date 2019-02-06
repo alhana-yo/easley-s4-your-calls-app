@@ -204,10 +204,33 @@ class App extends Component {
     const addedBy= this.state.info.addedBy;
 
     if(addedBy!==""){
-      const options= this.selectPersonRequested.current.getElementsByTagName("option");
+      const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
-      console.log(options)
+      console.log(optionsArray);
 
+      for(let i=0; i<optionsArray.length; i++){
+        console.log('elemento', optionsArray[i]);
+        
+
+        if(optionsArray[i].label.includes(addedBy)){
+          console.log('estouy dentro del if', optionsArray[i].label );
+          
+          //optionsArray[i].disabled = false;
+          //optionsArray[i].style.display="none";
+              return true;
+            }
+
+      }
+
+      // optionsArray.map(item => {
+      //   if(item.label.includes(addedBy)){
+      //     item.disabled = true;
+      //     return true;
+      //   }
+
+      // });
+
+      
 
     }
 
