@@ -137,6 +137,23 @@ position: relative;
   grid-column-gap: 32px;
 }
 
+.main__employees{
+  appearance: none;
+  color: $color-grey;
+  background-color: $color-blacK;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  outline: none;
+  font-family: Favorit,'Times New Roman', Times, serif;
+  font-size: 16px;
+  color: $color-grey;
+  min-width: 448px;
+  padding-left: 8px;
+  padding-bottom: 5px;
+}
+
 //Style for QUien LLamó
 
 .incoming-data__container{
