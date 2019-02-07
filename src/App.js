@@ -240,36 +240,27 @@ class App extends Component {
   }
 
   sendSlackInfo(){
-
+    
     const settings = {
-      url: 'https://hooks.slack.com/services/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',
+      url: 'https://slack.com/api/chat.postMessage?token=xoxp-546067014422-545709832279-545209306898-cdc40bcb648ec1f92b3f2d1f2f66dd19&channel=%23your-calls-app&text="Prueba desde el código 3"&pretty=1',
       method: 'POST',
-      dataType: 'application/x-www-form-urlencoded',
-      data: {
-        'payload': JSON.stringify(this.state.info)
-      }
+      body: {}
 
     }
 
-    //const SLACKSEND = 'https://hooks.slack.com/services/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';
+    fetch(settings.url, {
+      method: settings.method,
+      body: JSON.stringify(settings.body),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(response => response.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
+  }
 
-  //   fetch(SLACKSEND, {
-
-  //             method: "POST",
-  //             body: JSON.stringify(),
-  //             cache: "no-cache",
-  //             headers: {
-  //                 "content-type": "application/json"
-  //             }
-  //           })
-
-  //             .then(response=> response.json())
-  //             .then(response => console.log('Success:', JSON.stringify(response)))
-  //             .then(this.setState({
-  //                 succesMessage:""}))
-  //             .catch(error => console.error('Error:', error));
-  // }
-  // }
   
   render() {
     return (

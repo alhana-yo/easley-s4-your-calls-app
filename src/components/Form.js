@@ -114,13 +114,13 @@ class Form extends Component {
                                 <button type="button" 
                                 className={`fake-CallBack-button ${this.props.callBackClass}`} onClick={this.fakeClickCallBack}>Llamará de nuevo</button>
                             </div>
-                            <div className="message_container">
-                            <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
-                            <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="4" onKeyUp={getMessage}></textarea>
-
-                            <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
-                            </div>
                         </div>
+
+                        <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
+                        <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="4" onKeyUp={getMessage}></textarea>
+
+                        <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
+
                     </fieldset>
                 </div>
 
