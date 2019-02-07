@@ -165,6 +165,7 @@ class App extends Component {
     event.preventDefault();
     this.isEmptyOrNot();
     this.sendSlackInfo();
+    this.sendSlackInfo();
   }
 
   isEmptyOrNot(){
@@ -240,23 +241,28 @@ class App extends Component {
   }
 
   sendSlackInfo(){
+    console.log('Funcionaaaaaaa')
+
+    const callsData = {
+      text: "Hola, funciona"
+    }
 
     const settings = {
       url: 'https://hooks.slack.com/services/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',
       method: 'POST',
-      dataType: 'application/x-www-form-urlencoded',
-      data: {
-        'payload': JSON.stringify(this.state.info)
-      }
+      body: callsData,
+      json: true
 
     }
+  }
 
-    //const SLACKSEND = 'https://hooks.slack.com/services/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';
+
+  //   const SLACKSEND = 'https://hooks.slack.com/services/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';
 
   //   fetch(SLACKSEND, {
 
   //             method: "POST",
-  //             body: JSON.stringify(),
+  //             body: JSON.stringify(callsData),
   //             cache: "no-cache",
   //             headers: {
   //                 "content-type": "application/json"
@@ -269,9 +275,10 @@ class App extends Component {
   //                 succesMessage:""}))
   //             .catch(error => console.error('Error:', error));
   // }
-  // }
+  
   
   render() {
+
     return (
       <div className="App">
         <Header />
