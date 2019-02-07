@@ -8,6 +8,7 @@ body {
 .App{
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
+ 
 }
 
 .header{
@@ -77,9 +78,12 @@ body {
 
 .form__wrapper {
   position: relative;
-  margin-left: 240px;
-  margin-top: 64px;
-  margin-right: 240px;
+  min-width: 940px;
+  max-width: 1100px;
+  margin:auto;
+  // margin-top: 64px;
+  
+ 
 }
 
 .main{
@@ -114,6 +118,11 @@ height: 0;
 width: 0;
 display: block;
 overflow: hidden;
+}
+
+
+.message_container{
+ 
 }
 
 .main__addedBy--title{
@@ -168,7 +177,6 @@ overflow: hidden;
 
 .message__title {
   margin: 0;
-  margin-bottom: 30px;
   font-size: 32px;
   line-height: 40px;
 }
@@ -180,6 +188,7 @@ overflow: hidden;
 .call-container__wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-top: 33px;
 }
 
 
@@ -205,11 +214,12 @@ overflow: hidden;
   font-family: Favorit;
   border: none;
   border-bottom: solid thin;
+  border-color: $color-white;
   outline: none;
-  padding: 10px;
   display: flex;
   justify-self: flex-start;
   margin-right: 33px;
+  margin-bottom: 10px,
 }
 
 .fake-CallBack-button {
@@ -223,14 +233,15 @@ overflow: hidden;
   border: none;
   border-bottom: solid thin;
   outline: none;
-  padding: 10px; 
+  margin-bottom: 10px; 
+  border-color: $color-white;
   display: flex;
   justify-self: flex-start;
 }
 
 
 .message__input {
-  margin-top: 33px;
+  margin-top: 25px;
   line-height: 24px;
   background-color: $color-blacK;
   border: none;
@@ -238,9 +249,8 @@ overflow: hidden;
   font-family: Favorit;
   font-size: 16px;
   color: #9E9E9E;
-  padding: 10px;
-  width: 440px;
   outline: none;
+  border-color: $color-white;
   
 
 }
@@ -274,4 +284,5 @@ overflow: hidden;
   font-size: 12px;
   width: 209px;
   height: 41px;
+  
 }
