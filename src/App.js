@@ -102,27 +102,24 @@ class App extends Component {
 
   getCallAction(event) {
     const { info } = this.state;
+    // const { action } = this.state.info;
     const newInfo = { ...info, action: event.currentTarget.value };
-    this.setState({ 
-      info: newInfo, 
-    }); 
-    this.getSelectedButton();
-  }
-
-  getSelectedButton(){
-    const { action } = this.state.info;
-    if (action === 'Devolver la llamada'){
+    if (event.currentTarget.id === 'redial'){
       this.setState ({
-        callAgainClass: '',
-        callBackClass: 'selectedClass'
-      });
-    } else if (action === 'Llamará de nuevo'){
-      this.setState ({
+        info: newInfo,
         callAgainClass: 'selectedClass',
         callBackClass: ''
       });
+    } else if (event.currentTarget.id === 'call-back'){
+      this.setState({ 
+        info: newInfo, 
+        callAgainClass: '',
+        callBackClass: 'selectedClass'
+
+      }); 
+
     }
-}
+  }
 
   getMessage(event) {
     const { info } = this.state;

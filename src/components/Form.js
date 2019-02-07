@@ -35,7 +35,7 @@ class Form extends Component {
                 <fieldset className="form-section addedBy">
                     <div className="formUp">
                         <div className="main__addedBy">
-                            <h2 className="main__addedBy--title">¿Quién atendió la llamada</h2>
+                            <h2 className="main__addedBy--title">¿Quién atendió la llamada?</h2>
                             <select className="main__employees" onChange={getWhoCalls}>
                                 <option value="Elige un empleado">Elige un empleado</option>
                                 <option value="Carlos">Carlos</option>
@@ -110,7 +110,6 @@ class Form extends Component {
                             <div className="message_container">
                             <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
                             <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="4" onKeyUp={getMessage}></textarea>
-
                             <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
                             </div>
                         </div>
