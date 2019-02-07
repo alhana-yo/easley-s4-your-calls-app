@@ -5,24 +5,24 @@ import React, { Component } from 'react';
 class Form extends Component {
 
 
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.redialButton = React.createRef();
+    //     this.redialButton = React.createRef();
 
-        this.callBack = React.createRef();
+    //     this.callBack = React.createRef();
 
-        this.fakeClick = this.fakeClick.bind(this);
-        this.fakeClickCallBack = this.fakeClickCallBack.bind(this);
-    }
+    //     this.fakeClick = this.fakeClick.bind(this);
+    //     this.fakeClickCallBack = this.fakeClickCallBack.bind(this);
+    // }
 
-    fakeClick() {
-        this.redialButton.current.click();
-    }
+    // fakeClick() {
+    //     this.redialButton.current.click();
+    // }
 
-    fakeClickCallBack() {
-        this.callBack.current.click();
-    }
+    // fakeClickCallBack() {
+    //     this.callBack.current.click();
+    // }
 
 
 
@@ -102,17 +102,10 @@ class Form extends Component {
 
                         <div className="call-container__wrapper">
                             <div className="call__container">
-                                <label htmlFor="redial" className="callAction__selection label">Devolver llamada</label>
-                                <input id="redial" type="radio" value="Devolver llamada" className="callAction__selection--redial" placeholder="Devolver llamada" name="call" onClick={getCallAction} ref={this.redialButton}/>
-                                <button type="button" className={`fake-redial-button ${this.props.callAgainClass}`} onClick={this.fakeClick}>Devolver llamada</button>
+                                <label htmlFor="redial" className={`callAction_selection label fake-redial-button ${this.props.callAgainClass}`}>Llamará de nuevo<input id="redial" type="radio" value="Llamará de nuevo" className="callAction__selection--redial" placeholder="Llamará de nuevo" name="call" onClick={getCallAction} ref={this.redialButton}></input></label>
                             </div>
-
                             <div className="call__container">
-                                <label htmlFor="call-back" className="callAction__selection label">Llamará de nuevo</label>
-
-                                <input id="call-back" type="radio" value="Llamará de nuevo" className="callAction__selection--call-back" placeholder="Llamará de nuevo" name="call" onClick={getCallAction} ref={this.callBack}/>
-                                <button type="button" 
-                                className={`fake-CallBack-button ${this.props.callBackClass}`} onClick={this.fakeClickCallBack}>Llamará de nuevo</button>
+                                <label htmlFor="call-back" className={`callAction_selection label fake-CallBack-button ${this.props.callBackClass}`}>Devolver la llamada<input id="call-back" type="radio" value="Devolver la llamada" className="callAction__selection--call-back" placeholder="Devolver la llamada" name="call" onClick={getCallAction} ref={this.callBack}></input></label>
                             </div>
                             <div className="message_container">
                             <label htmlFor="message" className="message__label label">Mensaje personalizado</label>

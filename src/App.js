@@ -111,12 +111,12 @@ class App extends Component {
 
   getSelectedButton(){
     const { action } = this.state.info;
-    if (action === 'Devolver llamada'){
+    if (action === 'Devolver la llamada'){
       this.setState ({
         callAgainClass: '',
         callBackClass: 'selectedClass'
       });
-    }else if (action === 'Llamará de nuevo'){
+    } else if (action === 'Llamará de nuevo'){
       this.setState ({
         callAgainClass: 'selectedClass',
         callBackClass: ''

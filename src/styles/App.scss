@@ -118,6 +118,7 @@ height: 0;
 width: 0;
 display: block;
 overflow: hidden;
+position: relative;
 }
 
 
@@ -195,9 +196,9 @@ overflow: hidden;
 .callAction__selection--redial, .callAction__selection--call-back {
   position: absolute;
   left: -1000px;
- 
   height: 45px;
   width: 65px; 
+  // display: none;
 }
 
 .call__container {
@@ -284,5 +285,4 @@ overflow: hidden;
   font-size: 12px;
   width: 209px;
   height: 41px;
-  
 }
