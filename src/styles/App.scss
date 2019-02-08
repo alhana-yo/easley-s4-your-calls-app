@@ -63,15 +63,29 @@ body {
   min-width: 480px;
 }
 
+.menu__container {
+  display: flex;
+  
+}
+
+.menu__newCall{
+  min-width: 480px;
+}
+
 .menu__historic {
   font-size: 64px;
   font-weight: bold;
   margin: 10px 0px 18px 0;
+  min-width: 480px;
+  padding-left: 60px;
+
+  
 }
 
 .historic__title {
-  margin: 0;
+  margin: auto;
   color: #409FFF;
+ 
 }
 
 //main//
