@@ -13,7 +13,9 @@ body {
 
 .header{
   display: flex;
+  max-width: 1700px;
   justify-content: space-between;
+  margin: auto;
 }
 
 .header__logo {
@@ -218,12 +220,18 @@ position: relative;
   font-size: 32px;
 
 }
-
 .call-container__wrapper {
+  max-width: 500px;
+}
+
+.call-container__radios{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 0;
   margin-top: 33px;
+  grid-gap: 35px;
 }
+
 
 
 .callAction__selection--redial, .callAction__selection--call-back {
@@ -275,6 +283,7 @@ position: relative;
 
 
 .message__input {
+  width: 480px;
   margin-top: 25px;
   line-height: 24px;
   background-color: $color-blacK;
@@ -319,3 +328,4 @@ position: relative;
   width: 209px;
   height: 41px;
 }
+
