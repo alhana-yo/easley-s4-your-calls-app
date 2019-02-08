@@ -13,7 +13,9 @@ body {
 
 .header{
   display: flex;
+  max-width: 1700px;
   justify-content: space-between;
+  margin: auto;
 }
 
 .header__logo {
@@ -63,15 +65,27 @@ body {
   min-width: 480px;
 }
 
+.menu__container {
+  display: flex;
+  
+}
+
+.menu__newCall{
+  min-width: 480px;
+}
+
 .menu__historic {
   font-size: 64px;
   font-weight: bold;
   margin: 10px 0px 18px 0;
+  min-width: 480px;
+  padding-left: 60px; 
 }
 
 .historic__title {
-  margin: 0;
+  margin: auto;
   color: #409FFF;
+ 
 }
 
 //main//
@@ -102,7 +116,6 @@ body {
 
 .formUp {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
 }
 
@@ -199,15 +212,26 @@ position: relative;
   line-height: 40px;
 }
 
-.main__personRequested-title{
-  font-size: 32px;
+.main__personRequested{
+  padding-left: 100px;
 }
 
+.main__personRequested-title{
+  font-size: 32px;
+
+}
 .call-container__wrapper {
+  max-width: 500px;
+}
+
+.call-container__radios{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 0;
   margin-top: 33px;
+  grid-gap: 35px;
 }
+
 
 
 .callAction__selection--redial, .callAction__selection--call-back {
@@ -259,6 +283,7 @@ position: relative;
 
 
 .message__input {
+  width: 480px;
   margin-top: 25px;
   line-height: 24px;
   background-color: $color-blacK;
@@ -304,7 +329,3 @@ position: relative;
   height: 41px;
 }
 
-.option {
-  color: red;
-  background-color: $color-blacK;
-}
