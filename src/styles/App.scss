@@ -77,9 +77,7 @@ body {
   font-weight: bold;
   margin: 10px 0px 18px 0;
   min-width: 480px;
-  padding-left: 60px;
-
-  
+  padding-left: 60px; 
 }
 
 .historic__title {
@@ -116,7 +114,6 @@ body {
 
 .formUp {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
 }
 
@@ -213,8 +210,13 @@ position: relative;
   line-height: 40px;
 }
 
+.main__personRequested{
+  padding-left: 100px;
+}
+
 .main__personRequested-title{
   font-size: 32px;
+
 }
 
 .call-container__wrapper {
