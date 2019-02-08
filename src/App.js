@@ -31,7 +31,8 @@ class App extends Component {
       succesMessage: "hidden",
       errorMessage: "hidden",
       callAgainClass: "",
-      callBackClass: ""
+      callBackClass: "",
+      checked: false
       
   }
 
@@ -102,25 +103,99 @@ class App extends Component {
 
   getCallAction(event) {
     const { info } = this.state;
-    // const { action } = this.state.info;
     const newInfo = { ...info, action: event.currentTarget.value };
+    
+   let callAgainVar='';
+   let callBackVar='';
+
     if (event.currentTarget.id === 'redial'){
-      this.setState ({
-        info: newInfo,
-        callAgainClass: 'selectedClass',
-        callBackClass: ''
-      });
-    } else if (event.currentTarget.id === 'call-back'){
-      this.setState({ 
-        info: newInfo, 
-        callAgainClass: '',
-        callBackClass: 'selectedClass'
 
-      }); 
+      callAgainVar= 'selectedClass';
+ 
+      // this.setState ({
+      //   info: newInfo,
+      //   callAgainClass: 'selectedClass',
+      //   callBackClass: ''
+      // });
+    } else {
+      callBackVar='selectedClass'
+      // this.setState({ 
+      //   info: newInfo, 
+      //   callAgainClass: '',
+      //   callBackClass: 'selectedClass'
 
+      // });
+
+      if ( this.state.checked === false){
+      this.setState({ checked:true })
+      console.log("click1")
+      } else if(this.state.checked === true){
+      this.setState({ checked:false })
+      console.log("click2")
+    
+      }
     }
+     this.setState({ 
+         info: newInfo, 
+        callAgainClass: callAgainVar,
+         callBackClass: callBackVar
+
+       });
   }
 
+
+
+
+
+
+
+//   getCallAction(event) {
+//     const { info } = this.state;
+//     const newInfo = { ...info, action: event.currentTarget.value };
+    
+//     const callAgain = '';
+//     const callBack = '';
+
+   
+  
+
+//   if ( this.state.checked === false){
+//     this.setState({ checked:true })
+//     console.log("click1")
+//   } else if(this.state.checked === true){
+//     this.setState({ checked:false })
+//     console.log("click2")
+  
+// }
+//     if (event.currentTarget.id === 'redial'){
+ 
+//       this.setState ({
+//         info: newInfo,
+//         callAgainClass: 'selectedClass',
+//         callBackClass: ''
+//       });
+//     } else {
+//       this.setState({ 
+//         info: newInfo, 
+//         callAgainClass: '',
+//         callBackClass: 'selectedClass'
+
+//       });
+
+//      if ( this.state.checked === false){
+//       this.setState({ checked:true })
+//       console.log("click1")
+//     } else if(this.state.checked === true){
+//       this.setState({ checked:false })
+//       console.log("click2")
+    
+//   }
+// }
+//   }
+
+    
+
+  
   getMessage(event) {
     const { info } = this.state;
     const newInfo = { ...info, message: event.currentTarget.value };
@@ -234,6 +309,8 @@ class App extends Component {
     }
 
   }
+
+  
   
   render() {
     return (
