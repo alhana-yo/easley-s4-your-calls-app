@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
+import tick from './images/tick.png';
 import './styles/App.scss';
 
 
@@ -249,7 +250,7 @@ class App extends Component {
         
           </div>
           
-          <div className={`modal ${this.state.succesMessage}`}>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
+          <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
         </main>
       </div>
     );

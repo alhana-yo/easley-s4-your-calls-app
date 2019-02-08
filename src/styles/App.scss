@@ -134,11 +134,6 @@ overflow: hidden;
 position: relative;
 }
 
-
-.message_container{
- 
-}
-
 .main__addedBy--title{
   font-size: 32px;
 }
@@ -199,10 +194,6 @@ position: relative;
   color: $color-white;
 }
 
-// .input-placeholder { 
-//   color: $color-grey-fonts;
-// }
-
 
 //Styles for Qué mensaje dejó
 
@@ -232,14 +223,11 @@ position: relative;
   grid-gap: 35px;
 }
 
-
-
 .callAction__selection--redial, .callAction__selection--call-back {
   position: absolute;
   left: -1000px;
   height: 45px;
   width: 65px; 
-  // display: none;
 }
 
 .call__container {
@@ -312,7 +300,7 @@ position: relative;
 .modal {
   height: 100px;
   width: 100vh;
-  background-color: #409FFF;
+  background-color: $color-blue;
   color: white;
 }
 
@@ -328,4 +316,25 @@ position: relative;
   width: 209px;
   height: 41px;
 }
+
+
+.tick {
+  margin-bottom: 16px;
+  height: 50px;
+  width: 50px;
+}
+
+.modal {
+  height: 205px;
+  font-weight: bold;
+  font-size: 18px;
+  color: $color-white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 42px;
+}
+
 
