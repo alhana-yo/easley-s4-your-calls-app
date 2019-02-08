@@ -239,10 +239,30 @@ class App extends Component {
 
   }
 
+
+  makeMessage(){
+
+    let message=''
+
+    if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
+      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+    }else{
+
+      return message=  `${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+    }
+  }
+
   sendSlackInfo(){
     
+    // const message= `${this.state.info.personRequested}, *te acaba de llamar*: \n
+    // ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+
+    const message = this.makeMessage();
+
+    
     const settings = {
-      url: 'https://slack.com/api/chat.postMessage?token=xoxp-546067014422-545709832279-545209306898-cdc40bcb648ec1f92b3f2d1f2f66dd19&channel=%23your-calls-app&text="Prueba desde el código 3"&pretty=1',
+      url: `https://slack.com/api/chat.postMessage?token=xoxp-546067014422-545715928727-546745902615-0ca873bde7285f4b2cf28c516ab91b13&channel=%23your-calls-app&text=${message}&pretty=1`,
       method: 'POST',
       body: {}
 
