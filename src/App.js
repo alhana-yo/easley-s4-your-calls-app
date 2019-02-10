@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import './styles/App.scss';
+import KEYS from './config';
 
 
 class App extends Component {
@@ -216,10 +217,10 @@ class App extends Component {
   
 
 
-  deselectOption(event){
+  deselectOption(){
 
     const addedBy= this.state.info.addedBy;
-
+   
     if(addedBy!==""){
       const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
@@ -255,17 +256,13 @@ class App extends Component {
 
   sendSlackInfo(){
     
-    // const message= `${this.state.info.personRequested}, *te acaba de llamar*: \n
-    // ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
-
     const message = this.makeMessage();
+    const key = KEYS.SLACK_KEY;
 
-    
     const settings = {
-      url: `https://slack.com/api/chat.postMessage?token=xoxp-546067014422-545715928727-546745902615-0ca873bde7285f4b2cf28c516ab91b13&channel=%23your-calls-app&text=${message}&pretty=1`,
+      url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
       method: 'POST',
       body: {}
-
     }
 
     fetch(settings.url, {
