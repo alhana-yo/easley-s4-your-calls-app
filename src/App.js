@@ -104,50 +104,42 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 //////////////////////////////////////
+getCallAction(event) {
+  console.log('salta', event.currentTarget.id);
+  const { info } = this.state;
+  const newInfo = { ...info, action: event.currentTarget.value };
+  let state = {
+    info: newInfo,
+    callAgainClass: '',
+    callBackClass: '',
+    redialCheck:false,
+    callBackCheck:false
+  };
 
-  getCallAction(event) {
-    console.log('salta', event.currentTarget.value);
-    const { info } = this.state;
-    const newInfo = { ...info, action: event.currentTarget.value };
-    let state = {
-      info: newInfo,
-      callAgainClass: '',
-      callBackClass: '',
-      redialCheck:false,
-      callBackCheck:false
-    };
-  
-
-    if (event.currentTarget.value === 'Llamará de nuevo'){
-       if(!this.state.redialCheck) {
+  if (event.currentTarget.id === 'redial'){
+     if(!this.state.redialCheck) {
       state = {
-        info: newInfo,
-        callAgainClass: 'selectedClass',
-        callBackClass: '',
-        redialCheck:true,
-        callBackCheck:false
+      info: newInfo,
+      callAgainClass: 'selectedClass',
+      callBackClass: '',
+      redialCheck:true,
+      callBackCheck:false
       };
-    } else if (event.currentTarget.value === 'Devolver la llamada'){
-
-      console.log('Hola????')
-      if (!this.state.callBackCheck){
-        state = { 
-          info: newInfo, 
-          callAgainClass: '',
-          callBackClass: 'selectedClass',
-          redialCheck:false,
-          callBackCheck:true
-  
-        };
-
-      }
-
     }
-    
-    this.setState(state);
-  }
+  
+  }else {
+    if (!this.state.callBackCheck){
+      state = { 
+        info: newInfo, 
+        callAgainClass: '',
+        callBackClass: 'selectedClass',
+        redialCheck:false,
+        callBackCheck:true
 
-    
+      };
+    }
+  }
+  this.setState(state);
 }
 
 
@@ -206,7 +198,7 @@ class App extends Component {
         errorPerson: "hidden"
       });
 
-      } else if (incomingInfo.action === "" && incomingInfo.message === ""){
+      } else if (incomingInfo.message === ""){
       
       this.setState({
         errorIncomingData: "hidden",
