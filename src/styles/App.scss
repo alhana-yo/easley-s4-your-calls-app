@@ -292,10 +292,6 @@ position: relative;
  
 }
 
-.hidden {
-  display: none;
-
-}
 
 .modal {
   height: 100px;
@@ -303,6 +299,7 @@ position: relative;
   background-color: $color-blue;
   color: white;
 }
+
 
 
 .selectedClass {
@@ -324,7 +321,6 @@ position: relative;
 }
 
 
-
 .tick {
   margin-bottom: 16px;
   height: 50px;
@@ -342,6 +338,10 @@ position: relative;
   align-items: center;
   flex-direction: column;
   margin-top: 42px;
+}
+.hidden {
+  display: none;
+
 }
 
 
