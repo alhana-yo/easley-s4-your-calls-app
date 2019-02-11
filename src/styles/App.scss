@@ -34,8 +34,16 @@ body {
 }
 
 .header__appLogo {
-  margin: 32px 40px 32px 0px; 
+  margin: 53px 40px 32px 0px; 
+  height: 0;
+  background-color: purple;
 }
+
+.your-calls {
+  // height: 65px;
+}
+
+
 .menu__newCall {
   display: flex;
   margin: 10px 0px 18px 0;
@@ -101,7 +109,7 @@ body {
 
 .main{
   color: $color-white;
-  margin-left: 200px;
+  margin: 0 auto;
 }
 
 .registration__form {
