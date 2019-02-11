@@ -4,6 +4,7 @@ import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import tick from './images/tick.png';
 import './styles/App.scss';
+import KEYS from './config';
 
 
 class App extends Component {
@@ -160,6 +161,7 @@ class App extends Component {
   sendForm(event){
     event.preventDefault();
     this.isEmptyOrNot();
+    this.sendSlackInfo();
   }
 
   isEmptyOrNot(){
@@ -209,10 +211,10 @@ class App extends Component {
   
 
 
-  deselectOption(event){
+  deselectOption(){
 
     const addedBy= this.state.info.addedBy;
-
+   
     if(addedBy!==""){
       const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
@@ -231,6 +233,45 @@ class App extends Component {
     }
 
   }
+
+
+  makeMessage(){
+
+    let message=''
+
+    if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
+      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+    }else{
+
+      return message=  `${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+    }
+  }
+
+  sendSlackInfo(){
+    
+    const message = this.makeMessage();
+    const key = KEYS.SLACK_KEY;
+
+    const settings = {
+      url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
+      method: 'POST',
+      body: {}
+    }
+
+    fetch(settings.url, {
+      method: settings.method,
+      body: JSON.stringify(settings.body),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(response => response.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
+  }
+
   
   render() {
     return (
