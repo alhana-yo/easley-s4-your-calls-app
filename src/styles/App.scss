@@ -239,7 +239,8 @@ position: relative;
 }
 
 .fake-redial-button {
-  color: #9E9E9E;
+
+  color : $color-grey;
   background-color: $color-blacK;
   width: 200px;
   height: 32px;
@@ -257,7 +258,7 @@ position: relative;
 }
 
 .fake-CallBack-button {
-  color: #9E9E9E;
+  color: $color-grey;
   background-color: $color-blacK;
   width: 200px;
   height: 32px;
