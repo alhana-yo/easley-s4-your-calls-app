@@ -230,6 +230,10 @@ position: relative;
   width: 65px; 
 }
 
+.callAction_selection {
+  padding: 0 0 0px 8px;
+}
+
 .call__container {
   position: relative;
 }
@@ -282,6 +286,7 @@ position: relative;
   color: #9E9E9E;
   outline: none;
   border-color: $color-white;
+  padding: 0 0 0px 8px;
   
 
 }
