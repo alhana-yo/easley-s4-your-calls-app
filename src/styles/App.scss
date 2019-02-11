@@ -238,7 +238,6 @@ position: relative;
   margin: 0;
   margin-top: 33px;
   column-gap: 40px;
-  // grid-gap: 35px;
 }
 
 .callAction__selection--redial, .callAction__selection--call-back {
@@ -248,10 +247,6 @@ position: relative;
   width: 65px; 
 }
 
-.callAction_selection {
-  padding: 0 0 0 px 8px;
-
-}
 
 .call__container {
   position: relative;
@@ -274,6 +269,7 @@ position: relative;
   justify-self: flex-start;
   margin-right: 33px;
   margin-bottom: 10px;
+  padding-left: 8px;
 }
 
 .fake-CallBack-button {
@@ -291,6 +287,7 @@ position: relative;
   border-color: $color-white;
   display: flex;
   justify-self: flex-start;
+  padding-left: 8px;
 }
 
 
