@@ -156,32 +156,48 @@ getCallAction(event) {
   };
 
 
-  if (event.currentTarget.id === 'redial'){
+//   if (event.currentTarget.id === 'redial'){
 
-    state = {
-      info: newInfo,
+//     state = {
+//       info: newInfo,
+//       callAgainClass: 'selectedClass',
+//       callBackClass: ''
+//     };
+//     if (event.currentTarget.ckecked === true)
+
+//   }else if (event.currentTarget.id === 'call-back'){
+    
+//     state = {
+//       info: newInfo, 
+//       callAgainClass: '',
+//       callBackClass: 'selectedClass'
+//     };
+    
+// }  
+
+  if (event.currentTarget.checked === false && event.currentTarget.id === 'redial'){
+    state ={
+      checked:true,
+      info: newInfo, 
       callAgainClass: 'selectedClass',
       callBackClass: ''
     };
-
-  }else if (event.currentTarget.id === 'call-back'){
-    
-    state = {
-      info: newInfo, 
-      callAgainClass: '',
-      callBackClass: 'selectedClass'
-    };
-    
-    } 
-
-  // if (event.currentTarget.checked === false){
-  //   this.setState({ checked:true })
-  //   console.log("click1")
-  //   } else if(event.currentTarget.checked === true){
-  //   this.setState({ checked:false })
-  //   console.log("click2")
-  
-  //   }
+    } else if (event.currentTarget.checked === false && event.currentTarget.id === 'call-back'){
+      state ={
+        checked:true,
+        info: newInfo, 
+        callAgainClass: '',
+        callBackClass: 'selectedClass'
+      };
+    }
+    else if (event.currentTarget.checked === true){
+      state ={
+        checked:false,
+        info: newInfo, 
+        callAgainClass: '',
+        callBackClass: ''
+      };
+    }
   this.setState(state);
 }
 
