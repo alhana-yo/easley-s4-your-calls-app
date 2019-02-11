@@ -80,7 +80,7 @@ body {
   font-weight: bold;
   margin: 10px 0px 18px 0;
   min-width: 480px;
-  padding-left: 60px; 
+  padding-left: 25px; 
 }
 
 .historic__title {
@@ -223,10 +223,6 @@ position: relative;
 
 .main__personRequested-title{
   font-size: 32px;
-
-}
-.call-container__wrapper {
-  
 }
 
 .call-container__radios{
@@ -294,7 +290,7 @@ position: relative;
 
 .message__input {
   width: 450px;
-  height: 93px;
+  height: 100px;
   margin-top: 25px;
   line-height: 24px;
   background-color: $color-blacK;
@@ -338,7 +334,7 @@ position: relative;
   color: $color-grey-fonts;
   text-transform: uppercase;
   margin-top: 30px;
-  margin-right: 80px;
+  margin-right: 33px;
   font-size: 12px;
   width: 209px;
   height: 41px;
