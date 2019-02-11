@@ -238,7 +238,7 @@ class App extends Component {
 
   makeMessage(){
 
-    let message=''
+    let message=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
 
     if ((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0){
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
@@ -250,7 +250,7 @@ class App extends Component {
       
     }else{
 
-      return message=  `${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+      return message;
     }
   }
 
