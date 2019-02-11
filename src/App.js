@@ -137,8 +137,6 @@ class App extends Component {
 
   sendInfo() {
 
-    console.log(this.state.info)
-
     const ENDPOINT = 'https://adalab.interacso.com/call';
 
       fetch(ENDPOINT, {
@@ -173,7 +171,6 @@ class App extends Component {
         });
 
       } else if (incomingInfo.name === "" && incomingInfo.company === "" && incomingInfo.position === "" && incomingInfo.telephone === 0 && incomingInfo.email === "" && incomingInfo.otherInfo === ""){
-      console.log('entro en el if.');
       this.setState({
         errorIncomingData: "",
         errorPerson: "hidden"
@@ -207,7 +204,6 @@ class App extends Component {
       }); 
 
       this.sendInfo();
-      console.log("enviar info al servidor");
     }
   }
   
