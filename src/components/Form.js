@@ -28,7 +28,7 @@ class Form extends Component {
 
     render() {
 
-        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, errorMessage, deselectOption, selectPersonRequested} = this.props;
+        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, errorMessage, deselectOption, selectPersonRequested, redialCheck, callBackCheck} = this.props;
         return (
             <form method="post" onSubmit={preventSubmission} className="registration__form" >
 
@@ -103,10 +103,10 @@ class Form extends Component {
                         <div className="call-container__wrapper">
                             <div className="call-container__radios">
                                 <div className="call__container">
-                                    <label htmlFor="redial" className={`callAction_selection label fake-redial-button ${this.props.callAgainClass}`}>Llamará de nuevo<input id="redial" type="radio" value="Llamará de nuevo" className="callAction__selection--redial" placeholder="Llamará de nuevo" name="call" onClick={getCallAction} ref={this.redialButton}></input></label>
+                                    <label htmlFor="redial" className={`callAction_selection label fake-redial-button ${this.props.callAgainClass}`}>Llamará de nuevo<input id="redial" type="checkbox" checked={redialCheck} value="Llamará de nuevo" className="callAction__selection--redial" placeholder="Llamará de nuevo" name="call" onClick={getCallAction} ref={this.redialButton}></input></label>
                                 </div>
                                 <div className="call__container">
-                                    <label htmlFor="call-back" className={`callAction_selection label fake-CallBack-button ${this.props.callBackClass}`}>Devolver la llamada<input id="call-back" type="radio" value="Devolver la llamada" className="callAction__selection--call-back" placeholder="Devolver la llamada" name="call" onClick={getCallAction} ref={this.callBack}></input></label>
+                                    <label htmlFor="call-back" className={`callAction_selection label fake-CallBack-button ${this.props.callBackClass}`}>Devolver la llamada<input id="call-back" type="checkbox" checked={redialCheck}value="Devolver la llamada" className="callAction__selection--call-back" placeholder="Devolver la llamada" name="call" onClick={getCallAction} ref={this.callBack}></input></label>
                                 </div>
                             </div>
                                 <div className="message_container">
