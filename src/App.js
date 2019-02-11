@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import './styles/App.scss';
+import { S_IFBLK } from 'constants';
 
 
 class App extends Component {
@@ -100,50 +101,93 @@ class App extends Component {
     const newInfo = { ...info, telephone: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
+////////////////////////////////////////////////////////////////////////////
 
-  getCallAction(event) {
-    const { info } = this.state;
-    const newInfo = { ...info, action: event.currentTarget.value };
+  // getCallAction(event) {
+  //   const { info } = this.state;
+  //   const newInfo = { ...info, action: event.currentTarget.value };
     
-   let callAgainVar='';
-   let callBackVar='';
+  //  let callAgainVar='';
+  //  let callBackVar='';
 
-    if (event.currentTarget.id === 'redial'){
+  //   if (event.currentTarget.id === 'redial'){
 
-      callAgainVar= 'selectedClass';
+  //     callAgainVar= 'selectedClass';
  
-      // this.setState ({
-      //   info: newInfo,
-      //   callAgainClass: 'selectedClass',
-      //   callBackClass: ''
-      // });
-    } else {
-      callBackVar='selectedClass'
-      // this.setState({ 
-      //   info: newInfo, 
-      //   callAgainClass: '',
-      //   callBackClass: 'selectedClass'
+  //     // this.setState ({
+  //     //   info: newInfo,
+  //     //   callAgainClass: 'selectedClass',
+  //     //   callBackClass: ''
+  //     // });
+  //   } else {
+  //     callBackVar='selectedClass'
+  //     // this.setState({ 
+  //     //   info: newInfo, 
+  //     //   callAgainClass: '',
+  //     //   callBackClass: 'selectedClass'
 
-      // });
+  //     // });
 
-      if ( this.state.checked === false){
-      this.setState({ checked:true })
-      console.log("click1")
-      } else if(this.state.checked === true){
-      this.setState({ checked:false })
-      console.log("click2")
+  //     if ( this.state.checked === false){
+  //     this.setState({ checked:true })
+  //     console.log("click1")
+  //     } else if(this.state.checked === true){
+  //     this.setState({ checked:false })
+  //     console.log("click2")
     
-      }
-    }
-     this.setState({ 
-         info: newInfo, 
-        callAgainClass: callAgainVar,
-         callBackClass: callBackVar
+  //     }
+  //   }
+  //    this.setState({ 
+  //        info: newInfo, 
+  //       callAgainClass: callAgainVar,
+  //        callBackClass: callBackVar
 
-       });
-  }
+  //      });
+  // }
+
+//////////////////////////////////////////////////////////
+getCallAction(event) {
+  const { info } = this.state;
+  const newInfo = { ...info, action: event.currentTarget.value };
+  let state = {
+    info: newInfo,
+    callAgainClass: '',
+    callBackClass: ''
+  };
 
 
+  if (event.currentTarget.id === 'redial'){
+
+    state = {
+      info: newInfo,
+      callAgainClass: 'selectedClass',
+      callBackClass: ''
+    };
+
+  }else if (event.currentTarget.id === 'call-back'){
+    
+    state = {
+      info: newInfo, 
+      callAgainClass: '',
+      callBackClass: 'selectedClass'
+    };
+    
+    } 
+
+  // if (event.currentTarget.checked === false){
+  //   this.setState({ checked:true })
+  //   console.log("click1")
+  //   } else if(event.currentTarget.checked === true){
+  //   this.setState({ checked:false })
+  //   console.log("click2")
+  
+  //   }
+  this.setState(state);
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
 
 
 
