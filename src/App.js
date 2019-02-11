@@ -106,18 +106,19 @@ class App extends Component {
 //////////////////////////////////////
 
   getCallAction(event) {
+    console.log('salta', event.currentTarget.value);
     const { info } = this.state;
     const newInfo = { ...info, action: event.currentTarget.value };
     let state = {
       info: newInfo,
-      callAgain: '',
-      callBack: '',
+      callAgainClass: '',
+      callBackClass: '',
       redialCheck:false,
       callBackCheck:false
     };
   
 
-    if (event.currentTarget.id === 'redial'){
+    if (event.currentTarget.value === 'Llamará de nuevo'){
        if(!this.state.redialCheck) {
       state = {
         info: newInfo,
@@ -126,7 +127,9 @@ class App extends Component {
         redialCheck:true,
         callBackCheck:false
       };
-    } else {
+    } else if (event.currentTarget.value === 'Devolver la llamada'){
+
+      console.log('Hola????')
       if (!this.state.callBackCheck){
         state = { 
           info: newInfo, 
