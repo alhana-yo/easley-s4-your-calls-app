@@ -98,7 +98,7 @@ class Form extends Component {
 
                     <fieldset className="form-section message">
                         <h2 className="message__title">¿Qué mensaje dejó?</h2>
-                        <p className={`error-msg ${errorCallAction}`}>Debes seleccionar una de las opciones.</p>
+                        {/* <p className={`error-msg ${errorCallAction}`}>Debes seleccionar una de las opciones.</p> */}
 
                         <div className="call-container__wrapper">
                             <div className="call-container__radios">
@@ -111,16 +111,12 @@ class Form extends Component {
                             </div>
                                 <div className="message_container">
                                     <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
-                                    <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="4" onKeyUp={getMessage}></textarea>
+                                    <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado" onKeyUp={getMessage}></textarea>
                                     <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
                                 </div>
                         </div>
 
-                        <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
-                        <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"cols="30" rows="4" onKeyUp={getMessage}></textarea>
-
-                        <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
-
+                     
                     </fieldset>
                 </div>
 

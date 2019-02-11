@@ -253,7 +253,7 @@ position: relative;
   display: flex;
   justify-self: flex-start;
   margin-right: 33px;
-  margin-bottom: 10px,
+  margin-bottom: 10px;
 }
 
 .fake-CallBack-button {
@@ -276,6 +276,7 @@ position: relative;
 
 .message__input {
   width: 480px;
+  height: 93px;
   margin-top: 25px;
   line-height: 24px;
   background-color: $color-blacK;

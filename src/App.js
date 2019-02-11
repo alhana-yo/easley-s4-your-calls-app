@@ -161,7 +161,7 @@ class App extends Component {
   sendForm(event){
     event.preventDefault();
     this.isEmptyOrNot();
-    this.sendSlackInfo();
+   
   }
 
   isEmptyOrNot(){
@@ -188,14 +188,14 @@ class App extends Component {
         
       });
 
-    } else if (incomingInfo.action !== "" && incomingInfo.message === "") {
-      this.setState({
-        errorIncomingData: "hidden",
-        errorCallAction:"hidden",
-        errorPerson: "hidden",
-        errorMessage:""
+    // } else if (incomingInfo.action !== "" && incomingInfo.message === "") {
+    //   this.setState({
+    //     errorIncomingData: "hidden",
+    //     errorCallAction:"hidden",
+    //     errorPerson: "hidden",
+    //     errorMessage:""
         
-      });
+    //   });
 
     } else {
       this.setState({
@@ -206,6 +206,7 @@ class App extends Component {
       }); 
 
       this.sendInfo();
+      this.sendSlackInfo();
     }
   }
   
