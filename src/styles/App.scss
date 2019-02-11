@@ -13,7 +13,9 @@ body {
 
 .header{
   display: flex;
+  max-width: 1700px;
   justify-content: space-between;
+  margin: auto;
 }
 
 .header__logo {
@@ -63,15 +65,27 @@ body {
   min-width: 480px;
 }
 
+.menu__container {
+  display: flex;
+  
+}
+
+.menu__newCall{
+  min-width: 480px;
+}
+
 .menu__historic {
   font-size: 64px;
   font-weight: bold;
   margin: 10px 0px 18px 0;
+  min-width: 480px;
+  padding-left: 60px; 
 }
 
 .historic__title {
-  margin: 0;
+  margin: auto;
   color: #409FFF;
+ 
 }
 
 //main//
@@ -102,7 +116,6 @@ body {
 
 .formUp {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
 }
 
@@ -118,11 +131,7 @@ height: 0;
 width: 0;
 display: block;
 overflow: hidden;
-}
-
-
-.message_container{
- 
+position: relative;
 }
 
 .main__addedBy--title{
@@ -134,6 +143,23 @@ overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 32px;
+}
+
+.main__employees{
+  appearance: none;
+  color: $color-grey;
+  background-color: $color-blacK;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  outline: none;
+  font-family: Favorit,'Times New Roman', Times, serif;
+  font-size: 16px;
+  color: $color-grey;
+  min-width: 448px;
+  padding-left: 8px;
+  padding-bottom: 5px;
 }
 
 //Style for QUien LLamó
@@ -168,10 +194,6 @@ overflow: hidden;
   color: $color-white;
 }
 
-::-webkit-input-placeholder { 
-  color: $color-grey-fonts;
-}
-
 
 //Styles for Qué mensaje dejó
 
@@ -181,23 +203,35 @@ overflow: hidden;
   line-height: 40px;
 }
 
+.main__personRequested{
+  padding-left: 100px;
+}
+
 .main__personRequested-title{
   font-size: 32px;
+
+}
+.call-container__wrapper {
+  max-width: 500px;
 }
 
-.call-container__wrapper {
+.call-container__radios{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 0;
   margin-top: 33px;
+  grid-gap: 35px;
 }
-
 
 .callAction__selection--redial, .callAction__selection--call-back {
   position: absolute;
   left: -1000px;
- 
   height: 45px;
   width: 65px; 
+}
+
+.callAction_selection {
+  padding: 0 0 0px 8px;
 }
 
 .call__container {
@@ -241,6 +275,7 @@ overflow: hidden;
 
 
 .message__input {
+  width: 480px;
   margin-top: 25px;
   line-height: 24px;
   background-color: $color-blacK;
@@ -251,6 +286,7 @@ overflow: hidden;
   color: #9E9E9E;
   outline: none;
   border-color: $color-white;
+  padding: 0 0 0px 8px;
   
 
 }
@@ -261,28 +297,56 @@ overflow: hidden;
  
 }
 
-.hidden {
-  display: none;
-
-}
 
 .modal {
   height: 100px;
   width: 100vh;
-  background-color: #409FFF;
+  background-color: $color-blue;
   color: white;
 }
+
 
 
 .selectedClass {
   background-color: white;
 }
+.button-register {
+  display: flex;
+  justify-content: flex-end;
+}
 .register {
   background: $color-blacK;
   color: $color-grey-fonts;
   text-transform: uppercase;
+  margin-top: 30px;
+  margin-right: 66px;
   font-size: 12px;
   width: 209px;
   height: 41px;
-  
 }
+
+
+.tick {
+  margin-bottom: 16px;
+  height: 50px;
+  width: 50px;
+}
+
+.modal {
+  height: 205px;
+  font-weight: bold;
+  font-size: 18px;
+  color: $color-white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 42px;
+}
+.hidden {
+  display: none;
+
+}
+
+

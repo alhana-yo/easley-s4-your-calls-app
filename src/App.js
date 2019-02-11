@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
+import tick from './images/tick.png';
 import './styles/App.scss';
 
 
@@ -102,27 +103,24 @@ class App extends Component {
 
   getCallAction(event) {
     const { info } = this.state;
+    // const { action } = this.state.info;
     const newInfo = { ...info, action: event.currentTarget.value };
-    this.setState({ 
-      info: newInfo, 
-    }); 
-    this.getSelectedButton();
-  }
-
-  getSelectedButton(){
-    const { action } = this.state.info;
-    if (action === 'Devolver llamada'){
+    if (event.currentTarget.id === 'redial'){
       this.setState ({
-        callAgainClass: '',
-        callBackClass: 'selectedClass'
-      });
-    }else if (action === 'Llamará de nuevo'){
-      this.setState ({
+        info: newInfo,
         callAgainClass: 'selectedClass',
         callBackClass: ''
       });
+    } else if (event.currentTarget.id === 'call-back'){
+      this.setState({ 
+        info: newInfo, 
+        callAgainClass: '',
+        callBackClass: 'selectedClass'
+
+      }); 
+
     }
-}
+  }
 
   getMessage(event) {
     const { info } = this.state;
@@ -252,7 +250,7 @@ class App extends Component {
         
           </div>
           
-          <div className={`modal ${this.state.succesMessage}`}>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
+          <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
         </main>
       </div>
     );
