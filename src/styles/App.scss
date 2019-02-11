@@ -45,6 +45,7 @@ body {
 }
 .newCall__circle {
   left: -85px; 
+  top: 14px;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -67,7 +68,7 @@ body {
 
 .menu__container {
   display: flex;
-  
+  position: relative;
 }
 
 .menu__newCall{
@@ -91,17 +92,16 @@ body {
 //main//
 
 .form__wrapper {
-  position: relative;
-  min-width: 940px;
-  max-width: 1100px;
-  margin:auto;
-  // margin-top: 64px;
-  
- 
+  // min-width: 940px;
+  // max-width: 1100px;
+  width: 1000px;
+
+  margin: 0 auto;
 }
 
 .main{
   color: $color-white;
+  margin-left: 200px;
 }
 
 .registration__form {
@@ -109,6 +109,7 @@ body {
 }
 
 .form-section {
+  max-width: 450px;
   border: 0 none;
   margin: 0;
   padding: 0;
@@ -134,6 +135,11 @@ overflow: hidden;
 position: relative;
 }
 
+.main__addedBy {
+  width: 450px;
+  margin-right: 60px;
+}
+
 .main__addedBy--title{
   font-size: 32px;
 }
@@ -141,8 +147,9 @@ position: relative;
 .incoming-data__fieldsContainer{
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 32px;
+  grid-template-columns: 205px 205px;
+  column-gap: 40px;
+  
 }
 
 .main__employees{
@@ -168,7 +175,8 @@ position: relative;
   margin-top: 68px;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 450px 450px;
+  column-gap: 60px;
  
 }
 
@@ -185,17 +193,22 @@ position: relative;
 .incoming-data__input{
   background-color: $color-blacK;
   height: 32px;
-  width: 208px;
+  width: 204px;
   margin-top: 32px;
   border: 0;
   border-bottom: 1px solid $color-white;
-  padding: 0 0 0px 8px;
+  // padding: 0 0 0px 8px;
   font-size: 16px;
   color: $color-white;
 }
 
+.incoming-data__input::-webkit-input-placeholder {
+  padding-left: 8px;
+}
+
 
 //Styles for Qué mensaje dejó
+
 
 .message__title {
   margin: 0;
@@ -204,7 +217,8 @@ position: relative;
 }
 
 .main__personRequested{
-  padding-left: 100px;
+  // padding-left: 100px;
+  width: 450px;
 }
 
 .main__personRequested-title{
@@ -212,15 +226,16 @@ position: relative;
 
 }
 .call-container__wrapper {
-  max-width: 500px;
+  
 }
 
 .call-container__radios{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 205px 205px;
   margin: 0;
   margin-top: 33px;
-  grid-gap: 35px;
+  column-gap: 40px;
+  // grid-gap: 35px;
 }
 
 .callAction__selection--redial, .callAction__selection--call-back {
@@ -275,8 +290,10 @@ position: relative;
 }
 
 
+
+
 .message__input {
-  width: 480px;
+  width: 450px;
   height: 93px;
   margin-top: 25px;
   line-height: 24px;
@@ -321,7 +338,7 @@ position: relative;
   color: $color-grey-fonts;
   text-transform: uppercase;
   margin-top: 30px;
-  margin-right: 66px;
+  margin-right: 80px;
   font-size: 12px;
   width: 209px;
   height: 41px;
