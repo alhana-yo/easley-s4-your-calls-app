@@ -1,7 +1,6 @@
 @import 'core/typography';
 @import 'core/settings';
 
-//HEADER
 body {
   background-color: $color-blacK;
 }
@@ -10,6 +9,117 @@ body {
   font-family: Favorit,'Times New Roman', Times, serif;
  
 }
+////header
+.header{
+  display: flex;
+  max-width: 768px;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.header__logo {
+  margin: 35px 0 35px 40px; 
+}
+
+.logo {
+
+  // height: 0;
+  background: red;
+  width: 89px;
+  overflow: hidden;
+  padding-top: 22px;
+  background-image: url('../images/logo-interacso-peque.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.header__appLogo {
+  margin: 53px 40px 32px 0px; 
+  height: 0;
+  background-color: purple;
+}
+.your-calls{
+  width: 98px;
+}
+.menu__newCall {
+  display: flex;
+  margin:  0 0 0 55px;
+  font-weight: bold;
+  font-family: Favorit,'Times New Roman', Times, serif;
+  font-size: 28px;
+  color: $color-white;
+}
+.newCall__circle {
+  left: 4px; 
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
+  background-color: #1D1D1D;
+  border-radius: 50px;
+}
+
+.newCall__icon--img {
+  height: 15px;
+  width: 15px;
+}
+.newCall__title {
+  margin: 0;
+  width: 200px;
+
+}
+
+.menu__container {
+  display: flex;
+  position: relative;
+}
+
+.menu__newCall{
+  min-width: 480px;
+}
+
+.menu__historic {
+  font-size: 64px;
+  font-weight: bold;
+  margin: 10px 0px 18px 0;
+  min-width: 480px;
+  padding-left: 25px; 
+}
+
+.historic__title {
+  margin: auto;
+  color: #409FFF;
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//HEADER
+@media all and (min-width: 1200px){
 
 .header{
   display: flex;
@@ -39,9 +149,7 @@ body {
   background-color: purple;
 }
 
-.your-calls {
-  // height: 65px;
-}
+
 
 
 .menu__newCall {
@@ -370,3 +478,4 @@ position: relative;
 }
 
 
+}

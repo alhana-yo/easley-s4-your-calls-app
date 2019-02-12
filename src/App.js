@@ -269,7 +269,6 @@ getCallAction(event) {
   sendSlackInfo(){
     
     const message = this.makeMessage();
-    //Holaa te subes?
     
     const key = KEYS.SLACK_KEY;
 
