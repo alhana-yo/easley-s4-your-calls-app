@@ -1,29 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 
 class Form extends Component {
-
-
-    // constructor(props) {
-    //     super(props);
-
-    //     this.redialButton = React.createRef();
-
-    //     this.callBack = React.createRef();
-
-    //     this.fakeClick = this.fakeClick.bind(this);
-    //     this.fakeClickCallBack = this.fakeClickCallBack.bind(this);
-    // }
-
-    // fakeClick() {
-    //     this.redialButton.current.click();
-    // }
-
-    // fakeClickCallBack() {
-    //     this.callBack.current.click();
-    // }
-
 
 
     render() {
@@ -98,8 +78,6 @@ class Form extends Component {
 
                     <fieldset className="form-section message">
                         <h2 className="message__title">¿Qué mensaje dejó?</h2>
-                        {/* <p className={`error-msg ${errorCallAction}`}>Debes seleccionar una de las opciones.</p> */}
-
                         <div className="call-container__wrapper">
                             <div className="call-container__radios">
                                 <div className="call__container">
@@ -126,6 +104,28 @@ class Form extends Component {
         );
     }
 
+}
+
+Form.propTypes = {
+    preventSubmission: PropTypes.func.isRequired,
+    getWhoCalls: PropTypes.func.isRequired,
+    errorPerson: PropTypes.string.isRequired,
+    getRequestedEmployee: PropTypes.func.isRequired,
+    errorIncomingData: PropTypes.string.isRequired,
+    getName: PropTypes.func.isRequired,
+    getCompany: PropTypes.func.isRequired,
+    getPosition: PropTypes.func.isRequired,
+    getOtherInfo: PropTypes.func.isRequired,
+    getEmail: PropTypes.func.isRequired,
+    getPhone: PropTypes.func.isRequired,
+    getCallAction: PropTypes.func.isRequired,
+    getMessage: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string.isRequired,
+    deselectOption: PropTypes.func.isRequired,
+    redialCheck: PropTypes.bool.isRequired,
+    callBackCheck: PropTypes.bool.isRequired,
+    callAgainClass: PropTypes.string.isRequired,
+    callBackClass:PropTypes.string.isRequired
 }
 
 export default Form;
