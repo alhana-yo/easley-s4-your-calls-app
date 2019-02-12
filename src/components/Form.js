@@ -28,7 +28,7 @@ class Form extends Component {
 
     render() {
 
-        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, errorCallAction, getCallAction, getMessage, errorMessage, deselectOption, selectPersonRequested} = this.props;
+        const { preventSubmission, getWhoCalls, errorPerson, getRequestedEmployee, errorIncomingData, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, errorMessage, deselectOption, selectPersonRequested, redialCheck, callBackCheck, callAgainClass, callBackClass} = this.props;
         return (
             <form method="post" onSubmit={preventSubmission} className="registration__form" >
 
@@ -98,25 +98,25 @@ class Form extends Component {
 
                     <fieldset className="form-section message">
                         <h2 className="message__title">¿Qué mensaje dejó?</h2>
-                        <p className={`error-msg ${errorCallAction}`}>Debes seleccionar una de las opciones.</p>
+                        {/* <p className={`error-msg ${errorCallAction}`}>Debes seleccionar una de las opciones.</p> */}
 
                         <div className="call-container__wrapper">
                             <div className="call-container__radios">
                                 <div className="call__container">
-                                    <label htmlFor="redial" className={`callAction_selection label fake-redial-button ${this.props.callAgainClass}`}>Llamará de nuevo<input id="redial" type="radio" value="Llamará de nuevo" className="callAction__selection--redial" placeholder="Llamará de nuevo" name="call" onClick={getCallAction} ref={this.redialButton}></input></label>
+                                    <label htmlFor="redial" className={`callAction_selection label fake-redial-button ${callAgainClass}`}>Llamará de nuevo<input id="redial" type="checkbox" checked={redialCheck} value="Llamará de nuevo" className="callAction__selection--redial" placeholder="Llamará de nuevo" name="call" onChange={getCallAction} ref={this.redialButton}></input></label>
                                 </div>
                                 <div className="call__container">
-                                    <label htmlFor="call-back" className={`callAction_selection label fake-CallBack-button ${this.props.callBackClass}`}>Devolver la llamada<input id="call-back" type="radio" value="Devolver la llamada" className="callAction__selection--call-back" placeholder="Devolver la llamada" name="call" onClick={getCallAction} ref={this.callBack}></input></label>
+                                    <label htmlFor="call-back" className={`callAction_selection label fake-CallBack-button ${callBackClass}`}>Devolver la llamada<input id="call-back" type="checkbox" checked={callBackCheck}value="Devolver la llamada" className="callAction__selection--call-back" placeholder="Devolver la llamada" name="call" onChange={getCallAction} ref={this.callBack}></input></label>
                                 </div>
                             </div>
                                 <div className="message_container">
                                     <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
-                                    <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado"
-                                    cols="30" rows="4" 
-                                    onKeyUp={getMessage}></textarea>
+                                    <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado" onKeyUp={getMessage}></textarea>
                                     <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
                                 </div>
                         </div>
+
+                     
                     </fieldset>
                 </div>
 

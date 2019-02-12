@@ -4,6 +4,7 @@ import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import tick from './images/tick.png';
 import './styles/App.scss';
+import KEYS from './config';
 
 
 class App extends Component {
@@ -32,7 +33,9 @@ class App extends Component {
       succesMessage: "hidden",
       errorMessage: "hidden",
       callAgainClass: "",
-      callBackClass: ""
+      callBackClass: "",
+      redialCheck: false,
+      callBackCheck: false
       
   }
 
@@ -100,27 +103,45 @@ class App extends Component {
     const newInfo = { ...info, telephone: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
+//////////////////////////////////////
+getCallAction(event) {
+  console.log('salta', event.currentTarget.id);
+  const { info } = this.state;
+  const newInfo = { ...info, action: event.currentTarget.value };
+  let state = {
+    info: newInfo,
+    callAgainClass: '',
+    callBackClass: '',
+    redialCheck:false,
+    callBackCheck:false
+  };
 
-  getCallAction(event) {
-    const { info } = this.state;
-    // const { action } = this.state.info;
-    const newInfo = { ...info, action: event.currentTarget.value };
-    if (event.currentTarget.id === 'redial'){
-      this.setState ({
-        info: newInfo,
-        callAgainClass: 'selectedClass',
-        callBackClass: ''
-      });
-    } else if (event.currentTarget.id === 'call-back'){
-      this.setState({ 
+  if (event.currentTarget.id === 'redial'){
+     if(!this.state.redialCheck) {
+      state = {
+      info: newInfo,
+      callAgainClass: 'selectedClass',
+      callBackClass: '',
+      redialCheck:true,
+      callBackCheck:false
+      };
+    }
+  
+  }else {
+    if (!this.state.callBackCheck){
+      state = { 
         info: newInfo, 
         callAgainClass: '',
-        callBackClass: 'selectedClass'
+        callBackClass: 'selectedClass',
+        redialCheck:false,
+        callBackCheck:true
 
-      }); 
-
+      };
     }
   }
+  this.setState(state);
+}
+
 
   getMessage(event) {
     const { info } = this.state;
@@ -160,6 +181,7 @@ class App extends Component {
   sendForm(event){
     event.preventDefault();
     this.isEmptyOrNot();
+   
   }
 
   isEmptyOrNot(){
@@ -176,7 +198,7 @@ class App extends Component {
         errorPerson: "hidden"
       });
 
-      } else if (incomingInfo.action === "" && incomingInfo.message === ""){
+      } else if (incomingInfo.message === ""){
       
       this.setState({
         errorIncomingData: "hidden",
@@ -186,14 +208,6 @@ class App extends Component {
         
       });
 
-    } else if (incomingInfo.action !== "" && incomingInfo.message === "") {
-      this.setState({
-        errorIncomingData: "hidden",
-        errorCallAction:"hidden",
-        errorPerson: "hidden",
-        errorMessage:""
-        
-      });
 
     } else {
       this.setState({
@@ -204,15 +218,16 @@ class App extends Component {
       }); 
 
       this.sendInfo();
+      this.sendSlackInfo();
     }
   }
   
 
 
-  deselectOption(event){
+  deselectOption(){
 
     const addedBy= this.state.info.addedBy;
-
+   
     if(addedBy!==""){
       const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
@@ -231,6 +246,50 @@ class App extends Component {
     }
 
   }
+
+
+  makeMessage(){
+
+    let message=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+
+    if ((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0){
+      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+    }
+    else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
+      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+      
+    }else{
+
+      return message;
+    }
+  }
+
+  sendSlackInfo(){
+    
+    const message = this.makeMessage();
+    const key = KEYS.SLACK_KEY;
+
+    const settings = {
+      url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
+      method: 'POST',
+      body: {}
+    }
+
+    fetch(settings.url, {
+      method: settings.method,
+      body: JSON.stringify(settings.body),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(response => response.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
+  }
+
   
   render() {
     return (
@@ -242,7 +301,7 @@ class App extends Component {
       
             <Menu />
 
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} />
+            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
         
           </div>
           
