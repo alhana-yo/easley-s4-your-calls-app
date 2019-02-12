@@ -18,24 +18,25 @@ body {
 }
 
 .header__logo {
-  margin: 35px 0 35px 40px; 
+  margin: 30px 0 25px 40px; 
 }
 
 .logo {
+  margin: 0;
 
-  // height: 0;
+  height: 0;
   background: red;
-  width: 89px;
+  width: 133px;
   overflow: hidden;
   padding-top: 22px;
-  background-image: url('../images/logo-interacso-peque.svg');
+  background-image: url('../images/logo-interacso-peque.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .header__appLogo {
-  margin: 53px 40px 32px 0px; 
+  margin: 33px 40px 32px 0px; 
   height: 0;
   background-color: purple;
 }
@@ -77,16 +78,13 @@ body {
   position: relative;
 }
 
-.menu__newCall{
-  min-width: 480px;
-}
-
 .menu__historic {
-  font-size: 64px;
+  font-size: 28px;
   font-weight: bold;
+  color: $color-blue;
   margin: 10px 0px 18px 0;
-  min-width: 480px;
-  padding-left: 25px; 
+  // min-width: 480px;
+  // padding-left: 25px; 
 }
 
 .historic__title {
