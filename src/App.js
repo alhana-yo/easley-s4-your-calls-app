@@ -103,9 +103,8 @@ class App extends Component {
     const newInfo = { ...info, telephone: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
-//////////////////////////////////////
+
 getCallAction(event) {
-  console.log('salta', event.currentTarget.id);
   const { info } = this.state;
   const newInfo = { ...info, action: event.currentTarget.value };
   let state = {

@@ -39,10 +39,6 @@ body {
   background-color: purple;
 }
 
-.your-calls {
-  // height: 65px;
-}
-
 
 .menu__newCall {
   display: flex;
@@ -176,7 +172,7 @@ position: relative;
   padding-bottom: 5px;
 }
 
-//Style for QUien LLamó
+//Style for who calls
 
 .incoming-data__container{
   margin-top: 68px;
@@ -204,7 +200,6 @@ position: relative;
   margin-top: 32px;
   border: 0;
   border-bottom: 1px solid $color-white;
-  // padding: 0 0 0px 8px;
   font-size: 16px;
   color: $color-white;
 }
@@ -214,7 +209,7 @@ position: relative;
 }
 
 
-//Styles for Qué mensaje dejó
+//Styles for custom message
 
 
 .message__title {
@@ -224,7 +219,6 @@ position: relative;
 }
 
 .main__personRequested{
-  // padding-left: 100px;
   width: 450px;
 }
 
