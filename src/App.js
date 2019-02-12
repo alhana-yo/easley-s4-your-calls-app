@@ -5,6 +5,8 @@ import NewCall from './components/NewCall';
 import tick from './images/tick.png';
 import './styles/App.scss';
 import KEYS from './config';
+import { getData } from './services/getDataServices'
+
 
 
 class App extends Component {
@@ -157,20 +159,7 @@ getCallAction(event) {
 
 
   sendInfo() {
-
-    const ENDPOINT = 'https://adalab.interacso.com/call';
-
-      fetch(ENDPOINT, {
-
-              method: "POST",
-              body: JSON.stringify(this.state.info),
-              cache: "no-cache",
-              headers: {
-                  "content-type": "application/json"
-              }
-            })
-
-              .then(response=> response.json())
+    getData()
               .then(response => console.log('Success:', JSON.stringify(response)))
               .then(this.setState({
                   succesMessage:""}))
