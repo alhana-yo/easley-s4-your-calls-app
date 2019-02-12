@@ -78,8 +78,6 @@ class Form extends Component {
 
                     <fieldset className="form-section message">
                         <h2 className="message__title">¿Qué mensaje dejó?</h2>
-                        {/* <p className={`error-msg ${errorCallAction}`}>Debes seleccionar una de las opciones.</p> */}
-
                         <div className="call-container__wrapper">
                             <div className="call-container__radios">
                                 <div className="call__container">

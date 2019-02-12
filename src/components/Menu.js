@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import plus from '../images/plus.svg';
+import PropTypes from 'prop-types';
+
 
 
 
@@ -26,7 +28,9 @@ class Menu extends Component {
     }
 
 }
-
+Menu.propTypes = {
+    plus: PropTypes.string
+}
 export default Menu;
 
 
