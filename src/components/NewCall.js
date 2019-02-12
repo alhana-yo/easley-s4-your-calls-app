@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Form from './Form';
 import Button from './Button';
 
-
 class NewCall extends Component {
 
     render() {
