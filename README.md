@@ -10,7 +10,7 @@ Yours Calls is a web app that allows Interacso employees to register calls and s
 
 2. Send the info automatically to the recipients (requested Interacso employees). This functionality works using a private OAuth Access Token that is provided by Slack. As it is private, it has been stored in a file called config.js within the src folder and then added to the .gitignore folder. 
 
-    See an example below: 
+    See example below: 
 
     export default {
     SLACK_KEY: 'clave de slack xxxxxxxxxxxxxxxxxxxxxxxxxxx'
