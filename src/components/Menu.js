@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import plus from '../images/plus.svg';
 import PropTypes from 'prop-types';
-import { Link, Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 
 
 
@@ -17,11 +17,11 @@ class Menu extends Component {
                     </div>
                     
                     <div className="menu__newCall">
-                    <Link to="/"><p className="newCall__title">Nueva Llamada</p></Link>
+                        <NavLink exact to="/" className="call__link" activeClassName="is-active"><p className="newCall__title">Nueva Llamada</p></NavLink>
                     </div>
 
-                    <div className="menu__historic">
-                    <Link to="/callHistory"><p className="historic__title">Histórico</p></Link>
+                    <div>
+                        <NavLink to="/callHistory" className="call__link" activeClassName="is-active"><p className="historic__title">Histórico</p></NavLink>
                     </div>
                 </div>
             </nav>
