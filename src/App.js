@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
-import Historico from './components/Historico';
+import CallHistory from './components/CallHistory';
 import tick from './images/tick.png';
 import { getData } from './services/getData';
+import { getList } from './services/getList';
 import './styles/App.scss';
 import KEYS from './config';
 
@@ -37,9 +38,32 @@ class App extends Component {
       callAgainClass: "",
       callBackClass: "",
       redialCheck: false,
-      callBackCheck: false
+      callBackCheck: false,
       
+      //ESTADOS PARA EL HISTORICO//
+
+      results: [
+        {
+          loggedAt: "2019-02-05T11:27:45.231Z",
+          _id: "5c63d0b192eac54c67f58cf6",
+          addedBy: "Pepa",
+          personRequested: "Carlos",
+          name: "Paula Mara Moreno Gil",
+          company: "",
+          position: "",
+          email: "paula.mara@gmail.com",
+          telephone: "657102580",
+          action: "Llamará de nuevo",
+          message: "e",
+          __v: 0
+      }
+    
+      ]
+      
+
   }
+
+  
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -277,6 +301,16 @@ getCallAction(event) {
     .catch(error => console.error('Error:', error));
   }
 
+  showList() {
+    getList()
+              .then(response => {
+                this.setState({
+                  results: response
+                });
+                console.log('Success', response)})
+              .catch(error => console.error('Error', error))
+  }
+
   
   render() {
     return (
@@ -289,7 +323,7 @@ getCallAction(event) {
             <Menu />
 
             <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
-            <Historico />
+            <CallHistory actionShowList={this.showList} results={this.state.results}/>
           </div>
           
           <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
