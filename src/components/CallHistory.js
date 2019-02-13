@@ -6,9 +6,6 @@ class CallHistory extends Component {
     }
     render() {
         const {results} = this.props; 
-        // const time = results.loggedAt; 
-        // const date = time.split("T");
-        // console.log(date);
         return (
             <Fragment>
                 <ul className="list">
