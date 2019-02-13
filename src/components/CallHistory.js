@@ -14,7 +14,14 @@ class CallHistory extends Component {
                     {results.map(item =>{
                         return(
                             <li className="list__item">
-                                {item.name}
+                                <div className="list__item--container">
+                                  <p className="date">{}</p>
+                                  <p className="askfor">{item.personRequested}</p>
+                                  <p className="name">{item.name}</p>
+                                  <p className="company">{item.company}</p>
+                                  <p className="otherinfo">{item.position}{item.otherInfo}{item.email}{item.telephone}</p>
+                                  <p className="message">{item.message}</p>  
+                                </div>
                             </li>
                         );
                     })}

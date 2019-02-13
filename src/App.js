@@ -42,25 +42,8 @@ class App extends Component {
       
       //ESTADOS PARA EL HISTORICO//
 
-      results: [
-        {
-          loggedAt: "2019-02-05T11:27:45.231Z",
-          _id: "5c63d0b192eac54c67f58cf6",
-          addedBy: "Pepa",
-          personRequested: "Carlos",
-          name: "Paula Mara Moreno Gil",
-          company: "",
-          position: "",
-          email: "paula.mara@gmail.com",
-          telephone: "657102580",
-          action: "Llamará de nuevo",
-          message: "e",
-          __v: 0
-      }
-    
-      ]
+      results: []
       
-
   }
 
   
