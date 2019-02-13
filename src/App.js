@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
+import Historico from './components/Historico';
 import tick from './images/tick.png';
+import { getData } from './services/getData';
 import './styles/App.scss';
 import KEYS from './config';
 
@@ -156,20 +158,8 @@ getCallAction(event) {
 
 
   sendInfo() {
-
-    const ENDPOINT = 'https://adalab.interacso.com/call';
-
-      fetch(ENDPOINT, {
-
-              method: "POST",
-              body: JSON.stringify(this.state.info),
-              cache: "no-cache",
-              headers: {
-                  "content-type": "application/json"
-              }
-            })
-
-              .then(response=> response.json())
+    const info = this.state.info;
+    getData(info)
               .then(response => console.log('Success:', JSON.stringify(response)))
               .then(this.setState({
                   succesMessage:""}))
@@ -301,7 +291,7 @@ getCallAction(event) {
             <Menu />
 
             <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
-        
+            <Historico />
           </div>
           
           <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
