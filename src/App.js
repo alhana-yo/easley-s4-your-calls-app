@@ -4,6 +4,8 @@ import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import CallHistory from './components/CallHistory';
 import tick from './images/tick.png';
+import { getData } from './services/getData';
+import { getList } from './services/getList';
 import './styles/App.scss';
 import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
@@ -38,7 +40,11 @@ class App extends Component {
       callAgainClass: "",
       callBackClass: "",
       redialCheck: false,
-      callBackCheck: false
+      callBackCheck: false,
+
+      //CALLHISTORY COMPONENT STATES
+
+      results: []
       
   }
 
@@ -56,6 +62,7 @@ class App extends Component {
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
     this.deselectOption = this.deselectOption.bind(this);
+    this.showList = this.showList.bind(this);
 
   }
 
@@ -160,25 +167,13 @@ getCallAction(event) {
 
   sendInfo() {
 
-    const ENDPOINT = 'https://adalab.interacso.com/call';
-
-      fetch(ENDPOINT, {
-
-              method: "POST",
-              body: JSON.stringify(this.state.info),
-              cache: "no-cache",
-              headers: {
-                  "content-type": "application/json"
-              }
-            })
-
-              .then(response=> response.json())
-              .then(response => console.log('Success:', JSON.stringify(response)))
-              .then(this.setState({
-                  succesMessage:""}))
-              .catch(error => console.error('Error:', error));
+      const info = this.state.info;
+      getData(info)
+        .then(response => console.log('Success:', JSON.stringify(response)))
+        .then(this.setState({
+           succesMessage:""}))
+        .catch(error => console.error('Error:', error));
   }
-
 
   sendForm(event){
     event.preventDefault();
@@ -292,8 +287,20 @@ getCallAction(event) {
     .catch(error => console.error('Error:', error));
   }
 
+  showList() {
+    getList()
+    .then(results => {
+ 
+                this.setState({
+                  results: results
+                })
+  })};
+
+
   
   render() {
+    const {errorPerson, errorIncomingData,errorCallAction, errorMessage, callBackClass, callAgainClass, redialCheck, callBackCheck} = this.state;
+    const {preventSubmission, getWhoCalls, getRequestedEmployee, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, sendForm, deselectOption, selectPersonRequested } = this;
     return (
       <div className="App">
         <Header />
@@ -303,9 +310,11 @@ getCallAction(event) {
                 <Switch>
                   <Fragment>
                     <Route exact path="/" render={()=>(
-                        <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
+                        <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}/>
                         )}/>
-                    <Route path="/callHistory" component={CallHistory}/>
+
+                   {/* <CallHistory actionShowList={this.showList} results={this.state.results}/> */}
+                    {/* <Route path="/callHistory" component={CallHistory}/> */}
                   </Fragment>
                 </Switch>
              </div> 

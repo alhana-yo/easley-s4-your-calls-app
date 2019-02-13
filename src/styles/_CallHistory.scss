@@ -1,0 +1,111 @@
+.wrapper__callHistory{
+    max-width: 1900px;
+  
+}
+
+//TITULOS//
+
+
+.main__title{
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "main__title--date main__title--personRequested main__title--whoCalls main__title--whoCalls main__title--whoCalls main__title--message" 
+}
+
+.main__title--date{
+
+}
+
+.main__title--personRequested{
+
+}
+
+.main__title--whoCalls{
+
+}
+
+.main__subtitle{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "main__subtitle--date main__subtitle--name main__subtitle--company main__subtitle--other" 
+}
+
+.main__subtitle--date{
+
+}
+
+.main__sibtitle--name{
+
+}
+
+.main__subtitle--company{
+
+}
+
+.main__subtitle--other{
+
+}
+
+//LISTA//
+
+.list{
+}
+
+.list__item{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+
+}
+
+.list__item--container{
+    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-areas: "date askfor name company otherInfo messageAndAction"
+}
+
+.date{
+
+}
+
+.date__day{
+
+}
+
+.hour{
+
+}
+
+.askfor{
+
+}
+
+.name{
+
+}
+
+.company{
+
+}
+
+
+.otherinfo{
+
+}
+
+.messageAndAction{
+
+}
+
+.message{
+
+}
+
+.action{
+
+}
