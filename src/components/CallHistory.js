@@ -5,7 +5,7 @@ class CallHistory extends Component {
 
     render() {
         return (
-            <div>:)</div>
+            <div className="router">:)</div>
         )
 
     }
