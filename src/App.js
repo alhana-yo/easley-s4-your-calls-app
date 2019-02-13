@@ -312,9 +312,7 @@ getCallAction(event) {
                     <Route exact path="/" render={()=>(
                         <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}/>
                         )}/>
-
-                   {/* <CallHistory actionShowList={this.showList} results={this.state.results}/> */}
-                    {/* <Route path="/callHistory" component={CallHistory}/> */}
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results}/>)}/>
                   </Fragment>
                 </Switch>
              </div> 
