@@ -9,7 +9,6 @@ body {
 .App{
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
- 
 }
 
 .header{
@@ -65,7 +64,6 @@ body {
   display: flex;
   margin: 10px 0px 18px 0;
   font-weight: bold;
-  font-family: Favorit,'Times New Roman', Times, serif;
   font-size: 64px;
 
 }
@@ -95,9 +93,7 @@ a {
 //main//
 
 .form__wrapper {
-
   width: 958px;
-
   margin: 0 auto;
 }
 
@@ -151,7 +147,6 @@ position: relative;
   display: grid;
   grid-template-columns: 205px 205px;
   column-gap: 40px;
-  
 }
 
 .main__employees{
@@ -179,7 +174,6 @@ position: relative;
   display: grid;
   grid-template-columns: 450px 450px;
   column-gap: 60px;
- 
 }
 
 .incoming-data{
