@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
+import CallHistory from './components/CallHistory';
 import tick from './images/tick.png';
 import './styles/App.scss';
 import KEYS from './config';
+import { Route, Switch } from 'react-router-dom';
+
 
 
 class App extends Component {
@@ -255,7 +258,7 @@ getCallAction(event) {
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
       ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
     }
-    else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
+      else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
       ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
       
@@ -294,18 +297,20 @@ getCallAction(event) {
     return (
       <div className="App">
         <Header />
-
-        <main className="main">
-          <div className="form__wrapper">
-      
-            <Menu />
-
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
-        
-          </div>
-          
-          <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
-        </main>
+          <main className="main">
+            <div className="form__wrapper">
+              <Menu/>
+                <Switch>
+                  <Fragment>
+                    <Route exact path="/" render={()=>(
+                        <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
+                        )}/>
+                    <Route path="/callHistory" component={CallHistory}/>
+                  </Fragment>
+                </Switch>
+             </div> 
+              <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
+          </main>
       </div>
     );
   }

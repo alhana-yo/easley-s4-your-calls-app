@@ -2,6 +2,7 @@
 @import 'core/settings';
 
 //HEADER
+
 body {
   background-color: $color-blacK;
 }
@@ -39,17 +40,9 @@ body {
   background-color: purple;
 }
 
-
-.menu__newCall {
-  display: flex;
-  margin: 10px 0px 18px 0;
-  font-weight: bold;
-  font-family: Favorit,'Times New Roman', Times, serif;
-  font-size: 64px;
-}
 .newCall__circle {
   left: -85px; 
-  top: 14px;
+  top: 1px;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -65,33 +58,39 @@ body {
   width: 33px;
 }
 
-.newCall__title {
-  margin: 0;
-  min-width: 480px;
-}
-
 .menu__container {
   display: flex;
   position: relative;
-}
-
-.menu__newCall{
   min-width: 480px;
-}
-
-.menu__historic {
-  font-size: 64px;
-  font-weight: bold;
+  display: flex;
   margin: 10px 0px 18px 0;
-  min-width: 480px;
-  padding-left: 25px; 
+  font-weight: bold;
+  font-family: Favorit,'Times New Roman', Times, serif;
+  font-size: 64px;
+
+}
+
+.newCall__title {
+  margin: 0;
 }
 
 .historic__title {
-  margin: auto;
-  color: #409FFF;
- 
+  margin: 0;
+  padding-left: 50px; 
 }
+
+.call__link {
+  color: $color-blue;
+}
+
+.call__link.is-active {
+  color: $color-white;
+}
+
+a {
+  text-decoration: none;
+}
+
 
 //main//
 
