@@ -155,8 +155,6 @@ getCallAction(event) {
     event.preventDefault();
   }
 
-
-
   sendInfo() {
     const info = this.state.info;
     getData(info)
