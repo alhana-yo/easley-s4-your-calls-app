@@ -79,6 +79,7 @@ class App extends Component {
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
     this.deselectOption = this.deselectOption.bind(this);
+    this.showList = this.showList.bind(this);
 
   }
 
@@ -303,13 +304,13 @@ getCallAction(event) {
 
   showList() {
     getList()
-              .then(response => {
+    .then(results => {
+ 
                 this.setState({
-                  results: response
-                });
-                console.log('Success', response)})
-              .catch(error => console.error('Error', error))
-  }
+                  results: results
+                })
+  })};
+
 
   
   render() {

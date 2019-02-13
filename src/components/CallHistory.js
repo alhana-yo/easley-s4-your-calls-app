@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
 class CallHistory extends Component {
-    // componentDidMount(){
-    //     this.props.actionShowList();
-    // }
+    componentDidMount(){
+        this.props.actionShowList();
+    }
 
     render() {
        const {results} = this.props;
