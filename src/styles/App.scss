@@ -20,7 +20,7 @@ body {
 }
 
 .header__logo {
-  margin: 35px 0 35px 40px; 
+  margin: 35px 0 35px 40px;
 }
 
 .logo {
@@ -35,24 +35,47 @@ body {
 }
 
 .header__appLogo {
-  margin: 53px 40px 32px 0px; 
+  margin: 53px 40px 32px 0px;
   height: 0;
 }
 // .menu__newCall::before {
 //  content: " " url('../images/plus_white.svg');
 // }
 
-.newCall__circle {
-  left: -85px; 
-  top: 1px;
+// .newCall__circle {
+//   left: -85px;
+//   top: 1px;
+//   position: absolute;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 68px;
+//   width: 68px;
+//   background-color: #1D1D1D;
+//   border-radius: 50px;
+// }
+
+
+.new-call__link::after {
+  content: '';
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 68px;
-  width: 68px;
-  background-color: #1D1D1D;
-  border-radius: 50px;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  // background: url(https://placehold.it/50x50) center center no-repeat;
+  // background-size: cover;
+
+  border-radius: 50%;
+  background-image: url('../images/plus_white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.new-call__link.is-active::after {
+  opacity: .5;
+  background-image: url('../images/plus.svg');
 }
 
 .newCall__icon--img {
@@ -77,15 +100,23 @@ body {
 
 .historic__title {
   margin: 0;
-  padding-left: 50px; 
+  padding-left: 50px;
 }
 
 
-.call__link {
+.new-call__link {
   color: $color-blue;
 }
 
-.call__link.is-active {
+.new-call__link.is-active {
+  color: $color-white;
+}
+
+.call-back__link {
+  color: $color-blue;
+}
+
+.call-back__link.is-active {
   color: $color-white;
 }
 
@@ -235,7 +266,7 @@ position: relative;
   position: absolute;
   left: -1000px;
   height: 45px;
-  width: 65px; 
+  width: 65px;
 }
 
 
@@ -274,7 +305,7 @@ position: relative;
   border: none;
   border-bottom: solid thin;
   outline: none;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   border-color: $color-white;
   display: flex;
   justify-self: flex-start;
@@ -298,14 +329,14 @@ position: relative;
   outline: none;
   border-color: $color-white;
   padding: 0 0 0px 8px;
-  
+
 
 }
 
 .error-msg{
   color: red;
   border-top: 2px solid red;
- 
+
 }
 
 
