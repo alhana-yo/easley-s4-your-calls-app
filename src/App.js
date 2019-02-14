@@ -3,13 +3,12 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import CallHistory from './components/CallHistory';
-import tick from './images/tick.png';
 import { getData } from './services/getData';
 import { getList } from './services/getList';
 import './styles/App.scss';
 import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
-
+import Modal from './components/Modal';
 
 
 class App extends Component {
@@ -310,13 +309,15 @@ getCallAction(event) {
                 <Switch>
                   <Fragment>
                     <Route exact path="/" render={()=>(
-                        <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}/>
+                        <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
+                        />
                         )}/>
                     <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results}/>)}/>
                   </Fragment>
                 </Switch>
              </div> 
-              <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
+             <Route exact path="/" render={()=>(
+                <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
           </main>
       </div>
     );
