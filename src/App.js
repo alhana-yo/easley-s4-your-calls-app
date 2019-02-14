@@ -44,7 +44,8 @@ class App extends Component {
 
       //CALLHISTORY COMPONENT STATES
 
-      results: []
+      results: [],
+    
       
   }
 
