@@ -9,6 +9,7 @@ import './styles/App.scss';
 import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
 import Modal from './components/Modal';
+import * as moment from 'moment';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     super(props);
 
     this.selectPersonRequested = React.createRef();
+    this.allList = [];
 
     this.state= {
       info: {
@@ -66,6 +68,8 @@ class App extends Component {
     this.deselectOption = this.deselectOption.bind(this);
     this.showList = this.showList.bind(this);
     this.getStartDate =  this.getStartDate.bind(this);
+    this.getEndDate =  this.getEndDate.bind(this);
+    this.filterDate = this.filterDate.bind(this);
 
   }
 
@@ -296,6 +300,7 @@ class App extends Component {
                 this.setState({
                   results: results
                 })
+                this.allList = results;
   })};
 
   // FUNCTIONS FOR THE FILTER
@@ -316,19 +321,39 @@ class App extends Component {
     });
   }
 
-  filterDate(results){
-    const userStartDate= this.state.startDate;
+  filterDate(){
 
-    //Convertimos la fecha de entrada en una fecha de moment
-    // var day = moment("1995-12-25");
+    const results = this.state.results;
+    const startDate= this.state.startDate;
+    const endDate = this.state.endDate;
+    const formatDate = 'DD/MM/YYYY';
 
+    //Convertimos la fecha de entrada en una fecha de moment "1995-12-25"
+    const momentStartDate = moment(startDate, formatDate);
+    const momentEndDate = moment(endDate, formatDate);
 
-    const filteredResults = results.filter(item =>{
-      if(item.loggedAt.split("T")[0].split("-").reverse().join("/") >= userStartDate ){
-        return true;
-      }else{
-        return false;
-      }
+    //recorremos el array y filtramos
+    // const filteredResults = results.filter(item =>
+    //   moment(item).isBetween(momentStartDate, momentEndDate)
+    // );
+    const filteredResults = this.allList.filter(item =>{
+
+      const callDate = moment(item.loggedAt, 'YYYY-MM-DD');
+      //Aplicamos el metodo isBetween de la libreria Moment: https://momentjs.com/docs/#/query/is-between/
+      // const moment2 = moment;
+      // debugger
+      return callDate.isBetween(momentStartDate, momentEndDate) || callDate.isSame(momentEndDate) || callDate.isSame(momentStartDate); //true o false
+
+    });
+
+    // this.setState(preState => {
+    //   return {
+    //     results: filteredResults
+    //   }
+    // });
+
+    this.setState({
+      results: filteredResults
     });
 
     return filteredResults;
@@ -350,7 +375,7 @@ class App extends Component {
                         <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
                         />
                         )}/>
-                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate}/>)}/>
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate} actionGetEndDate= {this.getEndDate} actionFilterDate={this.filterDate}/>)}/>
                   </Fragment>
                 </Switch>
              </div>
