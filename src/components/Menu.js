@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import plus from '../images/plus.svg';
+import pluswhite from '../images/plus_white.svg';
 import PropTypes from 'prop-types';
 import { NavLink, Route, Switch } from 'react-router-dom';
 
@@ -12,12 +13,15 @@ class Menu extends Component {
         return (
             <nav className="menu">
                 <div className="menu__container">
+              
                     <div className="newCall__circle">
                         <img src={plus} className="newCall__icon--img" alt="plus" />
                     </div>
+                
                     
                     <div className="menu__newCall">
-                        <NavLink exact to="/" className="call__link" activeClassName="is-active"><p className="newCall__title">Nueva Llamada</p></NavLink>
+                        <NavLink exact to="/" className="call__link" activeClassName="is-active"><p className="newCall__title">Nueva Llamada</p>
+                        </NavLink>
                     </div>
 
                     <div>

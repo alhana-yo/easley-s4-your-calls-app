@@ -37,8 +37,10 @@ body {
 .header__appLogo {
   margin: 53px 40px 32px 0px; 
   height: 0;
-  background-color: purple;
 }
+// .menu__newCall::before {
+//  content: " " url('../images/plus_white.svg');
+// }
 
 .newCall__circle {
   left: -85px; 
@@ -77,6 +79,7 @@ body {
   margin: 0;
   padding-left: 50px; 
 }
+
 
 .call__link {
   color: $color-blue;
