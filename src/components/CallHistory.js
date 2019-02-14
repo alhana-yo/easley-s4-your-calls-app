@@ -20,7 +20,7 @@ class CallHistory extends Component {
                         <div className="main__subtitle--date-container">
                             <div className="dateStart">
                               <label htmlFor="dateStart" ></label>
-                              <input id="dateStart" type="text" className="" placeholder="Fecha entrada"/>
+                              <input id="dateStart" type="text" className="" placeholder="Fecha entrada" onKeyUp={this.props.actionGetStartDate}/>
                             </div>
                             <div className="dateEnd">
                               <label htmlFor="dateEnd" ></label>

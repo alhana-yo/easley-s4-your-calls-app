@@ -29,7 +29,7 @@ class App extends Component {
         email:"",
         telephone: 0,
         action:"",
-        message:"",    
+        message:"",
       },
       errorIncomingData:"hidden",
       errorCallAction: "hidden",
@@ -46,8 +46,8 @@ class App extends Component {
       results: [],
       startDate: "",
       endDate: ""
-    
-      
+
+
   }
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
@@ -65,6 +65,7 @@ class App extends Component {
     this.sendForm = this.sendForm.bind(this);
     this.deselectOption = this.deselectOption.bind(this);
     this.showList = this.showList.bind(this);
+    this.getStartDate =  this.getStartDate.bind(this);
 
   }
 
@@ -85,7 +86,7 @@ class App extends Component {
     const newInfo = { ...info, name: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
-  
+
   getCompany(event) {
     const { info } = this.state;
     const newInfo = { ...info, company: event.currentTarget.value };
@@ -137,11 +138,11 @@ class App extends Component {
       callBackCheck:false
       };
     }
-  
+
   }else {
     if (!this.state.callBackCheck){
-      state = { 
-        info: newInfo, 
+      state = {
+        info: newInfo,
         callAgainClass: '',
         callBackClass: 'selectedClass',
         redialCheck:false,
@@ -180,7 +181,7 @@ class App extends Component {
   sendForm(event){
     event.preventDefault();
     this.isEmptyOrNot();
-   
+
   }
 
   isEmptyOrNot(){
@@ -198,13 +199,13 @@ class App extends Component {
       });
 
       } else if (incomingInfo.message === ""){
-      
+
       this.setState({
         errorIncomingData: "hidden",
         errorCallAction:"",
         errorPerson: "hidden",
         errorMessage:""
-        
+
       });
 
 
@@ -214,19 +215,19 @@ class App extends Component {
         errorCallAction:"hidden",
         errorPerson: "hidden",
         errorMessage:"hidden"
-      }); 
+      });
 
       this.sendInfo();
       this.sendSlackInfo();
     }
   }
-  
+
 
 
   deselectOption(){
 
     const addedBy= this.state.info.addedBy;
-   
+
     if(addedBy!==""){
       const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
@@ -241,7 +242,7 @@ class App extends Component {
         }
 
       }
-      
+
     }
 
   }
@@ -258,7 +259,7 @@ class App extends Component {
       else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
       ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
-      
+
     }else{
 
       return message;
@@ -266,7 +267,7 @@ class App extends Component {
   }
 
   sendSlackInfo(){
-    
+
     const message = this.makeMessage();
     const key = KEYS.SLACK_KEY;
 
@@ -292,19 +293,48 @@ class App extends Component {
   showList() {
     getList()
     .then(results => {
-            //const x= results.filter
                 this.setState({
                   results: results
                 })
   })};
 
-// filterDate(){
-//   const dateFiltered = this.state.results.filter(item =>{
-//     return(item.loggedAt)  
-//   });
-// }  
+  // FUNCTIONS FOR THE FILTER
 
-  
+
+  getStartDate(e) {
+    const userQuery = e.currentTarget.value;
+    this.setState({
+      startDate: userQuery
+    });
+  }
+
+
+  getEndDate(e) {
+    const userQuery = e.currentTarget.value;
+    this.setState({
+      endDate: userQuery
+    });
+  }
+
+  filterDate(results){
+    const userStartDate= this.state.startDate;
+
+    //Convertimos la fecha de entrada en una fecha de moment
+    // var day = moment("1995-12-25");
+
+
+    const filteredResults = results.filter(item =>{
+      if(item.loggedAt.split("T")[0].split("-").reverse().join("/") >= userStartDate ){
+        return true;
+      }else{
+        return false;
+      }
+    });
+
+    return filteredResults;
+  }
+
+
   render() {
     const {errorPerson, errorIncomingData,errorCallAction, errorMessage, callBackClass, callAgainClass, redialCheck, callBackCheck} = this.state;
     const {preventSubmission, getWhoCalls, getRequestedEmployee, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, sendForm, deselectOption, selectPersonRequested } = this;
@@ -320,10 +350,10 @@ class App extends Component {
                         <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
                         />
                         )}/>
-                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results}/>)}/>
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate}/>)}/>
                   </Fragment>
                 </Switch>
-             </div> 
+             </div>
              <Route exact path="/" render={()=>(
                 <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
           </main>
