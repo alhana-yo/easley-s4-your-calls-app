@@ -116,16 +116,16 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 
-getCallAction(event) {
-  const { info } = this.state;
-  const newInfo = { ...info, action: event.currentTarget.value };
-  let state = {
-    info: newInfo,
-    callAgainClass: '',
-    callBackClass: '',
-    redialCheck:false,
-    callBackCheck:false
-  };
+  getCallAction(event) {
+    const { info } = this.state;
+    const newInfo = { ...info, action: event.currentTarget.value };
+    let state = {
+      info: newInfo,
+      callAgainClass: '',
+      callBackClass: '',
+      redialCheck:false,
+      callBackCheck:false
+    };
 
   if (event.currentTarget.id === 'redial'){
      if(!this.state.redialCheck) {
@@ -292,12 +292,17 @@ getCallAction(event) {
   showList() {
     getList()
     .then(results => {
- 
+            //const x= results.filter
                 this.setState({
                   results: results
                 })
   })};
 
+// filterDate(){
+//   const dateFiltered = this.state.results.filter(item =>{
+//     return(item.loggedAt)  
+//   });
+// }  
 
   
   render() {

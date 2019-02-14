@@ -16,7 +16,20 @@ class CallHistory extends Component {
                         <div className="main__title--message"><h2>Mensaje</h2></div>
                     </div>
                     <div className="main__subtitle">
-                        <div className="main__subtitle--date"><h4>87/87/87</h4></div>
+                    <form className="main__subtitle--date">
+                        <div className="main__subtitle--date-container">
+                            <div>
+                                <label></label>
+                                <input></input>
+                            </div>
+                            <div>
+                                <label></label>
+                                <input></input>
+                            </div>
+                        </div>
+                    </form>
+                            
+
                         <div className="main__sibtitle--name"><h4>Nombre</h4></div>
                         <div className="main__subtitle--company"><h4>Empresa</h4></div>
                         <div className="main__subtitle--other"><h4>Cargo / Detalles / Contacto</h4></div>
