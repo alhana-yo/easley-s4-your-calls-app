@@ -253,20 +253,21 @@ class App extends Component {
 
 
   makeMessage(){
+    const {name, position, company, otherInfo, email, telephone, action, message} = this.props;
 
-    let message=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+    let displayedMessage=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
 
-    if ((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0){
-      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
-      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+    if ((name!==''|| position!=='' || company!=='' || otherInfo!==''|| email!=='' )&&telephone===0){
+      return displayedMessage=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${name} \n${position} \n${company}  \n${email} \n${otherInfo} \n *Su mensaje ha sido* \n${action} \n${message}`;
     }
-      else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
-      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
-      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+      else if (name!==''|| position!=='' || company!=='' || otherInfo!==''|| email!=='' || telephone!==0){
+      return displayedMessage=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${name} \n${position} \n${company} \n${telephone} \n${email} \n${otherInfo} \n *Su mensaje ha sido* \n${action} \n${message}`;
 
     }else{
 
-      return message;
+      return displayedMessage;
     }
   }
 
