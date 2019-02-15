@@ -6,7 +6,6 @@ import CallHistory from './components/CallHistory';
 import { getData } from './services/getData';
 import { getList } from './services/getList';
 import './styles/App.scss';
-import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
 import Modal from './components/Modal';
 import * as moment from 'moment';
@@ -31,7 +30,7 @@ class App extends Component {
         email:"",
         telephone: 0,
         action:"",
-        message:"",    
+        message:"",
       },
       errorIncomingData:"hidden",
       errorCallAction: "hidden",
@@ -48,7 +47,7 @@ class App extends Component {
       results: [],
       startDate: "",
       endDate: ""
-      
+
   };
 //   console.log('paco');
 // console.log(process.env.REACT_APP_PACO);
@@ -91,7 +90,7 @@ class App extends Component {
     const newInfo = { ...info, name: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
-  
+
   getCompany(event) {
     const { info } = this.state;
     const newInfo = { ...info, company: event.currentTarget.value };
@@ -143,11 +142,11 @@ getCallAction(event) {
       callBackCheck:false
       };
     }
-  
+
   }else {
     if (!this.state.callBackCheck){
-      state = { 
-        info: newInfo, 
+      state = {
+        info: newInfo,
         callAgainClass: '',
         callBackClass: 'selectedClass',
         redialCheck:false,
@@ -186,7 +185,7 @@ getCallAction(event) {
   sendForm(event){
     event.preventDefault();
     this.isEmptyOrNot();
-   
+
   }
 
   isEmptyOrNot(){
@@ -204,13 +203,13 @@ getCallAction(event) {
       });
 
       } else if (incomingInfo.message === ""){
-      
+
       this.setState({
         errorIncomingData: "hidden",
         errorCallAction:"",
         errorPerson: "hidden",
         errorMessage:""
-        
+
       });
 
 
@@ -220,19 +219,19 @@ getCallAction(event) {
         errorCallAction:"hidden",
         errorPerson: "hidden",
         errorMessage:"hidden"
-      }); 
+      });
 
       this.sendInfo();
       this.sendSlackInfo();
     }
   }
-  
+
 
 
   deselectOption(){
 
     const addedBy= this.state.info.addedBy;
-   
+
     if(addedBy!==""){
       const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
@@ -247,7 +246,7 @@ getCallAction(event) {
         }
 
       }
-      
+
     }
 
   }
@@ -264,7 +263,7 @@ getCallAction(event) {
       else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
       ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
-      
+
     }else{
 
       return message;
@@ -272,12 +271,10 @@ getCallAction(event) {
   }
 
   sendSlackInfo(){
-    
+
     const message = this.makeMessage();
-    let key = KEYS.SLACK_KEY;
-    if (process.env.NODE_ENV === 'production') {
-      key = process.env.REACT_APP_SKEY;
-    }
+    const key = process.env.REACT_APP_SKEY;
+
 
     const settings = {
       url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
@@ -301,15 +298,15 @@ getCallAction(event) {
   showList() {
     getList()
     .then(results => {
- 
+
                 this.setState({
                   results: results
                 })
                 this.wholeList=results;
   })};
 
-  // FUNCTIONS FOR THE FILTER
 
+  // FUNCTIONS FOR THE FILTER
 
   getStartDate(e) {
     const userQuery = e.currentTarget.value;
@@ -350,7 +347,7 @@ getCallAction(event) {
   }
 
 
-  
+
   render() {
     const {errorPerson, errorIncomingData,errorCallAction, errorMessage, callBackClass, callAgainClass, redialCheck, callBackCheck} = this.state;
     const {preventSubmission, getWhoCalls, getRequestedEmployee, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, sendForm, deselectOption, selectPersonRequested } = this;
@@ -369,7 +366,7 @@ getCallAction(event) {
                     <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate} actionGetEndDate= {this.getEndDate} actionFilterDate={this.filterDate}/>)}/>
                   </Fragment>
                 </Switch>
-             </div> 
+             </div>
              <Route exact path="/" render={()=>(
                 <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
           </main>
