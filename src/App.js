@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
-import tick from './images/tick.png';
+import CallHistory from './components/CallHistory';
+import { getData } from './services/getData';
+import { getList } from './services/getList';
 import './styles/App.scss';
 import KEYS from './config';
+import { Route, Switch } from 'react-router-dom';
+import Modal from './components/Modal';
 
 
 class App extends Component {
@@ -35,7 +39,11 @@ class App extends Component {
       callAgainClass: "",
       callBackClass: "",
       redialCheck: false,
-      callBackCheck: false
+      callBackCheck: false,
+
+      //CALLHISTORY COMPONENT STATES
+
+      results: []
       
   }
 
@@ -53,6 +61,7 @@ class App extends Component {
     this.isEmptyOrNot = this.isEmptyOrNot.bind(this);
     this.sendForm = this.sendForm.bind(this);
     this.deselectOption = this.deselectOption.bind(this);
+    this.showList = this.showList.bind(this);
 
   }
 
@@ -157,25 +166,13 @@ getCallAction(event) {
 
   sendInfo() {
 
-    const ENDPOINT = 'https://adalab.interacso.com/call';
-
-      fetch(ENDPOINT, {
-
-              method: "POST",
-              body: JSON.stringify(this.state.info),
-              cache: "no-cache",
-              headers: {
-                  "content-type": "application/json"
-              }
-            })
-
-              .then(response=> response.json())
-              .then(response => console.log('Success:', JSON.stringify(response)))
-              .then(this.setState({
-                  succesMessage:""}))
-              .catch(error => console.error('Error:', error));
+      const info = this.state.info;
+      getData(info)
+        .then(response => console.log('Success:', JSON.stringify(response)))
+        .then(this.setState({
+           succesMessage:""}))
+        .catch(error => console.error('Error:', error));
   }
-
 
   sendForm(event){
     event.preventDefault();
@@ -255,7 +252,7 @@ getCallAction(event) {
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
       ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
     }
-    else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
+      else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
       return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
       ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
       
@@ -289,23 +286,39 @@ getCallAction(event) {
     .catch(error => console.error('Error:', error));
   }
 
+  showList() {
+    getList()
+    .then(results => {
+ 
+                this.setState({
+                  results: results
+                })
+  })};
+
+
   
   render() {
+    const {errorPerson, errorIncomingData,errorCallAction, errorMessage, callBackClass, callAgainClass, redialCheck, callBackCheck} = this.state;
+    const {preventSubmission, getWhoCalls, getRequestedEmployee, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, sendForm, deselectOption, selectPersonRequested } = this;
     return (
       <div className="App">
         <Header />
-
-        <main className="main">
-          <div className="form__wrapper">
-      
-            <Menu />
-
-            <NewCall preventSubmission={this.preventSubmission} getWhoCalls={this.getWhoCalls} errorPerson={this.state.errorPerson} getRequestedEmployee ={this.getRequestedEmployee} errorIncomingData={this.state.errorIncomingData} getName={this.getName} getCompany={this.getCompany} getPosition={this.getPosition} getOtherInfo={this.getOtherInfo} getEmail={this.getEmail} getPhone={this.getPhone} errorCallAction={this.state.errorCallAction} getCallAction={this.getCallAction} getMessage={this.getMessage} errorMessage={this.state.errorMessage} sendForm={this.sendForm} deselectOption={this.deselectOption} selectPersonRequested ={this.selectPersonRequested} callBackClass={this.state.callBackClass} callAgainClass={this.state.callAgainClass} redialCheck={this.state.redialCheck} callBackCheck={this.state.callBackCheck}/>
-        
-          </div>
-          
-          <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
-        </main>
+          <main className="main">
+            <div className="form__wrapper">
+              <Menu/>
+                <Switch>
+                  <Fragment>
+                    <Route exact path="/" render={()=>(
+                        <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
+                        />
+                        )}/>
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results}/>)}/>
+                  </Fragment>
+                </Switch>
+             </div> 
+             <Route exact path="/" render={()=>(
+                <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
+          </main>
       </div>
     );
   }
