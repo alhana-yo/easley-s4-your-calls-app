@@ -381,15 +381,21 @@ position: relative;
 }
 .hidden {
   display: none;
-
 }
 
 
 //history form
+.main__subtitle--date {
+  display: flex;
+  height: 80px;
+  width: 150px;
+}
 
 .main__subtitle--date-container{
-  display: flex;
-  justify-content: space-around;
+}
+
+.dateStart {
+  margin-bottom: 4px;
 }
 
 .button__filter {

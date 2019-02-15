@@ -31,33 +31,33 @@ class CallHistory extends Component {
                     </div>
 
 
-                        <div className="main__sibtitle--name"><h4>Nombre</h4></div>
+                        <div className="main__subtitle--name"><h4>Nombre</h4></div>
                         <div className="main__subtitle--company"><h4>Empresa</h4></div>
                         <div className="main__subtitle--other"><h4>Cargo / Detalles / Contacto</h4></div>
                     </div>
-                    <ul className="list">
+                    <table className="list">
                         {results.map(item => {
                             return(
-                                <li className="list__item" key={item._id} >
+                                <tr className="list__item" key={item._id} >
                                     <div className="list__item--container">
                                         <div className="date">
-                                            <p className="date__day">{item.loggedAt.split("T")[0].split("-").reverse().join("/")}</p>
-                                            <p className="hour">{item.loggedAt.split("T")[1].split("", 5)}h</p>
+                                            <th scope="col" className="date__day">{item.loggedAt.split("T")[0].split("-").reverse().join("/")}</th>
+                                            <th className="hour">{item.loggedAt.split("T")[1].split("", 5)}</th>
                                         </div>
-                                        <p className="askfor">{item.personRequested}</p>
-                                        <p className="name">{item.name}</p>
-                                        <p className="company">{item.company}</p>
-                                        <p className="otherinfo">{item.position}{item.otherInfo}{item.email}{item.telephone}</p>
+                                        <th scope="col" className="askfor">{item.personRequested}</th>
+                                        <th scope="col" className="name">{item.name}</th>
+                                        <th scope="col" className="company">{item.company}</th>
+                                        <th scope="col" className="otherinfo">{item.position}{item.otherInfo}{item.email}{item.telephone}</th>
                                         <div className="messageAndAction">
                                             <p className="message">{item.message}</p>
                                             <p className="action">{item.action}</p>
                                         </div>
                                     </div>
-                                </li>
+                                </tr>
                             );
                         })}
 
-                    </ul>
+                    </table>
                 </div>
             </Fragment>
         );
