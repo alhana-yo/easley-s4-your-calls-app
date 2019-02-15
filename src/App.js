@@ -49,8 +49,7 @@ class App extends Component {
       endDate: ""
 
   };
-//   console.log('paco');
-// console.log(process.env.REACT_APP_PACO);
+
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);

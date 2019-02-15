@@ -1,6 +1,7 @@
 @import 'core/typography';
 @import 'core/settings';
 @import 'CallHistory';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 //HEADER
 
@@ -9,7 +10,7 @@ body {
 }
 .App {
   height: 100vh;
-  font-family: Favorit,'Times New Roman', Times, serif;
+  font-family: Favorit,'Open Sans', sans-serif;
 }
 
 .header {
@@ -173,7 +174,7 @@ position: relative;
   border-right: none;
   border-radius: 0;
   outline: none;
-  font-family: Favorit,'Times New Roman', Times, serif;
+  font-family: Favorit,'Open Sans', sans-serif;
   font-size: 16px;
   color: $color-grey;
   min-width: 448px;

@@ -94,10 +94,8 @@ class Form extends Component {
                                 </div>
                         </div>
 
-                     
                     </fieldset>
                 </div>
-
 
             </form>
 
