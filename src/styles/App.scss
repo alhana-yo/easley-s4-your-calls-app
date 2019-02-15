@@ -7,12 +7,12 @@
 body {
   background-color: $color-blacK;
 }
-.App{
+.App {
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
 }
 
-.header{
+.header {
   display: flex;
   max-width: 1700px;
   justify-content: space-between;
@@ -20,7 +20,7 @@ body {
 }
 
 .header__logo {
-  margin: 35px 0 35px 40px; 
+  margin: 35px 0 35px 40px;
 }
 
 .logo {
@@ -35,22 +35,50 @@ body {
 }
 
 .header__appLogo {
-  margin: 53px 40px 32px 0px; 
+  margin: 53px 40px 32px 0px;
   height: 0;
-  background-color: purple;
 }
 
-.newCall__circle {
-  left: -85px; 
-  top: 1px;
+.new-call__link {
+  color: $color-blue;
+}
+
+.new-call__link.is-active {
+  color: $color-white;
+}
+
+.call-back__link {
+  color: $color-blue;
+}
+
+.call-back__link.is-active {
+  color: $color-white;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.new-call__link::after {
+  content: '';
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 68px;
+  left: -85px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 68px;
-  background-color: #1D1D1D;
-  border-radius: 50px;
+  height: 68px;
+  border-radius: 50%;
+  background-image: url('../images/plus_white.svg');
+  background-color: $color-blue;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+.new-call__link.is-active::after {
+  background-image: url('../images/plus.svg');
+  background-color: $color-dark-grey;
 }
 
 .newCall__icon--img {
@@ -66,7 +94,6 @@ body {
   margin: 10px 0px 18px 0;
   font-weight: bold;
   font-size: 64px;
-
 }
 
 .newCall__title {
@@ -75,21 +102,8 @@ body {
 
 .historic__title {
   margin: 0;
-  padding-left: 50px; 
+  padding-left: 50px;
 }
-
-.call__link {
-  color: $color-blue;
-}
-
-.call__link.is-active {
-  color: $color-white;
-}
-
-a {
-  text-decoration: none;
-}
-
 
 //main//
 
@@ -98,7 +112,7 @@ a {
   margin: 0 auto;
 }
 
-.main{
+.main {
   color: $color-white;
   margin: 0 auto;
 }
@@ -121,7 +135,7 @@ a {
 
 // MAIN -- Menu navegación
 
-.menu{
+.menu {
   display: flex;
   justify-content: space-between;
 }
@@ -139,18 +153,18 @@ position: relative;
   margin-right: 60px;
 }
 
-.main__addedBy--title{
+.main__addedBy--title {
   font-size: 32px;
 }
 
-.incoming-data__fieldsContainer{
+.incoming-data__fieldsContainer {
   padding: 0;
   display: grid;
   grid-template-columns: 205px 205px;
   column-gap: 40px;
 }
 
-.main__employees{
+.main__employees {
   appearance: none;
   color: $color-grey;
   background-color: $color-blacK;
@@ -169,7 +183,7 @@ position: relative;
 
 //Style for who calls
 
-.incoming-data__container{
+.incoming-data__container {
   margin-top: 68px;
   padding: 0;
   display: grid;
@@ -177,17 +191,17 @@ position: relative;
   column-gap: 60px;
 }
 
-.incoming-data{
+.incoming-data {
   padding: 0;
 }
 
-.incoming-data__title{
+.incoming-data__title {
   margin: 0;
   font-size: 32px;
   line-height: 40px;
 }
 
-.incoming-data__input{
+.incoming-data__input {
   background-color: $color-blacK;
   height: 32px;
   width: 204px;
@@ -212,15 +226,15 @@ position: relative;
   line-height: 40px;
 }
 
-.main__personRequested{
+.main__personRequested {
   width: 450px;
 }
 
-.main__personRequested-title{
+.main__personRequested-title {
   font-size: 32px;
 }
 
-.call-container__radios{
+.call-container__radios {
   display: grid;
   grid-template-columns: 205px 205px;
   margin: 0;
@@ -232,7 +246,7 @@ position: relative;
   position: absolute;
   left: -1000px;
   height: 45px;
-  width: 65px; 
+  width: 65px;
 }
 
 
@@ -241,7 +255,6 @@ position: relative;
 }
 
 .fake-redial-button {
-
   color : $color-grey;
   background-color: $color-blacK;
   width: 200px;
@@ -271,15 +284,12 @@ position: relative;
   border: none;
   border-bottom: solid thin;
   outline: none;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   border-color: $color-white;
   display: flex;
   justify-self: flex-start;
   padding-left: 8px;
 }
-
-
-
 
 .message__input {
   width: 450px;
@@ -291,37 +301,26 @@ position: relative;
   border-bottom: solid thin;
   font-family: Favorit;
   font-size: 16px;
-  color: #9E9E9E;
+  color: $color-grey-fonts;
   outline: none;
   border-color: $color-white;
   padding: 0 0 0px 8px;
-  
-
 }
 
-.error-msg{
-  color: red;
-  border-top: 2px solid red;
- 
+.error-msg {
+  color: $color-red;
+  border-top: 2px solid $color-red;
 }
-
-
-.modal {
-  height: 100px;
-  width: 100vh;
-  background-color: $color-blue;
-  color: white;
-}
-
-
 
 .selectedClass {
-  background-color: white;
+  background-color: $color-white;
 }
+
 .button-register {
   display: flex;
   justify-content: flex-end;
 }
+
 .register {
   background: $color-blacK;
   color: $color-grey-fonts;
@@ -333,7 +332,6 @@ position: relative;
   height: 41px;
 }
 
-
 .tick {
   margin-bottom: 16px;
   height: 50px;
@@ -342,19 +340,21 @@ position: relative;
 
 .modal {
   height: 205px;
+  width: 100%;
   font-weight: bold;
   font-size: 18px;
   color: $color-white;
-  width: 100%;
+  background-color: $color-blue;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 42px;
 }
+
+
 .hidden {
   display: none;
-
 }
 
 
