@@ -38,23 +38,6 @@ body {
   margin: 53px 40px 32px 0px;
   height: 0;
 }
-// .menu__newCall::before {
-//  content: " " url('../images/plus_white.svg');
-// }
-
-// .newCall__circle {
-//   left: -85px;
-//   top: 1px;
-//   position: absolute;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 68px;
-//   width: 68px;
-//   background-color: #1D1D1D;
-//   border-radius: 50px;
-// }
-
 
 .new-call__link {
   color: $color-blue;
@@ -83,14 +66,14 @@ a {
   left: -80px;
   top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background-image: url('../images/plus_white.svg');
   background-color: $color-blue;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: 32px;
 
 }
 .new-call__link.is-active::after {
