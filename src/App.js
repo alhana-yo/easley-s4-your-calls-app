@@ -120,41 +120,89 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 
+// getCallAction(event) {
+//   const { info } = this.state;
+//   const newInfo = { ...info, action: event.currentTarget.value };
+//   let state = {
+//     info: newInfo,
+//     callAgainClass: '',
+//     callBackClass: '',
+//     redialCheck:false,
+//     callBackCheck:false
+//   };
+
+//   if (event.currentTarget.id === 'redial'){
+//      if(!this.state.redialCheck) {
+//       state = {
+//       info: newInfo,
+//       callAgainClass: 'selectedClass',
+//       callBackClass: '',
+//       redialCheck:true,
+//       callBackCheck:false
+//       };
+//     }
+
+//   }else {
+//     if (!this.state.callBackCheck){
+//       state = {
+//         info: newInfo,
+//         callAgainClass: '',
+//         callBackClass: 'selectedClass',
+//         redialCheck:false,
+//         callBackCheck:true
+
+//       };
+//     }
+//   }
+//   this.setState(state);
+// }
 getCallAction(event) {
-  const { info } = this.state;
-  const newInfo = { ...info, action: event.currentTarget.value };
-  let state = {
-    info: newInfo,
-    callAgainClass: '',
-    callBackClass: '',
-    redialCheck:false,
-    callBackCheck:false
-  };
 
-  if (event.currentTarget.id === 'redial'){
-     if(!this.state.redialCheck) {
-      state = {
+  console.log(event.currentTarget.value);
+  this.setState((prevState)=>{
+
+    const { info, callAgainClass, callBackClass,redialCheck, callBackCheck } = prevState;
+    const newInfo = { ...info, action: event.currentTarget.value };
+    let state = {
       info: newInfo,
-      callAgainClass: 'selectedClass',
-      callBackClass: '',
-      redialCheck:true,
-      callBackCheck:false
-      };
-    }
+      callAgainClass: callAgainClass,
+      callBackClass: callBackClass,
+      redialCheck:redialCheck,
+      callBackCheck:callBackCheck
+    };
 
-  }else {
-    if (!this.state.callBackCheck){
-      state = {
+    if (event.currentTarget.id === 'redial'){
+       if(!prevState.redialCheck) {
+        state = {
         info: newInfo,
-        callAgainClass: '',
-        callBackClass: 'selectedClass',
-        redialCheck:false,
-        callBackCheck:true
+        callAgainClass: 'selectedClass',
+        callBackClass: '',
+        redialCheck:true,
+        callBackCheck:false
+        };
+      }
 
-      };
+    }else {
+      if (!prevState.callBackCheck){
+        state = {
+          info: newInfo,
+          callAgainClass: '',
+          callBackClass: 'selectedClass',
+          redialCheck:false,
+          callBackCheck:true
+
+        };
+      }
     }
-  }
-  this.setState(state);
+    return ({
+      info: state.info,
+      callAgainClass: state.callAgainClass,
+      callBackClass: state.callBackClass,
+      redialCheck: state.redialCheck,
+      callBackCheck: state.callBackCheck
+    })
+
+  });
 }
 
 
