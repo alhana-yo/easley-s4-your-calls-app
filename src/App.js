@@ -9,6 +9,7 @@ import './styles/App.scss';
 import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
 import Modal from './components/Modal';
+import * as moment from 'moment';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     super(props);
 
     this.selectPersonRequested = React.createRef();
+    this.wholeList = [];
 
     this.state= {
       info: {
@@ -43,11 +45,13 @@ class App extends Component {
 
       //CALLHISTORY COMPONENT STATES
 
-      results: []
+      results: [],
+      startDate: "",
+      endDate: ""
       
   };
-  console.log('paco');
-console.log(process.env.REACT_APP_PACO);
+//   console.log('paco');
+// console.log(process.env.REACT_APP_PACO);
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -64,6 +68,9 @@ console.log(process.env.REACT_APP_PACO);
     this.sendForm = this.sendForm.bind(this);
     this.deselectOption = this.deselectOption.bind(this);
     this.showList = this.showList.bind(this);
+    this.getStartDate = this.getStartDate.bind(this);
+    this.getEndDate = this.getEndDate.bind(this);
+    this.filterDate = this.filterDate.bind(this);
 
   }
 
@@ -298,7 +305,49 @@ getCallAction(event) {
                 this.setState({
                   results: results
                 })
+                this.wholeList=results;
   })};
+
+  // FUNCTIONS FOR THE FILTER
+
+
+  getStartDate(e) {
+    const userQuery = e.currentTarget.value;
+    this.setState({
+      startDate: userQuery
+    });
+  }
+
+
+  getEndDate(e) {
+    const userQuery = e.currentTarget.value;
+    this.setState({
+      endDate: userQuery
+    });
+  }
+
+
+  filterDate () {
+    const userStartDate = this.state.startDate;
+    const userEndDate = this.state.endDate;
+    const results = this.wholeList;
+    console.log(results);
+
+    const momentStartDate = moment(userStartDate, "DD/MM/YYYY");
+    const momentEndDate = moment(userEndDate, "DD/MM/YYYY");
+
+    const filteredResults = results.filter(item => {
+      let date= item.loggedAt;
+      let momentDate = moment(date, "YYYY-MM-DD");
+      return momentDate.isBetween(momentStartDate, momentEndDate, null, '[]');
+
+    });
+
+    this.setState({
+      results: filteredResults
+    });
+
+  }
 
 
   
@@ -317,7 +366,7 @@ getCallAction(event) {
                         <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
                         />
                         )}/>
-                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results}/>)}/>
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate} actionGetEndDate= {this.getEndDate} actionFilterDate={this.filterDate}/>)}/>
                   </Fragment>
                 </Switch>
              </div> 
