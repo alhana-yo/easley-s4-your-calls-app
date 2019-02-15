@@ -45,8 +45,6 @@ class App extends Component {
       results: []
       
   };
-  console.log('paco');
-console.log(process.env.REACT_APP_PACO);
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -266,7 +264,7 @@ getCallAction(event) {
   sendSlackInfo(){
     
     const message = this.makeMessage();
-    let key = process.env.REACT_APP_SKEY;
+    const key = process.env.REACT_APP_SKEY;
     
 
     const settings = {
