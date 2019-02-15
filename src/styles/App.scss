@@ -20,7 +20,7 @@ body {
 }
 
 .header__logo {
-  margin: 35px 0 35px 40px; 
+  margin: 35px 0 35px 40px;
 }
 
 .logo {
@@ -35,13 +35,13 @@ body {
 }
 
 .header__appLogo {
-  margin: 53px 40px 32px 0px; 
+  margin: 53px 40px 32px 0px;
   height: 0;
   background-color: purple;
 }
 
 .newCall__circle {
-  left: -85px; 
+  left: -85px;
   top: 1px;
   position: absolute;
   display: flex;
@@ -75,7 +75,7 @@ body {
 
 .historic__title {
   margin: 0;
-  padding-left: 50px; 
+  padding-left: 50px;
 }
 
 .call__link {
@@ -232,7 +232,7 @@ position: relative;
   position: absolute;
   left: -1000px;
   height: 45px;
-  width: 65px; 
+  width: 65px;
 }
 
 
@@ -271,7 +271,7 @@ position: relative;
   border: none;
   border-bottom: solid thin;
   outline: none;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   border-color: $color-white;
   display: flex;
   justify-self: flex-start;
@@ -295,14 +295,41 @@ position: relative;
   outline: none;
   border-color: $color-white;
   padding: 0 0 0px 8px;
-  
+
 
 }
 
 .error-msg{
+  position: absolute;
+  padding-left: 8px;
+  width: 448px;
+  z-index: 100;
+  margin-top: -2px;
   color: red;
   border-top: 2px solid red;
- 
+
+}
+
+.error-msg-who{
+  position: absolute;
+  padding-left: 8px;
+  width: 448px;
+  margin-top: 8px;
+  z-index: 100;
+  color: red;
+  border-top: 2px solid red;
+
+}
+
+.error-msg-textarea{
+  position: absolute;
+  padding-left: 8px;
+  width: 450px;
+  margin-top: -6px;
+  z-index: 100;
+  color: red;
+  border-top: 2px solid red;
+
 }
 
 
@@ -363,4 +390,8 @@ position: relative;
 .main__subtitle--date-container{
   display: flex;
   justify-content: space-around;
+}
+
+.button__filter {
+
 }

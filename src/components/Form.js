@@ -25,12 +25,12 @@ class Form extends Component {
 
                         <div className="main__personRequested">
                             <h2 className="main__personRequested-title">¿Por quién preguntaban?</h2>
-                            <p className={`error-msg ${errorPerson}`}>Debes seleccionar un empleado</p>
                             <select className="main__employees" onChange={getRequestedEmployee} onClick={deselectOption} ref={selectPersonRequested}required>
                                 <option className="option" value="Elige un empleado" >Elige un empleado</option>
                                 <option value="Carlos" >Carlos</option>
                                 <option value="Pepa">Pepa</option>
                             </select>
+                            <p className={`error-msg ${errorPerson}`}>Debes seleccionar un empleado</p>
                         </div>
                     </div>
                 </fieldset>
@@ -39,7 +39,7 @@ class Form extends Component {
                     <fieldset className="form-section incoming-data">
 
                         <h2 className="incoming-data__title">¿Quién llamó?</h2>
-                        <p className={`error-msg ${errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
+                        <p className={`error-msg-who ${errorIncomingData}`}>Debes rellenar al menos uno de los campos</p>
 
                         <div className="incoming-data__fieldsContainer">
 
@@ -90,11 +90,11 @@ class Form extends Component {
                                 <div className="message_container">
                                     <label htmlFor="message" className="message__label label">Mensaje personalizado</label>
                                     <textarea name="message" id="message" className="message__input" placeholder="Mensaje personalizado" onKeyUp={getMessage}></textarea>
-                                    <p className={`error-msg ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
+                                    <p className={`error-msg-textarea ${errorMessage}`}>Debes rellenar el campo del mensaje.</p>
                                 </div>
                         </div>
 
-                     
+
                     </fieldset>
                 </div>
 
