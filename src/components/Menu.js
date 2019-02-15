@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import plus from '../images/plus.svg';
-import pluswhite from '../images/plus_white.svg';
+// import plus from '../images/plus.svg';
+// import pluswhite from '../images/plus_white.svg';
 import PropTypes from 'prop-types';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 

@@ -56,6 +56,27 @@ body {
 // }
 
 
+.new-call__link {
+  color: $color-blue;
+}
+
+.new-call__link.is-active {
+  color: $color-white;
+}
+
+.call-back__link {
+  color: $color-blue;
+}
+
+.call-back__link.is-active {
+  color: $color-white;
+}
+
+a {
+  text-decoration: none;
+}
+
+
 .new-call__link::after {
   content: '';
   position: absolute;
@@ -64,18 +85,18 @@ body {
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
-  // background: url(https://placehold.it/50x50) center center no-repeat;
-  // background-size: cover;
-
   border-radius: 50%;
   background-image: url('../images/plus_white.svg');
+  background-color: $color-blue;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
 }
 .new-call__link.is-active::after {
-  opacity: .5;
   background-image: url('../images/plus.svg');
+  background-color: $color-dark-grey;
+
 }
 
 .newCall__icon--img {
@@ -104,25 +125,6 @@ body {
 }
 
 
-.new-call__link {
-  color: $color-blue;
-}
-
-.new-call__link.is-active {
-  color: $color-white;
-}
-
-.call-back__link {
-  color: $color-blue;
-}
-
-.call-back__link.is-active {
-  color: $color-white;
-}
-
-a {
-  text-decoration: none;
-}
 
 
 //main//
