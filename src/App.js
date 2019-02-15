@@ -11,7 +11,6 @@ import { Route, Switch } from 'react-router-dom';
 import Modal from './components/Modal';
 import * as moment from 'moment';
 
-
 class App extends Component {
 
   constructor(props){
@@ -19,6 +18,7 @@ class App extends Component {
 
     this.selectPersonRequested = React.createRef();
     this.allList = [];
+
 
     this.state= {
       info: {
@@ -322,42 +322,26 @@ class App extends Component {
     });
   }
 
-  filterDate(){
 
-    const results = this.state.results;
-    const startDate= this.state.startDate;
-    const endDate = this.state.endDate;
-    const formatDate = 'DD/MM/YYYY';
+  filterDate () {
+    const userStartDate = this.state.startDate;
+    const userEndDate = this.state.endDate;
+    const results = this.allList;
 
-    //Convertimos la fecha de entrada en una fecha de moment "1995-12-25"
-    const momentStartDate = moment(startDate, formatDate);
-    const momentEndDate = moment(endDate, formatDate);
+    const momentStartDate = moment(userStartDate, "DD/MM/YYYY");
+    const momentEndDate = moment(userEndDate, "DD/MM/YYYY");
 
-    //recorremos el array y filtramos
-    // const filteredResults = results.filter(item =>
-    //   moment(item).isBetween(momentStartDate, momentEndDate)
-    // );
-    const filteredResults = this.allList.filter(item =>{
-
-      const callDate = moment(item.loggedAt, 'YYYY-MM-DD');
-      //Aplicamos el metodo isBetween de la libreria Moment: https://momentjs.com/docs/#/query/is-between/
-      // const moment2 = moment;
-      // debugger
-      return callDate.isBetween(momentStartDate, momentEndDate) || callDate.isSame(momentEndDate) || callDate.isSame(momentStartDate); //true o false
+    const filteredResults = results.filter(item => {
+      let date= item.loggedAt;
+      let momentDate = moment(date, "YYYY-MM-DD");
+      return momentDate.isBetween(momentStartDate, momentEndDate, null, '[]');
 
     });
-
-    // this.setState(preState => {
-    //   return {
-    //     results: filteredResults
-    //   }
-    // });
 
     this.setState({
       results: filteredResults
     });
 
-    return filteredResults;
   }
 
 
