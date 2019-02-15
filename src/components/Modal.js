@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import tick from '../images/tick.png';
+import tick from '../images/tick.svg';
 
 class Modal extends Component {
   render() {

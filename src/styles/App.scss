@@ -308,8 +308,35 @@ position: relative;
 }
 
 .error-msg {
+  position: absolute;
+  padding-left: 8px;
+  width: 448px;
+  z-index: 100;
+  margin-top: -2px;
   color: $color-red;
   border-top: 2px solid $color-red;
+}
+
+.error-msg-who{
+  position: absolute;
+  padding-left: 8px;
+  width: 448px;
+  margin-top: 8px;
+  z-index: 100;
+  color: red;
+  border-top: 2px solid red;
+
+}
+
+.error-msg-textarea{
+  position: absolute;
+  padding-left: 8px;
+  width: 450px;
+  margin-top: -6px;
+  z-index: 100;
+  color: red;
+  border-top: 2px solid red;
+
 }
 
 .selectedClass {
@@ -355,6 +382,24 @@ position: relative;
 
 .hidden {
   display: none;
+}
+
+//history form
+.main__subtitle--date {
+  display: flex;
+  height: 80px;
+  width: 150px;
+}
+
+.main__subtitle--date-container{
+}
+
+.dateStart {
+  margin-bottom: 4px;
+}
+
+.button__filter {
+
 }
 
 

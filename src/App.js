@@ -275,7 +275,6 @@ getCallAction(event) {
     const message = this.makeMessage();
     const key = process.env.REACT_APP_SKEY;
 
-
     const settings = {
       url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
       method: 'POST',

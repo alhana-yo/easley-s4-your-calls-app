@@ -22,14 +22,14 @@ class CallHistory extends Component {
                         <div className="main__subtitle--date-container">
                             <div className="dateStart">
                               <label htmlFor="dateStart" ></label>
-                              <input id="dateStart" type="text" className="" placeholder="Fecha entrada: 1995-12-25" onKeyUp={this.props.actionGetStartDate}/>
+                              <input id="dateStart" type="text" className="" placeholder="Desde: 26/02/1991" onKeyUp={this.props.actionGetStartDate}/>
                             </div>
                             <div className="dateEnd">
                               <label htmlFor="dateEnd" ></label>
-                              <input id="dateEnd" type="text" className="" placeholder="Fecha salida: 1995-12-25" onKeyUp={this.props.actionGetEndDate}/>
+                               <input id="dateEnd" type="text" className="" placeholder="Hasta: 26/03/2019" onKeyUp={this.props.actionGetEndDate}/>
                             </div>
                         </div>
-                        <button onClick={actionFilterDate}>Filtrar</button>
+                        <button className="button__filter" onClick={actionFilterDate}>Filtrar</button>
                     </div>
 
 
