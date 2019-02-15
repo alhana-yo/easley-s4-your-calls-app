@@ -6,7 +6,6 @@ import CallHistory from './components/CallHistory';
 import { getData } from './services/getData';
 import { getList } from './services/getList';
 import './styles/App.scss';
-import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
 import Modal from './components/Modal';
 
@@ -267,10 +266,8 @@ getCallAction(event) {
   sendSlackInfo(){
     
     const message = this.makeMessage();
-    let key = KEYS.SLACK_KEY;
-    if (process.env.NODE_ENV === 'production') {
-      key = process.env.REACT_APP_SKEY;
-    }
+    let key = process.env.REACT_APP_SKEY;
+    
 
     const settings = {
       url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
