@@ -3,14 +3,13 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import NewCall from './components/NewCall';
 import CallHistory from './components/CallHistory';
-import tick from './images/tick.png';
 import { getData } from './services/getData';
 import { getList } from './services/getList';
 import './styles/App.scss';
 import KEYS from './config';
 import { Route, Switch } from 'react-router-dom';
-
-
+import Modal from './components/Modal';
+import * as moment from 'moment';
 
 class App extends Component {
 
@@ -18,6 +17,8 @@ class App extends Component {
     super(props);
 
     this.selectPersonRequested = React.createRef();
+    this.allList = [];
+
 
     this.state= {
       info: {
@@ -30,7 +31,7 @@ class App extends Component {
         email:"",
         telephone: 0,
         action:"",
-        message:"",    
+        message:"",
       },
       errorIncomingData:"hidden",
       errorCallAction: "hidden",
@@ -44,8 +45,11 @@ class App extends Component {
 
       //CALLHISTORY COMPONENT STATES
 
-      results: []
-      
+      results: [],
+      startDate: "",
+      endDate: ""
+
+
   }
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
@@ -63,6 +67,9 @@ class App extends Component {
     this.sendForm = this.sendForm.bind(this);
     this.deselectOption = this.deselectOption.bind(this);
     this.showList = this.showList.bind(this);
+    this.getStartDate =  this.getStartDate.bind(this);
+    this.getEndDate =  this.getEndDate.bind(this);
+    this.filterDate = this.filterDate.bind(this);
 
   }
 
@@ -83,7 +90,7 @@ class App extends Component {
     const newInfo = { ...info, name: event.currentTarget.value };
     this.setState({ info: newInfo });
   }
-  
+
   getCompany(event) {
     const { info } = this.state;
     const newInfo = { ...info, company: event.currentTarget.value };
@@ -114,16 +121,16 @@ class App extends Component {
     this.setState({ info: newInfo });
   }
 
-getCallAction(event) {
-  const { info } = this.state;
-  const newInfo = { ...info, action: event.currentTarget.value };
-  let state = {
-    info: newInfo,
-    callAgainClass: '',
-    callBackClass: '',
-    redialCheck:false,
-    callBackCheck:false
-  };
+  getCallAction(event) {
+    const { info } = this.state;
+    const newInfo = { ...info, action: event.currentTarget.value };
+    let state = {
+      info: newInfo,
+      callAgainClass: '',
+      callBackClass: '',
+      redialCheck:false,
+      callBackCheck:false
+    };
 
   if (event.currentTarget.id === 'redial'){
      if(!this.state.redialCheck) {
@@ -135,11 +142,11 @@ getCallAction(event) {
       callBackCheck:false
       };
     }
-  
+
   }else {
     if (!this.state.callBackCheck){
-      state = { 
-        info: newInfo, 
+      state = {
+        info: newInfo,
         callAgainClass: '',
         callBackClass: 'selectedClass',
         redialCheck:false,
@@ -178,7 +185,7 @@ getCallAction(event) {
   sendForm(event){
     event.preventDefault();
     this.isEmptyOrNot();
-   
+
   }
 
   isEmptyOrNot(){
@@ -196,13 +203,13 @@ getCallAction(event) {
       });
 
       } else if (incomingInfo.message === ""){
-      
+
       this.setState({
         errorIncomingData: "hidden",
         errorCallAction:"",
         errorPerson: "hidden",
         errorMessage:""
-        
+
       });
 
 
@@ -212,19 +219,19 @@ getCallAction(event) {
         errorCallAction:"hidden",
         errorPerson: "hidden",
         errorMessage:"hidden"
-      }); 
+      });
 
       this.sendInfo();
       this.sendSlackInfo();
     }
   }
-  
+
 
 
   deselectOption(){
 
     const addedBy= this.state.info.addedBy;
-   
+
     if(addedBy!==""){
       const optionsArray= this.selectPersonRequested.current.getElementsByTagName("option");
 
@@ -239,32 +246,33 @@ getCallAction(event) {
         }
 
       }
-      
+
     }
 
   }
 
 
   makeMessage(){
+    const {name, position, company, otherInfo, email, telephone, action, message} = this.props;
 
-    let message=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+    let displayedMessage=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
 
-    if ((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0){
-      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
-      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+    if ((name!==''|| position!=='' || company!=='' || otherInfo!==''|| email!=='' )&&telephone===0){
+      return displayedMessage=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${name} \n${position} \n${company}  \n${email} \n${otherInfo} \n *Su mensaje ha sido* \n${action} \n${message}`;
     }
-      else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
-      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
-      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
-      
+      else if (name!==''|| position!=='' || company!=='' || otherInfo!==''|| email!=='' || telephone!==0){
+      return displayedMessage=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
+      ${name} \n${position} \n${company} \n${telephone} \n${email} \n${otherInfo} \n *Su mensaje ha sido* \n${action} \n${message}`;
+
     }else{
 
-      return message;
+      return displayedMessage;
     }
   }
 
   sendSlackInfo(){
-    
+
     const message = this.makeMessage();
     const key = KEYS.SLACK_KEY;
 
@@ -290,14 +298,53 @@ getCallAction(event) {
   showList() {
     getList()
     .then(results => {
- 
                 this.setState({
                   results: results
                 })
+                this.allList = results;
   })};
 
+  // FUNCTIONS FOR THE FILTER
 
-  
+
+  getStartDate(e) {
+    const userQuery = e.currentTarget.value;
+    this.setState({
+      startDate: userQuery
+    });
+  }
+
+
+  getEndDate(e) {
+    const userQuery = e.currentTarget.value;
+    this.setState({
+      endDate: userQuery
+    });
+  }
+
+
+  filterDate () {
+    const userStartDate = this.state.startDate;
+    const userEndDate = this.state.endDate;
+    const results = this.allList;
+
+    const momentStartDate = moment(userStartDate, "DD/MM/YYYY");
+    const momentEndDate = moment(userEndDate, "DD/MM/YYYY");
+
+    const filteredResults = results.filter(item => {
+      let date= item.loggedAt;
+      let momentDate = moment(date, "YYYY-MM-DD");
+      return momentDate.isBetween(momentStartDate, momentEndDate, null, '[]');
+
+    });
+
+    this.setState({
+      results: filteredResults
+    });
+
+  }
+
+
   render() {
     const {errorPerson, errorIncomingData,errorCallAction, errorMessage, callBackClass, callAgainClass, redialCheck, callBackCheck} = this.state;
     const {preventSubmission, getWhoCalls, getRequestedEmployee, getName, getCompany, getPosition, getOtherInfo, getEmail, getPhone, getCallAction, getMessage, sendForm, deselectOption, selectPersonRequested } = this;
@@ -310,15 +357,15 @@ getCallAction(event) {
                 <Switch>
                   <Fragment>
                     <Route exact path="/" render={()=>(
-                        <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}/>
+                        <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
+                        />
                         )}/>
-
-                   {/* <CallHistory actionShowList={this.showList} results={this.state.results}/> */}
-                    {/* <Route path="/callHistory" component={CallHistory}/> */}
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate} actionGetEndDate= {this.getEndDate} actionFilterDate={this.filterDate}/>)}/>
                   </Fragment>
                 </Switch>
-             </div> 
-              <div className={`modal ${this.state.succesMessage}`}> <img src={tick}alt="tick" className="tick"></img>La llamada a {this.state.info.personRequested} se ha registrado correctamente y ya se ha notificado.</div> 
+             </div>
+             <Route exact path="/" render={()=>(
+                <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
           </main>
       </div>
     );
