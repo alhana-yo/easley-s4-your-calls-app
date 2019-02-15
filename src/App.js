@@ -304,8 +304,8 @@ getCallAction(event) {
                 this.wholeList=results;
   })};
 
-  // FUNCTIONS FOR THE FILTER
 
+  // FUNCTIONS FOR THE FILTER
 
   getStartDate(e) {
     const userQuery = e.currentTarget.value;
