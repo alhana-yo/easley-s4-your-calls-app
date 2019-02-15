@@ -45,7 +45,9 @@ class App extends Component {
 
       results: []
       
-  }
+  };
+  console.log('paco');
+console.log(process.env.REACT_APP_PACO);
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -265,7 +267,10 @@ getCallAction(event) {
   sendSlackInfo(){
     
     const message = this.makeMessage();
-    const key = KEYS.SLACK_KEY;
+    let key = KEYS.SLACK_KEY;
+    if (process.env.NODE_ENV === 'production') {
+      key = process.env.REACT_APP_SKEY;
+    }
 
     const settings = {
       url: `https://slack.com/api/chat.postMessage?token=${key}&channel=%23your-calls-app&text=${message}&pretty=1`,
