@@ -1,9 +1,38 @@
 import React, { Component, Fragment } from 'react';
+import * as moment from 'moment';
+
+
+
+
+
 
 class CallHistory extends Component {
+  getDate(item){
+    let now = moment().format('YYYY-MM-DD');
+    let date= item.loggedAt;
+    let momentDate = moment(date, "YYYY-MM-DD").format('YYYY-MM-DD');
+    console.log('hola', now);
+        console.log('hola tio', momentDate);
+
+
+    if (moment(now).isSame(momentDate)){
+      console.log('dentro del if')
+    } else {
+      // return <p classNam="yesterday">AYER Y ANTERIORES</p>
+    // } else if (now.isBefore(momentDate) && )
+      console.log('soy el caso de anterior a hoy')
+
+    }
+
+  }
+
+  // if (now.isBefore(momentDate))
     componentDidMount(){
         this.props.actionShowList();
     }
+
+
+
     render() {
         const {results, actionFilterDate} = this.props;
         return (
@@ -48,6 +77,8 @@ class CallHistory extends Component {
                         </th>
                       </tr>
                         {results.map(item => {
+                          this.getDate(item);
+
                             return(
                                 <tr className="list__item" key={item._id} >
                                     <td>
