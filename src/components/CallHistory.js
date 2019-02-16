@@ -7,23 +7,40 @@ import * as moment from 'moment';
 
 
 class CallHistory extends Component {
-  getDate(item){
-    let now = moment().format('YYYY-MM-DD');
-    let date= item.loggedAt;
-    let momentDate = moment(date, "YYYY-MM-DD").format('YYYY-MM-DD');
-    console.log('hola', now);
-        console.log('hola tio', momentDate);
 
 
-    if (moment(now).isSame(momentDate)){
-      console.log('dentro del if')
-    } else {
-      // return <p classNam="yesterday">AYER Y ANTERIORES</p>
-    // } else if (now.isBefore(momentDate) && )
-      console.log('soy el caso de anterior a hoy')
+  printLine(item){
+    return (
+      <tr className="list__item" key={item._id} >
+      <td>
+              <p className="date__day">{item.loggedAt.split("T")[0].split("-").reverse().join("/")}</p>
+              <p className="hour">{item.loggedAt.split("T")[1].split("", 5)}h</p>
+      </td>
+      <td>
+          <p className="askfor">{item.personRequested}</p>
+      </td>
 
-    }
+      <td>
+          <p className="name">{item.name}</p>
+      </td>
+      <td>
+          <p className="company">{item.company}</p>
+      </td>
+      <td>
+          <p className="position">{item.position}</p>
+      </td>
+      <td>
+          <p className="otherinfo">{item.otherInfo}{item.email}{item.telephone}</p>
+      </td>
 
+      <td>
+
+              <p className="message">{item.message}</p>
+              <p className="action">{item.action}</p>
+      </td>
+
+  </tr>
+    );
   }
 
   // if (now.isBefore(momentDate))
@@ -77,39 +94,19 @@ class CallHistory extends Component {
                         </th>
                       </tr>
                         {results.map(item => {
-                          this.getDate(item);
 
-                            return(
-                                <tr className="list__item" key={item._id} >
-                                    <td>
-                                            <p className="date__day">{item.loggedAt.split("T")[0].split("-").reverse().join("/")}</p>
-                                            <p className="hour">{item.loggedAt.split("T")[1].split("", 5)}h</p>
-                                    </td>
-                                    <td>
-                                        <p className="askfor">{item.personRequested}</p>
-                                    </td>
+                            let now = moment().format('YYYY-MM-DD');
+                            let date= item.loggedAt;
+                            let momentDate = moment(date, "YYYY-MM-DD").format('YYYY-MM-DD');
 
-                                    <td>
-                                        <p className="name">{item.name}</p>
-                                    </td>
-                                    <td>
-                                        <p className="company">{item.company}</p>
-                                    </td>
-                                    <td>
-                                        <p className="position">{item.position}</p>
-                                    </td>
-                                    <td>
-                                        <p className="otherinfo">{item.otherInfo}{item.email}{item.telephone}</p>
-                                    </td>
+                            if (moment(now).isSame(momentDate)){
+                              return this.printLine(item);
+                            } else {
+                              // if ()
+                              console.log('ou yeah no sabemos como decirle el siguiente caso')
+                            }
 
-                                    <td>
 
-                                            <p className="message">{item.message}</p>
-                                            <p className="action">{item.action}</p>
-                                    </td>
-
-                                </tr>
-                            );
                         })}
 
                     </table>
