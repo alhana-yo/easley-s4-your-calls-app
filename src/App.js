@@ -357,17 +357,19 @@ getCallAction(event) {
             <div className="form__wrapper">
               <Menu/>
                 <Switch>
-                  <Fragment>
                     <Route exact path="/" render={()=>(
                         <NewCall preventSubmission={preventSubmission} getWhoCalls={getWhoCalls} errorPerson={errorPerson} getRequestedEmployee ={getRequestedEmployee} errorIncomingData={errorIncomingData} getName={getName} getCompany={getCompany} getPosition={getPosition} getOtherInfo={getOtherInfo} getEmail={getEmail} getPhone={getPhone} errorCallAction={errorCallAction} getCallAction={getCallAction} getMessage={getMessage} errorMessage={errorMessage} sendForm={sendForm} deselectOption={deselectOption} selectPersonRequested ={selectPersonRequested} callBackClass={callBackClass} callAgainClass={callAgainClass} redialCheck={redialCheck} callBackCheck={callBackCheck}
                         />
                         )}/>
-                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate} actionGetEndDate= {this.getEndDate} actionFilterDate={this.filterDate}/>)}/>
-                  </Fragment>
                 </Switch>
-             </div>
-             <Route exact path="/" render={()=>(
-                <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
+            </div>
+            <div className="main__wrapper--callHistory">
+                <Switch>
+                    <Route path="/callHistory" render={()=>(<CallHistory actionShowList={this.showList} results={this.state.results} actionGetStartDate= {this.getStartDate} actionGetEndDate= {this.getEndDate} actionFilterDate={this.filterDate}/>)}/>
+                </Switch>
+            </div>
+            <Route exact path="/" render={()=>(
+              <Modal sucess={this.state.succesMessage} personRequested={this.state.info.personRequested}  /> )}/>
           </main>
       </div>
     );

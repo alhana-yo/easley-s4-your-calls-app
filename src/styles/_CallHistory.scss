@@ -1,50 +1,63 @@
-.wrapper__callHistory{
-    max-width: 1900px;
-    position: relative;
+.wrapper__callHistory {
+  max-width: 1900px;
+  position: relative;
 }
-.table{
+
+.main__wrapper--callHistory {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.table {
   position: absolute;
   right: 60px ;
   margin-top: 64px;
   text-align: left;
-  border:0 solid #000;
-  border-collapse: separate;
-  border-spacing: 10px;
-
+  border-collapse: collapse;
 }
-.table__title{
+
+.table__title {
+  width: 242px;
   font-size: 24px;
   color:$color-grey;
   line-height: 29px;
-
 }
-.title__date{
+
+.title__date {
   color:$color-white;
   width: 149px;
   text-align: right;
 }
-.title__questions{
-  width: 192px;
-  text-align: left;
 
-}
-table, th, td {
-  border: 1px solid black;
-  border-bottom: 0.5px solid white;
-
-}
-.cell{
+.title__questions {
+  width: 242px;
+  padding-left: 45px;
   text-align: left;
 }
-.table__date{
-  text-align: right;
 
+tr {
+  border-collapse: collapse;
 }
-.table__date--item{
-  text-align: right;
 
+td {
+  padding-left: 45px;
+  border-collapse: collapse;
+  border-bottom: 1px solid $color-grey;
 }
- .date--item{
+
+.cell {
+  text-align: left;
+}
+
+.table__date {
+  text-align: right;
+}
+
+.table__date--item {
+  text-align: right;
+}
+
+.date--item {
    text-align: right;
 }
 
