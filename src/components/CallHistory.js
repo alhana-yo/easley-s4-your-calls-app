@@ -9,7 +9,7 @@ import * as moment from 'moment';
 class CallHistory extends Component {
 
 
-  printLine(item){
+  printRow(item){
     return (
       <tr className="list__item" key={item._id} >
       <td>
@@ -43,17 +43,32 @@ class CallHistory extends Component {
     );
   }
 
-  // if (now.isBefore(momentDate))
+    printTable(values) {
+      return values.map(item => this.printRow(item))
+    }
+
     componentDidMount(){
         this.props.actionShowList();
     }
 
-
-
     render() {
         const {results, actionFilterDate} = this.props;
+        const now = moment().format('YYYY-MM-DD');
+
+        //array donde almacenamos las llamadas de hoy
+        const today = results.filter(item => {
+          const loggedTime = moment(item.loggedAt, 'YYYY-MM-DD');
+          return loggedTime.isSame(now);
+        });
+
+        //array donde almacenamos el resto de llamadas
+        const others = results.filter(item => {
+          const loggedTime = moment(item.loggedAt, 'YYYY-MM-DD');
+          return !loggedTime.isSame(now);
+        });
+
         return (
-            <Fragment>
+
                 <div className="wrapper__callHistory">
 
 
@@ -93,25 +108,15 @@ class CallHistory extends Component {
                           <h4 colspan="2">Detalle</h4>
                         </th>
                       </tr>
-                        {results.map(item => {
-
-                            let now = moment().format('YYYY-MM-DD');
-                            let date= item.loggedAt;
-                            let momentDate = moment(date, "YYYY-MM-DD").format('YYYY-MM-DD');
-
-                            if (moment(now).isSame(momentDate)){
-                              return this.printLine(item);
-                            } else {
-                              // if ()
-                              console.log('ou yeah no sabemos como decirle el siguiente caso')
-                            }
-
-
-                        })}
+                        {this.printTable(today)}
+                        <th colspan="7">
+                          <h4>Ayer y Anteriores</h4>
+                        </th>
+                        {this.printTable(others)}
 
                     </table>
                 </div>
-            </Fragment>
+
         );
     }
 }
