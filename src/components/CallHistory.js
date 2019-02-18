@@ -1,13 +1,74 @@
 import React, { Component, Fragment } from 'react';
+import * as moment from 'moment';
+
+
+
+
+
 
 class CallHistory extends Component {
+
+
+  printRow(item){
+    return (
+      <tr className="list__item" key={item._id} >
+      <td>
+              <p className="date__day">{item.loggedAt.split("T")[0].split("-").reverse().join("/")}</p>
+              <p className="hour">{item.loggedAt.split("T")[1].split("", 5)}h</p>
+      </td>
+      <td>
+          <p className="askfor">{item.personRequested}</p>
+      </td>
+
+      <td>
+          <p className="name">{item.name}</p>
+      </td>
+      <td>
+          <p className="company">{item.company}</p>
+      </td>
+      <td>
+          <p className="position">{item.position}</p>
+      </td>
+      <td>
+          <p className="otherinfo">{item.otherInfo}{item.email}{item.telephone}</p>
+      </td>
+
+      <td>
+
+              <p className="message">{item.message}</p>
+              <p className="action">{item.action}</p>
+      </td>
+
+  </tr>
+    );
+  }
+
+    printTable(values) {
+      return values.map(item => this.printRow(item))
+    }
+
     componentDidMount(){
         this.props.actionShowList();
     }
+
     render() {
         const {results, actionFilterDate} = this.props;
+        const now = moment().format('YYYY-MM-DD');
+
+        //array donde almacenamos las llamadas de hoy
+        const today = results.filter(item => {
+          const loggedTime = moment(item.loggedAt, 'YYYY-MM-DD');
+          return loggedTime.isSame(now);
+        });
+
+        //array donde almacenamos el resto de llamadas
+        const others = results.filter(item => {
+          const loggedTime = moment(item.loggedAt, 'YYYY-MM-DD');
+          return !loggedTime.isSame(now);
+        });
+
         return (
-            <Fragment>
+
                 <div className="wrapper__callHistory">
 
 
@@ -47,43 +108,15 @@ class CallHistory extends Component {
                           <h4 colspan="2">Detalle</h4>
                         </th>
                       </tr>
-                        {results.map(item => {
-                            return(
-                                <tr className="list__item" key={item._id} >
-                                    <td>
-                                            <p className="date__day">{item.loggedAt.split("T")[0].split("-").reverse().join("/")}</p>
-                                            <p className="hour">{item.loggedAt.split("T")[1].split("", 5)}h</p>
-                                    </td>
-                                    <td>
-                                        <p className="askfor">{item.personRequested}</p>
-                                    </td>
-
-                                    <td>
-                                        <p className="name">{item.name}</p>
-                                    </td>
-                                    <td>
-                                        <p className="company">{item.company}</p>
-                                    </td>
-                                    <td>
-                                        <p className="position">{item.position}</p>
-                                    </td>
-                                    <td>
-                                        <p className="otherinfo">{item.otherInfo}{item.email}{item.telephone}</p>
-                                    </td>
-
-                                    <td>
-
-                                            <p className="message">{item.message}</p>
-                                            <p className="action">{item.action}</p>
-                                    </td>
-
-                                </tr>
-                            );
-                        })}
+                        {this.printTable(today)}
+                        <th colspan="7">
+                          <h4>Ayer y Anteriores</h4>
+                        </th>
+                        {this.printTable(others)}
 
                     </table>
                 </div>
-            </Fragment>
+
         );
     }
 }
