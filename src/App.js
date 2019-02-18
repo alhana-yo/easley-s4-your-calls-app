@@ -49,8 +49,7 @@ class App extends Component {
       endDate: ""
 
   };
-//   console.log('paco');
-// console.log(process.env.REACT_APP_PACO);
+
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -254,15 +253,15 @@ getCallAction(event) {
 
   makeMessage(){
 
-    let message=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
+    let message=`*${this.state.info.personRequested}*, te acaban de llamar y te han dejado el siguiente mensaje: \n*${this.state.info.action} \n${this.state.info.message}*`;
 
     if ((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0){
-      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
-      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+      return message=  `*${this.state.info.personRequested}*, te acaba de llamar: \n
+      *${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo}* \n Su mensaje ha sido \n *${this.state.info.action} \n${this.state.info.message}*`;
     }
       else if (this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
-      return message=  `${this.state.info.personRequested}, *te acaba de llamar*: \n
-      ${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo} \n *Su mensaje ha sido* \n${this.state.info.action} \n${this.state.info.message}`;
+      return message=  `*${this.state.info.personRequested}*, te acaba de llamar: \n
+      *${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo}* \n Su mensaje ha sido \n*${this.state.info.action} \n${this.state.info.message}*`;
 
     }else{
 
@@ -327,10 +326,10 @@ getCallAction(event) {
     const userStartDate = this.state.startDate;
     const userEndDate = this.state.endDate;
     const results = this.wholeList;
-    console.log(results);
 
-    const momentStartDate = moment(userStartDate, "DD/MM/YYYY");
-    const momentEndDate = moment(userEndDate, "DD/MM/YYYY");
+
+    const momentStartDate = moment(userStartDate, "YYYY-MM-DD");
+    const momentEndDate = moment(userEndDate, "YYYY-MM-DD");
 
     const filteredResults = results.filter(item => {
       let date= item.loggedAt;
