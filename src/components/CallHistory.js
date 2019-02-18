@@ -51,13 +51,11 @@ class CallHistory extends Component {
         const {results, actionFilterDate} = this.props;
         const now = moment().format('YYYY-MM-DD');
 
-        //array donde almacenamos las llamadas de hoy
         const today = results.filter(item => {
           const loggedTime = moment(item.loggedAt, 'YYYY-MM-DD');
           return loggedTime.isSame(now);
         });
 
-        //array donde almacenamos el resto de llamadas
         const others = results.filter(item => {
           const loggedTime = moment(item.loggedAt, 'YYYY-MM-DD');
           return !loggedTime.isSame(now);

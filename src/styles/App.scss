@@ -2,11 +2,10 @@
 @import 'core/settings';
 @import 'CallHistory';
 
-//HEADER
-
 body {
   background-color: $color-blacK;
 }
+
 .App {
   height: 100vh;
   font-family: Favorit,'Times New Roman', Times, serif;
@@ -105,8 +104,6 @@ a {
   padding-left: 50px;
 }
 
-//main//
-
 .form__wrapper {
   width: 958px;
   margin: 0 auto;
@@ -132,8 +129,6 @@ a {
   display: flex;
   flex-direction: row;
 }
-
-// MAIN -- Menu navegación
 
 .menu {
   display: flex;
@@ -181,8 +176,6 @@ position: relative;
   padding-bottom: 5px;
 }
 
-//Style for who calls
-
 .incoming-data__container {
   margin-top: 68px;
   padding: 0;
@@ -215,10 +208,6 @@ position: relative;
 .incoming-data__input::-webkit-input-placeholder {
   padding-left: 8px;
 }
-
-
-//Styles for custom message
-
 
 .message__title {
   margin: 0;
@@ -317,26 +306,24 @@ position: relative;
   border-top: 2px solid $color-red;
 }
 
-.error-msg-who{
+.error-msg-who {
   position: absolute;
   padding-left: 8px;
   width: 448px;
   margin-top: 8px;
   z-index: 100;
-  color: red;
-  border-top: 2px solid red;
-
+  color: $color-red;
+  border-top: 2px solid $color-red;
 }
 
-.error-msg-textarea{
+.error-msg-textarea {
   position: absolute;
   padding-left: 8px;
   width: 450px;
   margin-top: -6px;
   z-index: 100;
-  color: red;
-  border-top: 2px solid red;
-
+  color: $color-red;
+  border-top: 2px solid $color-red;
 }
 
 .selectedClass {
@@ -384,22 +371,13 @@ position: relative;
   display: none;
 }
 
-//history form
 .main__subtitle--date {
   display: flex;
   height: 80px;
   width: 150px;
 }
 
-.main__subtitle--date-container{
-}
-
 .dateStart {
   margin-bottom: 4px;
 }
-
-.button__filter {
-
-}
-
 

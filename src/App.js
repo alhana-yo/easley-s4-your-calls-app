@@ -42,8 +42,6 @@ class App extends Component {
       redialCheck: false,
       callBackCheck: false,
 
-      //CALLHISTORY COMPONENT STATES
-
       results: [],
       startDate: "",
       endDate: ""
