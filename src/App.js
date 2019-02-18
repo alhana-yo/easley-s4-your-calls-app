@@ -49,8 +49,6 @@ class App extends Component {
       endDate: ""
 
   };
-//   console.log('paco');
-// console.log(process.env.REACT_APP_PACO);
 
     this.getWhoCalls = this.getWhoCalls.bind(this);
     this.getRequestedEmployee = this.getRequestedEmployee.bind(this);
@@ -327,7 +325,6 @@ getCallAction(event) {
     const userStartDate = this.state.startDate;
     const userEndDate = this.state.endDate;
     const results = this.wholeList;
-    console.log(results);
 
     const momentStartDate = moment(userStartDate, "DD/MM/YYYY");
     const momentEndDate = moment(userEndDate, "DD/MM/YYYY");
