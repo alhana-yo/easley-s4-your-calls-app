@@ -27,8 +27,15 @@ class Form extends Component {
                             <h2 className="main__personRequested-title">¿Por quién preguntaban?</h2>
                             <select className="main__employees" onChange={getRequestedEmployee} onClick={deselectOption} ref={selectPersonRequested}required>
                                 <option className="option" value="Elige un empleado" >Elige un empleado</option>
-                                <option value="Carlos" >Carlos</option>
-                                <option value="Pepa">Pepa</option>
+                                <option value="Alex" >Alex</option>
+                                <option value="Bea">Bea</option>
+                                <option value="Chuck">Chuck</option>
+                                <option value="Isma">Isma</option>
+                                <option value="Juan">Juan</option>
+                                <option value="Lily">Lily</option>
+                                <option value="Natalia">Natalia</option>
+                                <option value="Paula">Paula</option>
+                                <option value="Sera">Sera</option>
                             </select>
                             <p className={`error-msg ${errorPerson}`}>Debes seleccionar un empleado</p>
                         </div>
@@ -94,7 +101,7 @@ class Form extends Component {
                                 </div>
                         </div>
 
-                     
+
                     </fieldset>
                 </div>
 
