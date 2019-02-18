@@ -227,15 +227,12 @@ class App extends Component {
   }
 
   makeMessage() {
+    let message=`*${this.state.info.personRequested}*, te acaban de llamar y te han dejado el siguiente mensaje: \n*${this.state.info.action} \n${this.state.info.message}*`;
 
-    let message=`${this.state.info.personRequested}, te acaban de llamar y te han dejado el *siguiente mensaje*: \n${this.state.info.action} \n${this.state.info.message}`;
-
-    if((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0) {
-      return message=  `*@${this.state.info.personRequested}*, te acaba de llamar:
-      *${this.state.info.name}* ${this.state.info.position} ${this.state.info.company} ${this.state.info.email} ${this.state.info.otherInfo} Su mensaje ha sido ${this.state.info.action} *${this.state.info.message}*`;
-    } else if(this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0) {
-      return message = `*${this.state.info.personRequested}*, te acaba de llamar:
-      *${this.state.info.name}* ${this.state.info.position} ${this.state.info.company} ${this.state.info.telephone} ${this.state.info.email} ${this.state.info.otherInfo} Su mensaje ha sido ${this.state.info.action} *${this.state.info.message}*`;
+    if((this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' )&& this.state.info.telephone===0){
+      return message=  `*${this.state.info.personRequested}*, te acaba de llamar: \n*${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company}  \n${this.state.info.email} \n${this.state.info.otherInfo}* \nSu mensaje ha sido: \n*${this.state.info.action} \n${this.state.info.message}*`;
+    } else if(this.state.info.name!==''|| this.state.info.position!=='' || this.state.info.company!=='' || this.state.info.otherInfo!==''|| this.state.info.email!=='' || this.state.info.telephone!==0){
+      return message=  `*${this.state.info.personRequested}*, te acaba de llamar: \n*${this.state.info.name} \n${this.state.info.position} \n${this.state.info.company} \n${this.state.info.telephone} \n${this.state.info.email} \n${this.state.info.otherInfo}* \nSu mensaje ha sido: \n*${this.state.info.action} \n${this.state.info.message}*`;
     } else {
       return message;
     }
@@ -292,8 +289,9 @@ class App extends Component {
     const userEndDate = this.state.endDate;
     const results = this.wholeList;
 
-    const momentStartDate = moment(userStartDate, "DD/MM/YYYY");
-    const momentEndDate = moment(userEndDate, "DD/MM/YYYY");
+
+    const momentStartDate = moment(userStartDate, "YYYY-MM-DD");
+    const momentEndDate = moment(userEndDate, "YYYY-MM-DD");
 
     const filteredResults = results.filter(item => {
       let date= item.loggedAt;
