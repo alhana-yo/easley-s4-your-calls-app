@@ -2,12 +2,10 @@
   max-width: 1900px;
   position: relative;
 }
-
 .main__wrapper--callHistory {
   width: 1300px;
   margin: 0 auto;
 }
-
 .table {
   position: absolute;
   right: 60px ;
@@ -15,51 +13,39 @@
   text-align: left;
   border-collapse: collapse;
 }
-
 .table__title {
   width: 242px;
   font-size: 24px;
   color:$color-grey;
   line-height: 29px;
 }
-
-
 .title__questions {
   width: 242px;
   padding-left: 45px;
   text-align: left;
 }
-
 tr {
   border-collapse: collapse;
 }
-
 td {
   padding-left: 45px;
   border-collapse: collapse;
   border-bottom: 1px solid $color-grey;
 }
-
 .cell {
   text-align: left;
 }
-
-
 .table__date--item {
   text-align: right;
 }
-
 .date--item {
   text-align: right;
 }
-
 .title__date {
   color:$color-white;
   width: 149px;
   text-align: right;
 }
-
 .input-date {
   width: 140px;
-
 }

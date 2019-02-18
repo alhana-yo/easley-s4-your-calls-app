@@ -1,15 +1,14 @@
-@import 'core/typography';
 @import 'core/settings';
 @import 'CallHistory';
-
-//HEADER
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 body {
   background-color: $color-blacK;
 }
+
 .App {
   height: 100vh;
-  font-family: Favorit,'Times New Roman', Times, serif;
+  font-family: Favorit,'Open Sans', sans-serif;
 }
 
 .header {
@@ -59,7 +58,6 @@ a {
   text-decoration: none;
 }
 
-
 .new-call__link::after {
   content: '';
   position: absolute;
@@ -105,8 +103,6 @@ a {
   padding-left: 50px;
 }
 
-//main//
-
 .form__wrapper {
   width: 958px;
   margin: 0 auto;
@@ -133,19 +129,17 @@ a {
   flex-direction: row;
 }
 
-// MAIN -- Menu navegación
-
 .menu {
   display: flex;
   justify-content: space-between;
 }
 
 .label {
-height: 0;
-width: 0;
-display: block;
-overflow: hidden;
-position: relative;
+  height: 0;
+  width: 0;
+  display: block;
+  overflow: hidden;
+  position: relative;
 }
 
 .main__addedBy {
@@ -173,15 +167,13 @@ position: relative;
   border-right: none;
   border-radius: 0;
   outline: none;
-  font-family: Favorit,'Times New Roman', Times, serif;
+  font-family: Favorit,'Open Sans', sans-serif;
   font-size: 16px;
   color: $color-grey;
   min-width: 448px;
   padding-left: 8px;
   padding-bottom: 5px;
 }
-
-//Style for who calls
 
 .incoming-data__container {
   margin-top: 68px;
@@ -216,22 +208,18 @@ position: relative;
   padding-left: 8px;
 }
 
-
-//Styles for custom message
-
-
 .message__title {
   margin: 0;
   font-size: 32px;
   line-height: 40px;
 }
 
-.main__personRequested {
-  width: 450px;
-}
-
 .main__personRequested-title {
   font-size: 32px;
+}
+
+.main__personRequested {
+  width: 450px;
 }
 
 .call-container__radios {
@@ -249,7 +237,6 @@ position: relative;
   width: 65px;
 }
 
-
 .call__container {
   position: relative;
 }
@@ -261,7 +248,7 @@ position: relative;
   height: 32px;
   font-size: 16px;
   line-height: 35px;
-  font-family: Favorit;
+  font-family: Favorit,'Open Sans', sans-serif;
   border: none;
   border-bottom: solid thin;
   border-color: $color-white;
@@ -280,7 +267,7 @@ position: relative;
   height: 32px;
   font-size: 16px;
   line-height: 35px;
-  font-family: Favorit;
+  font-family: Favorit,'Open Sans', sans-serif;
   border: none;
   border-bottom: solid thin;
   outline: none;
@@ -299,7 +286,7 @@ position: relative;
   background-color: $color-blacK;
   border: none;
   border-bottom: solid thin;
-  font-family: Favorit;
+  font-family: Favorit,'Open Sans', sans-serif;
   font-size: 16px;
   color: $color-grey-fonts;
   outline: none;
@@ -317,26 +304,24 @@ position: relative;
   border-top: 2px solid $color-red;
 }
 
-.error-msg-who{
+.error-msg-who {
   position: absolute;
   padding-left: 8px;
   width: 448px;
   margin-top: 8px;
   z-index: 100;
-  color: red;
-  border-top: 2px solid red;
-
+  color: $color-red;
+  border-top: 2px solid $color-red;
 }
 
-.error-msg-textarea{
+.error-msg-textarea {
   position: absolute;
   padding-left: 8px;
   width: 450px;
   margin-top: -6px;
   z-index: 100;
-  color: red;
-  border-top: 2px solid red;
-
+  color: $color-red;
+  border-top: 2px solid $color-red;
 }
 
 .selectedClass {
@@ -379,27 +364,17 @@ position: relative;
   margin-top: 42px;
 }
 
-
 .hidden {
   display: none;
 }
 
-//history form
 .main__subtitle--date {
   display: flex;
   height: 80px;
   width: 150px;
 }
 
-.main__subtitle--date-container{
-}
-
 .dateStart {
   margin-bottom: 4px;
 }
-
-.button__filter {
-
-}
-
 
