@@ -1,9 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import * as moment from 'moment';
-
-
-
-
 
 
 class CallHistory extends Component {
@@ -71,18 +67,17 @@ class CallHistory extends Component {
 
                 <div className="wrapper__callHistory">
 
-
                     <table className="table">
 
                       <tr>
-                        <th><h2>Fecha/hora</h2></th>
-                        <th><h2>Preguntaron por</h2></th>
-                        <th colSpan="4"><h2>Llamó</h2></th>
-                        <th><h2>Mensaje</h2></th>
+                        <th className="table__title title__date cell" >Fecha/hora</th>
+                        <th className="table__title title__questions cell">Preguntaron por</th>
+                        <th className="table__title cell" colSpan="4">Llamó</th>
+                        <th className="table__title cell">Mensaje</th>
                       </tr>
 
                       <tr>
-                        <th colspan="2">
+                        <th colspan="2" className="cell table__date">
                           <div className="main__subtitle--date-container">
                               <div className="dateStart">
                                 <label htmlFor="dateStart" ></label>
@@ -95,16 +90,16 @@ class CallHistory extends Component {
                           </div>
                           <button className="button__filter" onClick={actionFilterDate}>Filtrar</button>
                         </th>
-                        <th>
+                        <th className="cell">
                           <h4>Nombre</h4>
                         </th>
-                        <th>
+                        <th className="cell">
                           <h4>Empresa</h4>
                         </th>
-                        <th>
+                        <th className="cell">
                           <h4>Cargo</h4>
                         </th>
-                        <th>
+                        <th className="cell">
                           <h4 colspan="2">Detalle</h4>
                         </th>
                       </tr>
