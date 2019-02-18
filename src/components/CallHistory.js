@@ -86,7 +86,9 @@ class CallHistory extends Component {
               <th className="cell" colSpan="2">Detalle</th>
             </tr>
               {this.printTable(today)}
-              <th colSpan="7">Ayer y Anteriores</th>
+
+              <tr><th colSpan="7">Ayer y Anteriores</th></tr>
+
               {this.printTable(others)}
           </tbody>
           </table>
