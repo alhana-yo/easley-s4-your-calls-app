@@ -59,6 +59,7 @@ class CallHistory extends Component {
       return(
         <div className="wrapper__callHistory">
           <table className="table">
+          <tbody>
             <tr>
               <th className="table__title title__date cell" >Fecha/hora</th>
               <th className="table__title title__questions cell">Preguntaron por</th>
@@ -87,6 +88,7 @@ class CallHistory extends Component {
               {this.printTable(today)}
               <th colSpan="7">Ayer y Anteriores</th>
               {this.printTable(others)}
+          </tbody>
           </table>
         </div>
       );
