@@ -1,5 +1,4 @@
 .wrapper__callHistory {
-  max-width: 1900px;
   position: relative;
 }
 
@@ -35,10 +34,6 @@
   text-align: left;
 }
 
-tr {
-  border-collapse: collapse;
-}
-
 td {
   padding-left: 45px;
   border-collapse: collapse;
@@ -58,7 +53,7 @@ td {
 }
 
 .date--item {
-   text-align: right;
+  text-align: right;
 }
 
 
