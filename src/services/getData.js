@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://adalab.interacso.com/call';
+const ENDPOINT = 'https://adalab.interacso.com/api/call';
 
 const getData = (info) => fetch(ENDPOINT, {
   method: "POST",
